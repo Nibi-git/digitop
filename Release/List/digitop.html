@@ -1,0 +1,1805 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>XLINK Map File for "d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Exe\digitop"</title>
+</head>
+<body bgcolor="#dde2a0" text=black>
+<h2 align=center>XLINK Map File for "d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Exe\digitop"</h2>
+<h3 align=center>IAR Universal Linker V4.61L/W32</h3>
+<h4 align=center>Copyright (C) 1987-2009 IAR Systems AB.</h4>
+
+<p align=center>
+<a href="#Invocation Map">Invocation</a>
+&nbsp;&nbsp;<a href="#Program Entry">Program Entry</a>
+&nbsp;&nbsp;<a href="#Module Map">Module Map</a>
+&nbsp;&nbsp;<a href="#Module Summary">Module Summary</a>
+&nbsp;&nbsp;<a href="#Call Graph">Call Graph</a>
+&nbsp;&nbsp;<a href="#Segments in Address Order">Segment Map</a>
+&nbsp;&nbsp;<a href="#Memory Summary">Memory Summary</a>
+<p><hr>
+<p><a name="Invocation Map"></a><table>
+<tr valign=top>
+  <td><font size=2><b>Link&nbsp;time</font></b>
+  <td><font size=2>19/Dec/2014  23:07:05</font>
+<tr valign=top>
+  <td><font size=2><b>Target&nbsp;CPU</font></b>
+  <td><font size=2>A90</font>
+<tr valign=top>
+  <td><font size=2><b>List&nbsp;file</font></b>
+  <td><font size=2>d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\List\digitop.html</font>
+<tr valign=top>
+  <td><font size=2><b>Output&nbsp;file&nbsp;1</font></b>
+  <td><font size=2>d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Exe\digitop.hex</font>
+<tr valign=top>
+  <td><font size=2><b></font></b>
+  <td><font size=2>Format: intel-extended, variant: -y(CODE)</font>
+<tr valign=top>
+  <td><font size=2><b>Command&nbsp;line</font></b>
+  <td><font size=2></font>
+<code><b>-y</b>(CODE)
+d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Obj\main.r90
+<b>-o</b>
+d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Exe\digitop.hex
+<b>-F</b>intel-extended
+<b>-l</b>
+d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\List\digitop.html
+<b>-x</b>msnioh
+<b>"-</b>"C:\Program Files\IAR Systems\Embedded Workbench 5.3\avr\LIB\"
+<b>-f</b>
+"C:\Program Files\IAR Systems\Embedded Workbench 5.3\avr\src\template\cfgtiny26.xcl"
+( <b>-D</b>_..X_INTVEC_SIZE=18
+<b>-D</b>_..X_FLASH_END=7FF
+<b>-D</b>_..X_SRAM_BASE=60
+<b>-D</b>_..X_SRAM_TBASE=_..X_SRAM_BASE
+<b>-D</b>_..X_SRAM_END=DF
+<b>-D</b>_..X_EEPROM_END=7F
+<b>-D</b>_..X_EEPROM_START=0
+) <b>-D</b>_..X_HEAP_SIZE=10
+<b>-D</b>_..X_TINY_HEAP_SIZE=0
+<b>-D</b>_..X_NEAR_HEAP_SIZE=0
+<b>-D</b>_..X_FAR_HEAP_SIZE=0
+<b>-D</b>_..X_HUGE_HEAP_SIZE=0
+<b>-D</b>_..X_CSTACK_SIZE=20
+<b>-D</b>_..X_RSTACK_SIZE=1C
+<b>-f</b>
+"C:\Program Files\IAR Systems\Embedded Workbench 5.3\avr\src\template\cfg0t.xcl"
+( <b>-c</b>a90
+<b>-w</b>29
+<b>-Z</b>(CODE)INTVEC=0-(_..X_INTVEC_SIZE-1)
+<b>-Z</b>(CODE)TINY_F=_..X_FLASH_BASE-FF
+<b>-Z</b>(CODE)NEAR_F=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)SWITCH=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)INITTAB=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)DIFUNCT=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)CODE=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)TINY_ID=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)NEAR_ID=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)CHECKSUM#_..X_FLASH_END
+<b>-Z</b>(DATA)TINY_I,TINY_Z,TINY_N=_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)CSTACK+_..X_CSTACK_SIZE=_..X_CSTACK_BASE-_..X_CSTACK_END
+<b>-Z</b>(DATA)HEAP+_..X_HEAP_SIZE=_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)IOSTREAM_N#_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)TINY_HEAP+_..X_TINY_HEAP_SIZE=_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)RSTACK+_..X_RSTACK_SIZE=_..X_RSTACK_BASE-_..X_RSTACK_END
+<b>-Z</b>(XDATA)EEPROM_I,EEPROM_N=_..X_EEPROM_START-_..X_EEPROM_END
+) <b>-D</b>_..X_FLASH_BASE=_..X_INTVEC_SIZE
+<b>-H</b>1895
+<b>-h</b>(CODE)0-(_..X_INTVEC_SIZE-1)
+<b>-D</b>_..X_CSTACK_BASE=_..X_SRAM_BASE
+<b>-D</b>_..X_CSTACK_END=_..X_SRAM_END
+<b>-D</b>_..X_RSTACK_BASE=_..X_SRAM_BASE
+<b>-D</b>_..X_RSTACK_END=_..X_SRAM_END
+<b>-s</b>
+__program_start
+"C:\Program Files\IAR Systems\Embedded Workbench 5.3\avr\LIB\CLIB\cl0t.r90"
+<b>-e</b>_small_write=_formatted_write
+</code>
+</table>
+
+
+
+<p><hr><a name="Program Entry"></a><p>
+       Program entry at : CODE      00000000  Relocatable, from module : ?RESET
+
+
+<p><hr><p>
+<a name="Runtime Model"></a>
+<table bgcolor="#c0c0" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=2><font size=4><B>Runtime Model</B>
+</font>
+<tr>
+  <th><font size=2>Attribute</font>
+  <th><font size=2>Value</font>
+<tr valign=top>
+  <td><font size=2>EEPROM_SIZE</font>
+  <td><font size=2>1</font>
+<tr valign=top>
+  <td><font size=2>__64bit_doubles</font>
+  <td><font size=2>disabled</font>
+<tr valign=top>
+  <td><font size=2>__cpu</font>
+  <td><font size=2>0</font>
+<tr valign=top>
+  <td><font size=2>__cpu_name</font>
+  <td><font size=2>ATtiny26</font>
+<tr valign=top>
+  <td><font size=2>__enhanced_core</font>
+  <td><font size=2>disabled</font>
+<tr valign=top>
+  <td><font size=2>__has_elpm</font>
+  <td><font size=2>false</font>
+<tr valign=top>
+  <td><font size=2>__memory_model</font>
+  <td><font size=2>1</font>
+<tr valign=top>
+  <td><font size=2>__rt_version</font>
+  <td><font size=2>3</font>
+</table>
+<p><hr><p>
+<a name="Module Map"></a>
+<table bgcolor="#c0c0c0" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=6><font size=4><B>Module Map</B>
+</font>
+<tr>
+  <th><font size=2>File</font>
+  <th><font size=2>Module</font>
+  <th><font size=2>Segment</font>
+  <th><font size=2>Symbol</font>
+  <th><font size=2>Address</font>
+  <th><font size=2>Ref by</font>
+<tr valign=top>
+  <td rowspan=19 ><font size=2><b></b></font>
+  <td rowspan=19><font size=2><a name="MM\?ABS_ENTRY_MOD"><b>?ABS_ENTRY_MOD</b></a><br>Program module</font>
+  <td rowspan=19 ><font size=2><i>Absolute parts</i></font>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_RSTACK_END"><b>_..X_RSTACK_END</b></a>
+</font>
+  <td><font size=2>000000DF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_RSTACK_BASE"><b>_..X_RSTACK_BASE</b></a>
+</font>
+  <td><font size=2>00000060 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_CSTACK_END"><b>_..X_CSTACK_END</b></a>
+</font>
+  <td><font size=2>000000DF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_CSTACK_BASE"><b>_..X_CSTACK_BASE</b></a>
+</font>
+  <td><font size=2>00000060 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FLASH_BASE"><b>_..X_FLASH_BASE</b></a>
+</font>
+  <td><font size=2>00000018 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_RSTACK_SIZE"><b>_..X_RSTACK_SIZE</b></a>
+</font>
+  <td><font size=2>0000001C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_CSTACK_SIZE"><b>_..X_CSTACK_SIZE</b></a>
+</font>
+  <td><font size=2>00000020 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_HUGE_HEAP_SIZE"><b>_..X_HUGE_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FAR_HEAP_SIZE"><b>_..X_FAR_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_NEAR_HEAP_SIZE"><b>_..X_NEAR_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_TINY_HEAP_SIZE"><b>_..X_TINY_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_HEAP_SIZE"><b>_..X_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000010 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EEPROM_START"><b>_..X_EEPROM_START</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EEPROM_END"><b>_..X_EEPROM_END</b></a>
+</font>
+  <td><font size=2>0000007F </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_END"><b>_..X_SRAM_END</b></a>
+</font>
+  <td><font size=2>000000DF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_TBASE"><b>_..X_SRAM_TBASE</b></a>
+</font>
+  <td><font size=2>00000060 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_BASE"><b>_..X_SRAM_BASE</b></a>
+</font>
+  <td><font size=2>00000060 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FLASH_END"><b>_..X_FLASH_END</b></a>
+</font>
+  <td><font size=2>000007FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_INTVEC_SIZE"><b>_..X_INTVEC_SIZE</b></a>
+</font>
+  <td><font size=2>00000018 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=117 ><font size=2><b>d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Obj\main.r90</b></font>
+  <td rowspan=117><font size=2><a name="MM\main"><b>main</b></a><br>Program module</font>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_1"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000024 - 00000025<br>Segment part 1. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_41">ADCSampleReady</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_ADC"><b>_A_ADC</b></a>
+</font>
+  <td><font size=2>00000024 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_2"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000026 - 00000026<br>Segment part 2. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_41">ADCSampleReady</a>
+<br><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_ADCSR"><b>_A_ADCSR</b></a>
+</font>
+  <td><font size=2>00000026 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_3"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000027 - 00000027<br>Segment part 3. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_ADMUX"><b>_A_ADMUX</b></a>
+</font>
+  <td><font size=2>00000027 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_4"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000036 - 00000036<br>Segment part 4. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_50">KeyboardThread</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_PINB"><b>_A_PINB</b></a>
+</font>
+  <td><font size=2>00000036 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_5"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000037 - 00000037<br>Segment part 5. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_28">InitPorts</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_DDRB"><b>_A_DDRB</b></a>
+</font>
+  <td><font size=2>00000037 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_6"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000038 - 00000038<br>Segment part 6. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_48">DynIndStep</a>
+<br><a href="#MM\main\Segpart_28">InitPorts</a>
+<br><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_PORTB"><b>_A_PORTB</b></a>
+</font>
+  <td><font size=2>00000038 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_7"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000003A - 0000003A<br>Segment part 7. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_28">InitPorts</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_DDRA"><b>_A_DDRA</b></a>
+</font>
+  <td><font size=2>0000003A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_8"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000003B - 0000003B<br>Segment part 8. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_48">DynIndStep</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_PORTA"><b>_A_PORTA</b></a>
+</font>
+  <td><font size=2>0000003B </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_9"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000041 - 00000041<br>Segment part 9. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_26">__watchdog_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_WDTCR"><b>_A_WDTCR</b></a>
+</font>
+  <td><font size=2>00000041 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_10"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000004E - 0000004E<br>Segment part 10. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_41">ADCSampleReady</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_TCNT1"><b>_A_TCNT1</b></a>
+</font>
+  <td><font size=2>0000004E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_11"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000004F - 0000004F<br>Segment part 11. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_31">InitTimers</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_TCCR1B"><b>_A_TCCR1B</b></a>
+</font>
+  <td><font size=2>0000004F </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_12"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000059 - 00000059<br>Segment part 12. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_31">InitTimers</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_TIMSK"><b>_A_TIMSK</b></a>
+</font>
+  <td><font size=2>00000059 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_19"><b>NEAR_F</b></a></b><br>Relative segment<br>CODE 00000018 - 0000002C<br>Segment part 19.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\led_digits"><b>led_digits</b></a>
+</font>
+  <td><font size=2>00000018 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=5 ><font size=2><b><a name="MM\main\Segpart_23"><b>EEPROM_I</b></a></b><br>Relative segment<br>XDATA 00000000 - 00000007<br>Segment part 23.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">LoadSettings</a>
+<br><a href="#MM\main\Segpart_32">SaveSettings</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\DownTresholdEEPROM"><b>DownTresholdEEPROM</b></a>
+</font>
+  <td><font size=2>00000002 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\K1EEPROM"><b>K1EEPROM</b></a>
+</font>
+  <td><font size=2>00000004 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ProtectTimerOnMaxValueEEPROM"><b>ProtectTimerOnMaxValueEEPROM</b></a>
+</font>
+  <td><font size=2>00000006 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\UpTresholdEEPROM"><b>UpTresholdEEPROM</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=28 ><font size=2><b><a name="MM\main\Segpart_20"><b>TINY_I</b></a></b><br>Relative segment<br>DATA 00000060 - 0000009E<br>Segment part 20.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_41">ADCSampleReady</a>
+<br><a href="#MM\main\Segpart_27">CharToStringDec</a>
+<br><a href="#MM\main\Segpart_48">DynIndStep</a>
+<br><a href="#MM\main\Segpart_50">KeyboardThread</a>
+<br><a href="#MM\main\Segpart_34">LoadSettings</a>
+<br><a href="#MM\main\Segpart_58">ResetSampler</a>
+<br><a href="#MM\main\Segpart_39">Segment part 39</a>
+<br><a href="#MM\main\Segpart_44">Segment part 44</a>
+<br><a href="#MM\main\Segpart_45">Segment part 45</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<br><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ArrayKathodes"><b>ArrayKathodes</b></a>
+</font>
+  <td><font size=2>00000090 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\DisplayMode"><b>DisplayMode</b></a>
+</font>
+  <td><font size=2>00000098 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\DisplayedVoltage"><b>DisplayedVoltage</b></a>
+</font>
+  <td><font size=2>0000007E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\DownTreshold"><b>DownTreshold</b></a>
+</font>
+  <td><font size=2>0000007A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\EnableDisplay"><b>EnableDisplay</b></a>
+</font>
+  <td><font size=2>00000099 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\K1"><b>K1</b></a>
+</font>
+  <td><font size=2>0000007C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\KeyTimer"><b>KeyTimer</b></a>
+</font>
+  <td><font size=2>00000070 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\PlusSamplesCounter"><b>PlusSamplesCounter</b></a>
+</font>
+  <td><font size=2>0000009A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ProtectTimerOffValue"><b>ProtectTimerOffValue</b></a>
+</font>
+  <td><font size=2>00000097 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ProtectTimerOnMaxValue"><b>ProtectTimerOnMaxValue</b></a>
+</font>
+  <td><font size=2>00000074 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ProtectTimerOnValue"><b>ProtectTimerOnValue</b></a>
+</font>
+  <td><font size=2>00000072 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\QuarterSecPrescaler"><b>QuarterSecPrescaler</b></a>
+</font>
+  <td><font size=2>0000009D </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ResultSummReady"><b>ResultSummReady</b></a>
+</font>
+  <td><font size=2>00000093 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SecPrescaler"><b>SecPrescaler</b></a>
+</font>
+  <td><font size=2>0000009E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SlowTimerFlag"><b>SlowTimerFlag</b></a>
+</font>
+  <td><font size=2>00000094 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SlowTimerPrescaler"><b>SlowTimerPrescaler</b></a>
+</font>
+  <td><font size=2>00000095 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SmoothVoltage"><b>SmoothVoltage</b></a>
+</font>
+  <td><font size=2>00000080 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SmoothVoltageCurrentPosition"><b>SmoothVoltageCurrentPosition</b></a>
+</font>
+  <td><font size=2>0000009C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\String"><b>String</b></a>
+</font>
+  <td><font size=2>00000068 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SummUU"><b>SummUU</b></a>
+</font>
+  <td><font size=2>00000064 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SummUUResult"><b>SummUUResult</b></a>
+</font>
+  <td><font size=2>00000060 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\UpTreshold"><b>UpTreshold</b></a>
+</font>
+  <td><font size=2>00000078 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\VideoBuffer"><b>VideoBuffer</b></a>
+</font>
+  <td><font size=2>0000006B </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\Voltage"><b>Voltage</b></a>
+</font>
+  <td><font size=2>00000076 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ZeroSamplesCounter"><b>ZeroSamplesCounter</b></a>
+</font>
+  <td><font size=2>0000009B </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\cycle_count"><b>cycle_count</b></a>
+</font>
+  <td><font size=2>00000096 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\keypress"><b>keypress</b></a>
+</font>
+  <td><font size=2>0000006E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_24"><b>TINY_I</b></a></b><br>Relative segment<br>DATA 0000009F - 000000A1<br>Segment part 24.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_27">CharToStringDec</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\segmentsDec"><b>segmentsDec</b></a>
+</font>
+  <td><font size=2>0000009F </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_26"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000032 - 00000041<br>Segment part 26.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\__watchdog_init"><b>__watchdog_init</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000032 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_27"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000042 - 00000087<br>Segment part 27.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\CharToStringDec"><b>CharToStringDec</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000042 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_28"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000088 - 0000009B<br>Segment part 28.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\InitPorts"><b>InitPorts</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000088 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_29"><b>CODE</b></a></b><br>Segment part 29.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\main\InitADC"><b>InitADC</b></a>
+<br>               not allocated function
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_30"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000009C - 000000A5<br>Segment part 30.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_31"><b>CODE</b></a></b><br>Relative segment<br>CODE 000000A6 - 000000B3<br>Segment part 31.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\InitTimers"><b>InitTimers</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000000A6 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_32"><b>CODE</b></a></b><br>Relative segment<br>CODE 000000B4 - 000000CB<br>Segment part 32.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_50">KeyboardThread</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\SaveSettings"><b>SaveSettings</b></a>
+<br>               RSTACK = 00000000 ( 00000004 )
+</font>
+  <td><font size=2>000000B4 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_33"><b>CODE</b></a></b><br>Relative segment<br>CODE 000000CC - 00000143<br>Segment part 33.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_35">Segment part 35</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\CheckAllSettings"><b>CheckAllSettings</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000000CC </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_34"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000144 - 00000161<br>Segment part 34.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\LoadSettings"><b>LoadSettings</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000004 )
+</font>
+  <td><font size=2>00000144 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_35"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000162 - 00000167<br>Segment part 35.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">LoadSettings</a>
+<br><a href="#MM\main\Segpart_43">PressProcessing</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_36"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000168 - 000001E9<br>Segment part 36.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\UpdateLedScreen"><b>UpdateLedScreen</b></a>
+<br>               calls direct
+<br>               CSTACK = 00000000 ( 00000001 )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000168 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_37"><b>CODE</b></a></b><br>Relative segment<br>CODE 000001EA - 000001EF<br>Segment part 37.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">CheckAllSettings</a>
+<br><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_32">SaveSettings</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<br><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_38"><b>CODE</b></a></b><br>Relative segment<br>CODE 000001F0 - 000001F5<br>Segment part 38.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">CheckAllSettings</a>
+<br><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_32">SaveSettings</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_39"><b>CODE</b></a></b><br>Relative segment<br>CODE 000001F6 - 000001F7<br>Segment part 39.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_40"><b>CODE</b></a></b><br>Relative segment<br>CODE 000001F8 - 000001FD<br>Segment part 40.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">CheckAllSettings</a>
+<br><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_32">SaveSettings</a>
+<br><a href="#MM\main\Segpart_39">Segment part 39</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<br><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_41"><b>CODE</b></a></b><br>Relative segment<br>CODE 000001FE - 000002DF<br>Segment part 41.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_16">ADCSampleReady::??INTVEC 10</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ADCSampleReady"><b>ADCSampleReady</b></a>
+<br>               interrupt function
+<br>               calls direct
+<br>               CSTACK = 00000000 ( 00000010 )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000001FE </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_42"><b>CODE</b></a></b><br>Relative segment<br>CODE 000002E0 - 000002EB<br>Segment part 42.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_41">ADCSampleReady</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_43"><b>CODE</b></a></b><br>Relative segment<br>CODE 000002EC - 000003B9<br>Segment part 43.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_50">KeyboardThread</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\PressProcessing"><b>PressProcessing</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000002EC </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_44"><b>CODE</b></a></b><br>Relative segment<br>CODE 000003BA - 000003BF<br>Segment part 44.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_47">Segment part 47</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_45"><b>CODE</b></a></b><br>Relative segment<br>CODE 000003C0 - 000003C1<br>Segment part 45.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">CheckAllSettings</a>
+<br><a href="#MM\main\Segpart_32">SaveSettings</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_46"><b>CODE</b></a></b><br>Relative segment<br>CODE 000003C2 - 000003C7<br>Segment part 46.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">CheckAllSettings</a>
+<br><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_45">Segment part 45</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_47"><b>CODE</b></a></b><br>Relative segment<br>CODE 000003C8 - 000003CD<br>Segment part 47.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_36">UpdateLedScreen</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_48"><b>CODE</b></a></b><br>Relative segment<br>CODE 000003CE - 00000405<br>Segment part 48.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\DynIndStep"><b>DynIndStep</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000003CE </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_49"><b>CODE</b></a></b><br>Segment part 49.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\main\CheckButton"><b>CheckButton</b></a>
+<br>               calls direct
+<br>               not allocated function
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_50"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000406 - 000004EF<br>Segment part 50.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\KeyboardThread"><b>KeyboardThread</b></a>
+<br>               calls direct
+<br>               CSTACK = 00000000 ( 00000001 )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000406 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_51"><b>CODE</b></a></b><br>Relative segment<br>CODE 000004F0 - 000004F5<br>Segment part 51.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_50">KeyboardThread</a>
+<br><a href="#MM\main\Segpart_43">PressProcessing</a>
+<br><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_52"><b>CODE</b></a></b><br>Relative segment<br>CODE 000004F6 - 0000065D<br>Segment part 52.</font>
+  <td nowrap><font size=2><a name="MM\main\main"><b>main</b></a>
+<br>               calls direct
+<br>               CSTACK = 00000000 ( 00000003 )
+<br>               RSTACK = 00000000 ( 00000004 )
+</font>
+  <td><font size=2>000004F6 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_9">?cstartup_call_main (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_53"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000065E - 00000663<br>Segment part 53.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_54"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000664 - 0000066D<br>Segment part 54.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_55"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000066E - 00000673<br>Segment part 55.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_56"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000674 - 0000067B<br>Segment part 56.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_57"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000067C - 00000683<br>Segment part 57.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_52">main</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_58"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000684 - 00000699<br>Segment part 58.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_41">ADCSampleReady</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ResetSampler"><b>ResetSampler</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000684 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_13"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000001C <br>Segment part 13. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\main\__?EECR"><b>__?EECR</b></a>
+</font>
+  <td><font size=2>0000001C </font>
+  <td><font size=2><a href="#MM\?EEPROM_8\Segpart_0">Segment part 0 (?EEPROM_8)</a>
+<br><a href="#MM\?EEPROM_8\Segpart_1">Segment part 1 (?EEPROM_8)</a>
+<br><a href="#MM\?EEPROM_8\Segpart_8">Segment part 8 (?EEPROM_8)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_14"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000001D <br>Segment part 14. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\main\__?EEDR"><b>__?EEDR</b></a>
+</font>
+  <td><font size=2>0000001D </font>
+  <td><font size=2><a href="#MM\?EEPROM_8\Segpart_4">__eeget16_8 (?EEPROM_8)</a>
+<br><a href="#MM\?EEPROM_8\Segpart_11">__eeput16_8 (?EEPROM_8)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_15"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000001E <br>Segment part 15. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\main\__?EEARL"><b>__?EEARL</b></a>
+</font>
+  <td><font size=2>0000001E </font>
+  <td><font size=2><a href="#MM\?EEPROM_8\Segpart_1">Segment part 1 (?EEPROM_8)</a>
+<br><a href="#MM\?EEPROM_8\Segpart_8">Segment part 8 (?EEPROM_8)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_16"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 0000000B<br>Segment part 16. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\main\ADCSampleReady::??INTVEC 10"><b>ADCSampleReady::??INTVEC 10</b></a>
+</font>
+  <td><font size=2>0000000A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_17"><b>CSTACK</b></a></b><br>Segment part 17.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_18"><b>RSTACK</b></a></b><br>Segment part 18.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_21"><b>TINY_ID</b></a></b><br>Relative segment<br>CODE 0000079A - 000007D8<br>Segment part 21.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_20">Segment part 20</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_22"><b>INITTAB</b></a></b><br>Relative segment<br>CODE 0000002D - 00000030<br>Segment part 22.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_20">Segment part 20</a>
+<br><a href="#MM\main\Segpart_24">segmentsDec</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\?&lt;Segment init: TINY_I&gt;"><b>?&lt;Segment init: TINY_I&gt;</b></a>
+</font>
+  <td><font size=2>0000002D </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_25"><b>TINY_ID</b></a></b><br>Relative segment<br>CODE 000007D9 - 000007DB<br>Segment part 25.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_24">segmentsDec</a>
+<tr valign=top>
+  <td rowspan=68 ><font size=2><b>C:\Program Files\IAR Systems\Embedded Workbench 5.3\avr\LIB\CLIB\cl0t.r90</b></font>
+  <td rowspan=5><font size=2><a name="MM\?__exit"><b>?__exit</b></a><br>Library module</font>
+  <td rowspan=5 ><font size=2><b><a name="MM\?__exit\Segpart_0"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000069A - 0000069F<br>Segment part 0.</font>
+  <td nowrap><font size=2><a name="MM\?__exit\__exit"><b>__exit</b></a>
+</font>
+  <td><font size=2>0000069C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\?C_EXIT"><b>?C_EXIT</b></a>
+</font>
+  <td><font size=2>0000069C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\?C_FUNCALL"><b>?C_FUNCALL</b></a>
+</font>
+  <td><font size=2>0000069A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\_exit"><b>_exit</b></a>
+</font>
+  <td><font size=2>0000069A </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_9">?cstartup_call_main (?C_STARTUP)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\exit"><b>exit</b></a>
+</font>
+  <td><font size=2>0000069A </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_9">?cstartup_call_main (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=2><font size=2><a name="MM\?RESET"><b>?RESET</b></a><br>Library module</font>
+  <td rowspan=2 ><font size=2><b><a name="MM\?RESET\Segpart_0"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 00000001<br>Segment part 0. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\?RESET\__program_start"><b>__program_start</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td><font size=2><a href="#MM\?ABS_ENTRY_MOD\Absparts">Absolute parts (?ABS_ENTRY_MOD)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?RESET\?RESET"><b>?RESET</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_2">Segment part 2 (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=13><font size=2><a name="MM\?C_STARTUP"><b>?C_STARTUP</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_0"><b>CSTACK</b></a></b><br>Segment part 0.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_1"><b>RSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_2"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006A0 <br>Segment part 2.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?C_STARTUP"><b>?C_STARTUP</b></a>
+</font>
+  <td><font size=2>000006A0 </font>
+  <td><font size=2><a href="#MM\?RESET\Segpart_0">Segment part 0 (?RESET)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\__RESTART"><b>__RESTART</b></a>
+</font>
+  <td><font size=2>000006A0 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_3"><b>CODE</b></a></b><br>Segment part 3.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\__RSTACK_in_external_ram"><b>__RSTACK_in_external_ram</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_4"><b>CODE</b></a></b><br>Segment part 4.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\__RSTACK_in_external_ram_new_way"><b>__RSTACK_in_external_ram_new_way</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_5"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006A0 - 000006A5<br>Segment part 5.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_2">Segment part 2</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_6"><b>CODE</b></a></b><br>Segment part 6.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?zero_reg_initialization"><b>?zero_reg_initialization</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_7"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006A6 - 000006A7<br>Segment part 7.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_5">Segment part 5</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?call_low_level_init"><b>?call_low_level_init</b></a>
+</font>
+  <td><font size=2>000006A6 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_8"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006A8 - 000006AD<br>Segment part 8.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?need_segment_init"><b>?need_segment_init</b></a>
+</font>
+  <td><font size=2>000006A8 </font>
+  <td><font size=2><a href="#MM\main\Segpart_22">?&lt;Segment init: TINY_I&gt; (main)</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_9"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006AE - 000006B3<br>Segment part 9.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_7">?call_low_level_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?cstartup_call_main"><b>?cstartup_call_main</b></a>
+</font>
+  <td><font size=2>000006AE </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=15><font size=2><a name="MM\?EEPROM_8"><b>?EEPROM_8</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_0"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006B4 - 000006B9<br>Segment part 0.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?EEPROM_8\Segpart_1">Segment part 1</a>
+<br><a href="#MM\?EEPROM_8\Segpart_11">__eeput16_8</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_1"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006BA - 000006C3<br>Segment part 1.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?EEPROM_8\Segpart_4">__eeget16_8</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_2"><b>CODE</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_3"><b>CODE</b></a></b><br>Segment part 3.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeget8_8"><b>__eeget8_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_4"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006C4 - 000006CD<br>Segment part 4.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeget16_8"><b>__eeget16_8</b></a>
+</font>
+  <td><font size=2>000006C4 </font>
+  <td><font size=2><a href="#MM\main\Segpart_34">LoadSettings (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_5"><b>CODE</b></a></b><br>Segment part 5.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeget24_8"><b>__eeget24_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_6"><b>CODE</b></a></b><br>Segment part 6.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeget32_8"><b>__eeget32_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_7"><b>CODE</b></a></b><br>Segment part 7.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeget64_8"><b>__eeget64_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_8"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006CE - 000006DB<br>Segment part 8.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?EEPROM_8\Segpart_11">__eeput16_8</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_9"><b>CODE</b></a></b><br>Segment part 9.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_10"><b>CODE</b></a></b><br>Segment part 10.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeput8_8"><b>__eeput8_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_11"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006DC - 000006E9<br>Segment part 11.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeput16_8"><b>__eeput16_8</b></a>
+</font>
+  <td><font size=2>000006DC </font>
+  <td><font size=2><a href="#MM\main\Segpart_32">SaveSettings (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_12"><b>CODE</b></a></b><br>Segment part 12.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeput24_8"><b>__eeput24_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_13"><b>CODE</b></a></b><br>Segment part 13.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeput32_8"><b>__eeput32_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?EEPROM_8\Segpart_14"><b>CODE</b></a></b><br>Segment part 14.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?EEPROM_8\__eeput64_8"><b>__eeput64_8</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1><font size=2><a name="MM\?S_SHL_L02"><b>?S_SHL_L02</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?S_SHL_L02\Segpart_0"><b>CODE</b></a></b><br>Segment part 0.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?S_SHL_L02\?S_SHL_L02"><b>?S_SHL_L02</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1><font size=2><a name="MM\?US_SHR_L02"><b>?US_SHR_L02</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?US_SHR_L02\Segpart_0"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006EA - 000006F5<br>Segment part 0.</font>
+  <td nowrap><font size=2><a name="MM\?US_SHR_L02\?US_SHR_L02"><b>?US_SHR_L02</b></a>
+</font>
+  <td><font size=2>000006EA </font>
+  <td><font size=2><a href="#MM\main\Segpart_52">main (main)</a>
+<tr valign=top>
+  <td rowspan=1><font size=2><a name="MM\?L_MUL_L03"><b>?L_MUL_L03</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?L_MUL_L03\Segpart_0"><b>CODE</b></a></b><br>Relative segment<br>CODE 000006F6 - 0000072D<br>Segment part 0.</font>
+  <td nowrap><font size=2><a name="MM\?L_MUL_L03\?L_MUL_L03"><b>?L_MUL_L03</b></a>
+</font>
+  <td><font size=2>000006F6 </font>
+  <td><font size=2><a href="#MM\main\Segpart_52">main (main)</a>
+<tr valign=top>
+  <td rowspan=1><font size=2><a name="MM\?UL_SHR_L03"><b>?UL_SHR_L03</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?UL_SHR_L03\Segpart_0"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000072E - 0000073D<br>Segment part 0.</font>
+  <td nowrap><font size=2><a name="MM\?UL_SHR_L03\?UL_SHR_L03"><b>?UL_SHR_L03</b></a>
+</font>
+  <td><font size=2>0000072E </font>
+  <td><font size=2><a href="#MM\main\Segpart_52">main (main)</a>
+<tr valign=top>
+  <td rowspan=18><font size=2><a name="MM\?PROLOGUE_L09"><b>?PROLOGUE_L09</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_0"><b>CODE</b></a></b><br>Segment part 0.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE16_L09"><b>?PROLOGUE16_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_1"><b>CODE</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE15_L09"><b>?PROLOGUE15_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_2"><b>CODE</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE14_L09"><b>?PROLOGUE14_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_3"><b>CODE</b></a></b><br>Segment part 3.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE13_L09"><b>?PROLOGUE13_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_4"><b>CODE</b></a></b><br>Segment part 4.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE12_L09"><b>?PROLOGUE12_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_5"><b>CODE</b></a></b><br>Segment part 5.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE11_L09"><b>?PROLOGUE11_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_6"><b>CODE</b></a></b><br>Segment part 6.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE10_L09"><b>?PROLOGUE10_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_7"><b>CODE</b></a></b><br>Segment part 7.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE9_L09"><b>?PROLOGUE9_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_8"><b>CODE</b></a></b><br>Segment part 8.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE8_L09"><b>?PROLOGUE8_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_9"><b>CODE</b></a></b><br>Segment part 9.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE7_L09"><b>?PROLOGUE7_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_10"><b>CODE</b></a></b><br>Segment part 10.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE6_L09"><b>?PROLOGUE6_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_11"><b>CODE</b></a></b><br>Segment part 11.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE5_L09"><b>?PROLOGUE5_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_12"><b>CODE</b></a></b><br>Segment part 12.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE4_L09"><b>?PROLOGUE4_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_13"><b>CODE</b></a></b><br>Segment part 13.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE3_L09"><b>?PROLOGUE3_L09</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_14"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000073E - 0000073F<br>Segment part 14.</font>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE2_L09"><b>?PROLOGUE2_L09</b></a>
+</font>
+  <td><font size=2>0000073E </font>
+  <td><font size=2><a href="#MM\main\Segpart_52">main (main)</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_15"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000740 - 00000741<br>Segment part 15.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?PROLOGUE_L09\Segpart_14">?PROLOGUE2_L09</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?PROLOGUE_L09\?PROLOGUE1_L09"><b>?PROLOGUE1_L09</b></a>
+</font>
+  <td><font size=2>00000740 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?PROLOGUE_L09\Segpart_16"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000742 - 00000743<br>Segment part 16.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?PROLOGUE_L09\Segpart_15">?PROLOGUE1_L09</a>
+<tr valign=top>
+  <td rowspan=3><font size=2><a name="MM\?low_level_init"><b>?low_level_init</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?low_level_init\Segpart_3"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000744 - 00000747<br>Segment part 3.</font>
+  <td nowrap><font size=2><a name="MM\?low_level_init\__low_level_init"><b>__low_level_init</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000744 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_7">?call_low_level_init (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?low_level_init\Segpart_1"><b>CSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?low_level_init\Segpart_2"><b>RSTACK</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=8><font size=2><a name="MM\?segment_init"><b>?segment_init</b></a><br>Library module</font>
+  <td rowspan=2 ><font size=2><b><a name="MM\?segment_init\Segpart_3"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000748 - 00000751<br>Segment part 3.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?segment_init\Segpart_5">__segment_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?segment_init\__memclr"><b>__memclr</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000748 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?segment_init\Segpart_4"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000752 - 0000075D<br>Segment part 4.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?segment_init\Segpart_5">__segment_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?segment_init\__flashcpy"><b>__flashcpy</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000752 </font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_5"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000075E - 00000799<br>Segment part 5.</font>
+  <td nowrap><font size=2><a name="MM\?segment_init\__segment_init"><b>__segment_init</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>0000075E </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_8">?need_segment_init (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_1"><b>CSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_2"><b>RSTACK</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_6"><b>INITTAB</b></a></b><br>Segment part 6.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b></b></font>
+  <td rowspan=2><font size=2><a name="MM\?FILLER_BYTES"><b>?FILLER_BYTES</b></a><br>Program module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?FILLER_BYTES\Segpart_1"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 0000000B<br>Segment part 1.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?FILLER_BYTES\Segpart_0"><b>?FILL1</b></a></b><br>Relative segment<br>CODE 0000000C - 00000017<br>Segment part 0.</font>
+</table>
+
+
+<p><hr><p>
+<h2><a name="Module Summary">Module Summary</a></h2>
+
+
+<table bgcolor="#d0d0d0" border=1 cellpadding=2>
+<tr>
+<th align=left valign=top><font size=2>Module</font></th>
+<th align=right valign=top><font size=2>CODE</font></th>
+<th colspan=2 valign=top><font size=2>DATA</font></th>
+<th align=right valign=top><font size=2>XDATA</font></th>
+</tr>
+<tr>
+<td valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>(Rel)</font></td>
+<td align=right valign=top><font size=2>(Rel)</font></td>
+<td align=right valign=top><font size=2>(Abs)</font></td>
+<td align=right valign=top><font size=2>(Rel)</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?C_STARTUP</font></td>
+<td align=right valign=top><font size=2>20</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?EEPROM_8</font></td>
+<td align=right valign=top><font size=2>54</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?FILLER_BYTES<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2>12<br>12</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?L_MUL_L03</font></td>
+<td align=right valign=top><font size=2>56</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?PROLOGUE_L09</font></td>
+<td align=right valign=top><font size=2>6</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?RESET<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2><br>2</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?UL_SHR_L03</font></td>
+<td align=right valign=top><font size=2>16</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?US_SHR_L02</font></td>
+<td align=right valign=top><font size=2>12</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?__exit</font></td>
+<td align=right valign=top><font size=2>6</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?low_level_init</font></td>
+<td align=right valign=top><font size=2>4</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?segment_init</font></td>
+<td align=right valign=top><font size=2>82</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>main<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2>1&nbsp;731<br>12</font></td>
+<td align=right valign=top><font size=2>66</font></td>
+<td align=right valign=top><font size=2>13</font></td>
+<td align=right valign=top><font size=2>8</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>N/A&nbsp;(command&nbsp;line)</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>60</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>N/A&nbsp;(alignment)</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<th align=left valign=top><font size=2>Total:<br>&nbsp;&nbsp;+&nbsp;common</font></th>
+<th align=right valign=top><font size=2>1&nbsp;999<br>12</font></th>
+<th align=right valign=top><font size=2>126</font></th>
+<th align=right valign=top><font size=2>13</font></th>
+<th align=right valign=top><font size=2>8</font></th>
+</tr>
+</table>
+<p><hr><p>
+<a name="Call Graph"></a>
+<table bgcolor="#9fd975" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=8><font size=4><B>Call Graph</B>
+</font>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Interrupt function tree that does not make<br>indirect calls</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\ResetSampler">ResetSampler</a> <a name="CG\003C4B70"><b>*</b></a></font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\ResetSampler">ResetSampler</a> (<a href="#CG\003C4B70">to first</a>)</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\ResetSampler">ResetSampler</a> (<a href="#CG\003C4B70">to first</a>)</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\ADCSampleReady">ADCSampleReady</a> <a name="CG\003C4008"><b>*</b></a></font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Function tree</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>4</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CheckAllSettings">CheckAllSettings</a> <a name="CG\003C4564"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\PressProcessing">PressProcessing</a> <a name="CG\003C4AC4"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\PressProcessing">PressProcessing</a> (<a href="#CG\003C4AC4">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\PressProcessing">PressProcessing</a> (<a href="#CG\003C4AC4">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\PressProcessing">PressProcessing</a> (<a href="#CG\003C4AC4">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\PressProcessing">PressProcessing</a> (<a href="#CG\003C4AC4">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\SaveSettings">SaveSettings</a> <a name="CG\003C4C1C"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>4</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\KeyboardThread">KeyboardThread</a> <a name="CG\003C496C"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>8</font>
+  <td align=right><font size=2>1</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\DynIndStep">DynIndStep</a> <a name="CG\003C46BC"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> <a name="CG\003C44B8"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CharToStringDec">CharToStringDec</a> (<a href="#CG\003C44B8">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\UpdateLedScreen">UpdateLedScreen</a> <a name="CG\003C4CC8"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>1</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>3</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\CheckAllSettings">CheckAllSettings</a> (<a href="#CG\003C4564">to first</a>)</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\LoadSettings">LoadSettings</a> <a name="CG\003C4A18"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>4</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\InitTimers">InitTimers</a> <a name="CG\003C48C0"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\InitPorts">InitPorts</a> <a name="CG\003C4814"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\main\__watchdog_init">__watchdog_init</a> <a name="CG\003C4D74"><b>*</b></a></font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\main">main</a> <a name="CG\003C4E20"><b>*</b></a></font>
+  <td align=right><font size=2>11</font>
+  <td align=right><font size=2>A</font>
+  <td align=right><font size=2>3</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>C</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Function tree</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>C</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\?low_level_init\__low_level_init">__low_level_init</a> <a name="CG\013A8DE0"><b>*</b></a></font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>C</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>E</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Function tree</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>E</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\?segment_init\__flashcpy">__flashcpy</a> <a name="CG\013ABEE0"><b>*</b></a></font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>E</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\?segment_init\__memclr">__memclr</a> <a name="CG\013ABF8C"><b>*</b></a></font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>E</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\?segment_init\__segment_init">__segment_init</a> <a name="CG\013AC038"><b>*</b></a></font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>12</font>
+  <td>
+  <td>
+</table>
+<p><hr><p>
+<a name="Segments in Address Order"></a>
+<table bgcolor="#bbbb00" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=7><font size=4><B>Segments in Address Order</B>
+</font>
+<tr>
+  <th><font size=2>Segment</font>
+  <th><font size=2>Space</font>
+  <th><font size=2>Start</font>
+  <th><font size=2>End</font>
+  <th><font size=2>Size</font>
+  <th><font size=2>Kind</font>
+  <th><font size=2>Align</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>INTVEC</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>00000000 - 0000000B</font>
+  <td align=right><font size=2>C</font>
+  <td rowspan=1 ><font size=2>Common</font>
+  <td align=center><font size=2>1</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>?FILL1</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>0000000C - 00000017</font>
+  <td align=right><font size=2>C</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>NEAR_F</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>00000018 - 0000002C</font>
+  <td align=right><font size=2>15</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>INITTAB</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>0000002D - 00000030</font>
+  <td align=right><font size=2>4</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>00000032 - 00000799</font>
+  <td align=right><font size=2>768</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>1</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>TINY_ID</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>0000079A - 000007DB</font>
+  <td align=right><font size=2>42</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=15 ><font size=2>ABSOLUTE</font>
+  <td rowspan=15 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>0000001C </font>
+  <td align=right><font size=2></font>
+  <td rowspan=15 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000001D </font>
+  <td align=right><font size=2></font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000001E </font>
+  <td align=right><font size=2></font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000024 - 00000027</font>
+  <td align=right><font size=2>4</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000036 - 00000038</font>
+  <td align=right><font size=2>3</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000003A - 0000003B</font>
+  <td align=right><font size=2>2</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000041 - 00000041</font>
+  <td align=right><font size=2>1</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000004E - 0000004F</font>
+  <td align=right><font size=2>2</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000059 - 00000059</font>
+  <td align=right><font size=2>1</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>TINY_I</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>00000060 - 000000A1</font>
+  <td align=right><font size=2>42</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>CSTACK</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>000000A2 - 000000C1</font>
+  <td align=right><font size=2>20</font>
+  <td rowspan=1 ><font size=2>Predefined</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>RSTACK</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>000000C2 - 000000DD</font>
+  <td align=right><font size=2>1C</font>
+  <td rowspan=1 ><font size=2>Predefined</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>EEPROM_I</font>
+  <td rowspan=1 ><font size=2>XDATA</font>
+  <td align=center colspan=2><font size=2>00000000 - 00000007</font>
+  <td align=right><font size=2>8</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+</table>
+
+<hr>
+
+<p><a name="Memory Summary"></a><table>
+
+<table >
+<tr>
+<td align=right valign=top>1&nbsp;999</td>
+<td valign=top>bytes</td>
+<td valign=top>of</td>
+<td valign=top>CODE</td>
+<td valign=top>memory</td>
+<td valign=top>(+</td>
+<td valign=top>&nbsp;</td>
+<td valign=top>&nbsp;</td>
+<td align=right valign=top>12</td>
+<td valign=top>range&nbsp;fill</td>
+<td valign=top>)</td>
+</tr>
+<tr>
+<td align=right valign=top>126</td>
+<td valign=top>bytes</td>
+<td valign=top>of</td>
+<td valign=top>DATA</td>
+<td valign=top>memory</td>
+<td valign=top>(+</td>
+<td align=right valign=top>13</td>
+<td valign=top>absolute</td>
+<td valign=top>)</td>
+</tr>
+<tr>
+<td align=right valign=top>8</td>
+<td valign=top>bytes</td>
+<td valign=top>of</td>
+<td valign=top>XDATA</td>
+<td valign=top>memory</td>
+</tr>
+</table>
+
+Errors: none
+Warnings: none
+

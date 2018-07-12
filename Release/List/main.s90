@@ -1,0 +1,2905 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V5.30.0.50166/W32 for Atmel AVR   19/Dec/2014  23:07:04 /
+// Copyright 1996-2009 IAR Systems AB.                                        /
+//                                                                            /
+//    Source file  =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\main.c                /
+//    Command line =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\main.c --cpu=tiny26   /
+//                    -mt -o d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Obj\   /
+//                    -D NDEBUG -lC d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release /
+//                    \List\ -lA d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Li /
+//                    st\ --initializers_in_flash -z9 --cross_call_passes=2   /
+//                    -DENABLE_BIT_DEFINITIONS -e -I "C:\Program Files\IAR    /
+//                    Systems\Embedded Workbench 5.3\avr\INC\" -I             /
+//                    "C:\Program Files\IAR Systems\Embedded Workbench        /
+//                    5.3\avr\INC\CLIB\" --eeprom_size 128                    /
+//    List file    =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\List\main.s90 /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME main
+
+        RTMODEL "__64bit_doubles", "disabled"
+        RTMODEL "__cpu", "0"
+        RTMODEL "__cpu_name", "ATtiny26"
+        RTMODEL "__enhanced_core", "disabled"
+        RTMODEL "__has_elpm", "false"
+        RTMODEL "__memory_model", "1"
+        RTMODEL "__rt_version", "3"
+
+        RSEG CSTACK:DATA:NOROOT(0)
+        RSEG RSTACK:DATA:NOROOT(0)
+
+        EXTERN ?L_MUL_L03
+        EXTERN ?PROLOGUE2_L09
+        EXTERN ?S_SHL_L02
+        EXTERN ?UL_SHR_L03
+        EXTERN ?US_SHR_L02
+        EXTERN ?need_segment_init
+        EXTERN __eeget16_8
+        EXTERN __eeput16_8
+
+        PUBWEAK `?<Segment init: TINY_I>`
+        PUBWEAK `??ADCSampleReady??INTVEC 10`
+        PUBLIC ADCSampleReady
+        FUNCTION ADCSampleReady,021233H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 16, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ArrayKathodes
+        PUBLIC CharToStringDec
+        FUNCTION CharToStringDec,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC CheckAllSettings
+        FUNCTION CheckAllSettings,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC CheckButton
+        FUNCTION CheckButton,021203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC DisplayMode
+        PUBLIC DisplayedVoltage
+        PUBLIC DownTreshold
+        PUBLIC DownTresholdEEPROM
+        PUBLIC DynIndStep
+        FUNCTION DynIndStep,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC EnableDisplay
+        PUBLIC InitADC
+        FUNCTION InitADC,0203H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC InitPorts
+        FUNCTION InitPorts,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC InitTimers
+        FUNCTION InitTimers,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC K1
+        PUBLIC K1EEPROM
+        PUBLIC KeyTimer
+        PUBLIC KeyboardThread
+        FUNCTION KeyboardThread,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC LoadSettings
+        FUNCTION LoadSettings,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC PlusSamplesCounter
+        PUBLIC PressProcessing
+        FUNCTION PressProcessing,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ProtectTimerOffValue
+        PUBLIC ProtectTimerOnMaxValue
+        PUBLIC ProtectTimerOnMaxValueEEPROM
+        PUBLIC ProtectTimerOnValue
+        PUBLIC QuarterSecPrescaler
+        PUBWEAK ResetSampler
+        FUNCTION ResetSampler,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC ResultSummReady
+        PUBLIC SaveSettings
+        FUNCTION SaveSettings,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC SecPrescaler
+        PUBLIC SlowTimerFlag
+        PUBLIC SlowTimerPrescaler
+        PUBLIC SmoothVoltage
+        PUBLIC SmoothVoltageCurrentPosition
+        PUBLIC String
+        PUBLIC SummUU
+        PUBLIC SummUUResult
+        PUBLIC UpTreshold
+        PUBLIC UpTresholdEEPROM
+        PUBLIC UpdateLedScreen
+        FUNCTION UpdateLedScreen,021203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC VideoBuffer
+        PUBLIC Voltage
+        PUBLIC ZeroSamplesCounter
+        PUBWEAK _A_ADC
+        PUBWEAK _A_ADCSR
+        PUBWEAK _A_ADMUX
+        PUBWEAK _A_DDRA
+        PUBWEAK _A_DDRB
+        PUBWEAK _A_PINB
+        PUBWEAK _A_PORTA
+        PUBWEAK _A_PORTB
+        PUBWEAK _A_TCCR1B
+        PUBWEAK _A_TCNT1
+        PUBWEAK _A_TIMSK
+        PUBWEAK _A_WDTCR
+        PUBWEAK __?EEARL
+        PUBWEAK __?EECR
+        PUBWEAK __?EEDR
+        PUBLIC __watchdog_init
+        FUNCTION __watchdog_init,0203H
+        ARGFRAME RSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        PUBLIC cycle_count
+        PUBLIC keypress
+        PUBLIC led_digits
+        PUBLIC main
+        FUNCTION main,021a03H
+        ARGFRAME CSTACK, 0, STACK
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 4, STACK
+        PUBLIC segmentsDec
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_R28 R28 DATA
+        CFI StackFrame CFA_SP SP DATA
+        CFI VirtualResource ?RetPad:1, ?RetHigh:8, ?RetLow:8, ?Ret:17
+        CFI Resource R0:8, R1:8, R2:8, R3:8, R4:8, R5:8, R6:8, R7:8, R8:8, R9:8
+        CFI Resource R10:8, R11:8, R12:8, R13:8, R14:8, R15:8, R16:8, R17:8
+        CFI Resource R18:8, R19:8, R20:8, R21:8, R22:8, R23:8, R24:8, R25:8
+        CFI Resource R26:8, R27:8, R28:8, R29:8, R30:8, R31:8
+        CFI Resource ?RetHighByteMask:8, SP:8
+        CFI ResourceParts ?Ret ?RetHigh, ?RetLow, ?RetPad
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign 1
+        CFI ReturnAddress ?Ret CODE
+        CFI CFA_R28 R28+0
+        CFI CFA_SP SP+2
+        CFI ?RetPad 0
+        CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+        CFI ?RetLow Frame(CFA_SP, 0)
+        CFI ?Ret Concat
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 SameValue
+        CFI R5 SameValue
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI R8 SameValue
+        CFI R9 SameValue
+        CFI R10 SameValue
+        CFI R11 SameValue
+        CFI R12 SameValue
+        CFI R13 SameValue
+        CFI R14 SameValue
+        CFI R15 SameValue
+        CFI R16 Undefined
+        CFI R17 Undefined
+        CFI R18 Undefined
+        CFI R19 Undefined
+        CFI R20 Undefined
+        CFI R21 Undefined
+        CFI R22 Undefined
+        CFI R23 Undefined
+        CFI R24 SameValue
+        CFI R25 SameValue
+        CFI R26 SameValue
+        CFI R27 SameValue
+        CFI R29 SameValue
+        CFI R30 Undefined
+        CFI R31 Undefined
+        CFI ?RetHighByteMask SameValue
+        CFI EndCommon cfiCommon0
+        
+        
+        CFI Common cfiCommon1 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign 1
+        CFI ReturnAddress ?Ret CODE
+        CFI CFA_R28 Notused
+        CFI CFA_SP SP+2
+        CFI ?RetPad 0
+        CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+        CFI ?RetLow Frame(CFA_SP, 0)
+        CFI ?Ret Concat
+        CFI R0 SameValue
+        CFI R1 SameValue
+        CFI R2 SameValue
+        CFI R3 SameValue
+        CFI R4 SameValue
+        CFI R5 SameValue
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI R8 SameValue
+        CFI R9 SameValue
+        CFI R10 SameValue
+        CFI R11 SameValue
+        CFI R12 SameValue
+        CFI R13 SameValue
+        CFI R14 SameValue
+        CFI R15 SameValue
+        CFI R16 SameValue
+        CFI R17 SameValue
+        CFI R18 SameValue
+        CFI R19 SameValue
+        CFI R20 SameValue
+        CFI R21 SameValue
+        CFI R22 SameValue
+        CFI R23 SameValue
+        CFI R24 SameValue
+        CFI R25 SameValue
+        CFI R26 SameValue
+        CFI R27 SameValue
+        CFI R28 SameValue
+        CFI R29 SameValue
+        CFI R30 SameValue
+        CFI R31 SameValue
+        CFI ?RetHighByteMask SameValue
+        CFI EndCommon cfiCommon1
+        
+        
+        CFI Common cfiCommon2 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign 1
+        CFI ReturnAddress ?Ret CODE
+        CFI CFA_R28 R28+0
+        CFI CFA_SP SP+2
+        CFI ?RetPad 0
+        CFI ?RetHigh and(load(1, DATA, sub(CFA_SP, 1)), ?RetHighByteMask)
+        CFI ?RetLow Frame(CFA_SP, 0)
+        CFI ?Ret Concat
+        CFI R0 SameValue
+        CFI R1 SameValue
+        CFI R2 SameValue
+        CFI R3 SameValue
+        CFI R4 SameValue
+        CFI R5 SameValue
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI R8 SameValue
+        CFI R9 SameValue
+        CFI R10 SameValue
+        CFI R11 SameValue
+        CFI R12 SameValue
+        CFI R13 SameValue
+        CFI R14 SameValue
+        CFI R15 SameValue
+        CFI R16 SameValue
+        CFI R17 SameValue
+        CFI R18 SameValue
+        CFI R19 SameValue
+        CFI R20 SameValue
+        CFI R21 SameValue
+        CFI R22 SameValue
+        CFI R23 SameValue
+        CFI R24 SameValue
+        CFI R25 SameValue
+        CFI R26 SameValue
+        CFI R27 SameValue
+        CFI R29 SameValue
+        CFI R30 SameValue
+        CFI R31 SameValue
+        CFI ?RetHighByteMask SameValue
+        CFI EndCommon cfiCommon2
+        
+ADCSampleReady      SYMBOL "ADCSampleReady"
+`??ADCSampleReady??INTVEC 10` SYMBOL "??INTVEC 10", ADCSampleReady
+
+// d:\WORK\AVR_C_IAR\DigiTOP\.stable\main.c
+//    1 //программа для устройства защиты бытовой техники от превышения напряжения в сети
+//    2 //на основе Tiny26
+//    3 
+//    4 #include <ioavr.h>
+
+        ASEGN ABSOLUTE:DATA:NOROOT,024H
+// <__C4> volatile __io _A_ADC
+_A_ADC:
+        DS8 2
+
+        ASEGN ABSOLUTE:DATA:NOROOT,026H
+// <__C6> volatile __io _A_ADCSR
+_A_ADCSR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,027H
+// <__C8> volatile __io _A_ADMUX
+_A_ADMUX:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,036H
+// <__C18> volatile __io _A_PINB
+_A_PINB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,037H
+// <__C20> volatile __io _A_DDRB
+_A_DDRB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,038H
+// <__C22> volatile __io _A_PORTB
+_A_PORTB:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,03aH
+// <__C26> volatile __io _A_DDRA
+_A_DDRA:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,03bH
+// <__C28> volatile __io _A_PORTA
+_A_PORTA:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,041H
+// <__C36> volatile __io _A_WDTCR
+_A_WDTCR:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,04eH
+// <__C46> volatile __io _A_TCNT1
+_A_TCNT1:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,04fH
+// <__C48> volatile __io _A_TCCR1B
+_A_TCCR1B:
+        DS8 1
+
+        ASEGN ABSOLUTE:DATA:NOROOT,059H
+// <__C64> volatile __io _A_TIMSK
+_A_TIMSK:
+        DS8 1
+//    5 #include <intrinsics.h>
+//    6 #include "hardware.h"
+//    7 #include "segments.h"
+
+        RSEG NEAR_F:CODE:NOROOT(0)
+// unsigned char __flash led_digits[21]
+led_digits:
+        DC8 175, 160, 157, 185, 178, 59, 63, 161, 191, 187, 183, 62, 31, 188
+        DC8 31, 23, 64, 1, 8, 16, 54
+//    8 
+
+        RSEG EEPROM_I:XDATA:NOROOT(0)
+//    9 __eeprom unsigned int UpTresholdEEPROM, DownTresholdEEPROM, K1EEPROM, ProtectTimerOnMaxValueEEPROM;
+UpTresholdEEPROM:
+        DC8 0, 0
+DownTresholdEEPROM:
+        DC8 0, 0
+K1EEPROM:
+        DC8 0, 0
+ProtectTimerOnMaxValueEEPROM:
+        DC8 0, 0
+
+        RSEG TINY_I:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: TINY_I>`
+//   10 
+//   11 unsigned char segmentsDec[3]={100,10,1}; 
+//   12 volatile unsigned char ResultSummReady;
+//   13 volatile unsigned char SlowTimerFlag;
+//   14 unsigned char SlowTimerPrescaler;
+//   15 unsigned char String[3];
+//   16 unsigned char cycle_count;
+//   17 volatile unsigned char VideoBuffer[3];
+//   18 unsigned char keypress[2];
+//   19 unsigned int KeyTimer;
+//   20 volatile unsigned int ProtectTimerOnValue;
+//   21 unsigned int ProtectTimerOnMaxValue;
+//   22 
+//   23 volatile unsigned char ProtectTimerOffValue;
+//   24 
+//   25 unsigned int Voltage;
+//   26 volatile unsigned int UpTreshold, DownTreshold; //volatile 
+//   27 unsigned int K1; //volatile 
+//   28 unsigned int DisplayedVoltage;
+//   29 volatile unsigned char DisplayMode = RealtimeVoltage, EnableDisplay = HALF_BYTE_CONST; // небольшая экономия кода
+//   30 
+//   31 #ifdef METHOD_PEAK 
+//   32 volatile unsigned int PeakResult;
+//   33 unsigned int Peak; // внутреннее значение
+//   34 #endif
+//   35 
+//   36 #ifdef METHOD_DIRECT_SHOW 
+//   37 volatile unsigned int PeakResult;
+//   38 #endif
+//   39 
+//   40 volatile unsigned char PlusSamplesCounter, ZeroSamplesCounter;
+//   41 volatile unsigned long SummUUResult;
+SummUUResult:
+        DS8 4
+        REQUIRE `?<Initializer for SummUUResult>`
+//   42 unsigned long SummUU; // внутреннее значение
+SummUU:
+        DS8 4
+        REQUIRE `?<Initializer for SummUU>`
+String:
+        DS8 3
+        REQUIRE `?<Initializer for String>`
+VideoBuffer:
+        DS8 3
+        REQUIRE `?<Initializer for VideoBuffer>`
+keypress:
+        DS8 2
+        REQUIRE `?<Initializer for keypress>`
+KeyTimer:
+        DS8 2
+        REQUIRE `?<Initializer for KeyTimer>`
+ProtectTimerOnValue:
+        DS8 2
+        REQUIRE `?<Initializer for ProtectTimerOnValue>`
+ProtectTimerOnMaxValue:
+        DS8 2
+        REQUIRE `?<Initializer for ProtectTimerOnMaxValue>`
+Voltage:
+        DS8 2
+        REQUIRE `?<Initializer for Voltage>`
+UpTreshold:
+        DS8 2
+        REQUIRE `?<Initializer for UpTreshold>`
+DownTreshold:
+        DS8 2
+        REQUIRE `?<Initializer for DownTreshold>`
+K1:
+        DS8 2
+        REQUIRE `?<Initializer for K1>`
+DisplayedVoltage:
+        DS8 2
+        REQUIRE `?<Initializer for DisplayedVoltage>`
+//   43 
+//   44 #ifdef SMOOTH_MEASURE
+//   45 unsigned int SmoothVoltage[SmoothBufferSize]; // буфер для сглаживания индикации
+SmoothVoltage:
+        DS8 16
+        REQUIRE `?<Initializer for SmoothVoltage>`
+// unsigned char __tiny ArrayKathodes[3]
+ArrayKathodes:
+        DS8 3
+        REQUIRE `?<Initializer for ArrayKathodes>`
+ResultSummReady:
+        DS8 1
+        REQUIRE `?<Initializer for ResultSummReady>`
+SlowTimerFlag:
+        DS8 1
+        REQUIRE `?<Initializer for SlowTimerFlag>`
+SlowTimerPrescaler:
+        DS8 1
+        REQUIRE `?<Initializer for SlowTimerPrescaler>`
+cycle_count:
+        DS8 1
+        REQUIRE `?<Initializer for cycle_count>`
+ProtectTimerOffValue:
+        DS8 1
+        REQUIRE `?<Initializer for ProtectTimerOffValue>`
+DisplayMode:
+        DS8 1
+        REQUIRE `?<Initializer for DisplayMode>`
+EnableDisplay:
+        DS8 1
+        REQUIRE `?<Initializer for EnableDisplay>`
+PlusSamplesCounter:
+        DS8 1
+        REQUIRE `?<Initializer for PlusSamplesCounter>`
+ZeroSamplesCounter:
+        DS8 1
+        REQUIRE `?<Initializer for ZeroSamplesCounter>`
+//   46 unsigned char SmoothVoltageCurrentPosition; // указатель - куда сейчас пишем
+SmoothVoltageCurrentPosition:
+        DS8 1
+        REQUIRE `?<Initializer for SmoothVoltageCurrentPosition`
+//   47 #endif
+//   48 
+//   49 unsigned char QuarterSecPrescaler, SecPrescaler;
+QuarterSecPrescaler:
+        DS8 1
+        REQUIRE `?<Initializer for QuarterSecPrescaler>`
+SecPrescaler:
+        DS8 1
+        REQUIRE `?<Initializer for SecPrescaler>`
+
+        RSEG TINY_I:DATA:NOROOT(0)
+        REQUIRE `?<Segment init: TINY_I>`
+segmentsDec:
+        DS8 3
+        REQUIRE `?<Initializer for segmentsDec>`
+//   50 
+//   51 #ifdef METHOD_DIRECT_SHOW
+//   52 volatile unsigned char MaxSampleNum;
+//   53 #endif
+//   54 
+//   55 #ifdef RELAY_TEST  
+//   56 unsigned char RelayTestCounter;  
+//   57 #endif
+//   58   
+
+        RSEG CODE:CODE:NOROOT(1)
+//   59 void __watchdog_init (void)
+__watchdog_init:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function __watchdog_init
+//   60 {
+//   61 //запускаю сторожевой таймер на 2 секунды
+//   62 __watchdog_reset ();
+        WDR
+//   63 WDTCR |= ((1<<WDCE)|(1<<WDE));
+        IN      R16, 0x21
+        ORI     R16, 0x18
+        OUT     0x21, R16
+//   64 WDTCR = (1<<WDE)|(7<<WDP0);
+        LDI     R16, 15
+        OUT     0x21, R16
+//   65 __watchdog_reset ();
+        WDR
+//   66 }
+        RET
+        CFI EndBlock cfiBlock0
+        REQUIRE _A_WDTCR
+//   67 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   68 void CharToStringDec(signed int inp) // обрезанная до сотен
+CharToStringDec:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI Function CharToStringDec
+//   69 {
+        MOV     R0, R26
+//   70 unsigned char i;
+//   71 if (inp > 999) inp = 999;
+        CPI     R16, 232
+        LDI     R18, 3
+        CPC     R17, R18
+        BRLT    ??CharToStringDec_0
+        LDI     R16, 231
+        LDI     R17, 3
+//   72 String[0]=String[1]=String[2]=0;
+??CharToStringDec_0:
+        LDI     R30, SummUUResult
+        LDI     R18, 0
+        STD     Z+10, R18
+        STD     Z+9, R18
+        STD     Z+8, R18
+//   73 // перевод
+//   74 for(i=0;i<3;)
+        LDI     R20, 0
+        RJMP    ??CharToStringDec_1
+//   75   {
+//   76   if((inp-segmentsDec[i])>=0)
+//   77     {
+//   78     inp-=segmentsDec[i];
+??CharToStringDec_2:
+        SUB     R16, R22
+        SBCI    R17, 0
+//   79     String[i]++;
+        LDI     R26, SummUUResult
+        ADD     R26, R20
+        SUBI    R26, 248
+        LD      R18, X
+        INC     R18
+        ST      X, R18
+//   80     }
+??CharToStringDec_1:
+        MOV     R26, R20
+        SUBI    R26, (-(segmentsDec) & 0xFF)
+        LD      R22, X
+        MOV     R18, R16
+        MOV     R19, R17
+        SUB     R18, R22
+        SBCI    R19, 0
+        BRPL    ??CharToStringDec_2
+//   81     else i++;
+        INC     R20
+//   82   }
+        CPI     R20, 3
+        BRCS    ??CharToStringDec_1
+//   83 }
+        MOV     R26, R0
+        RET
+        CFI EndBlock cfiBlock1
+//   84 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   85 void InitPorts (void)
+InitPorts:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function InitPorts
+//   86 {
+//   87 PortButton |= (1<<Button_DN)|(1<<Button_UP); // подтягивающие резисторы
+        IN      R16, 0x18
+        ORI     R16, 0x24
+        OUT     0x18, R16
+//   88 
+//   89 PortAnodeDir |= ((1<<SEG_A)|(1<<SEG_B)|(1<<SEG_C)|(1<<SEG_D)|(1<<SEG_E)|(1<<SEG_F)|(1<<SEG_G)|(1<<SEG_DP));
+        IN      R16, 0x1A
+        LDI     R16, 255
+        OUT     0x1A, R16
+//   90 PortKathodeAndRelayDir |= ((1<<Kathode_1) | (1<<Kathode_2) | (1<<Kathode_3)|(1<<Relay));
+        IN      R16, 0x17
+        ORI     R16, 0x4B
+        OUT     0x17, R16
+//   91 }
+        RET
+        CFI EndBlock cfiBlock2
+        REQUIRE _A_DDRB
+        REQUIRE _A_PORTB
+        REQUIRE _A_DDRA
+//   92 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   93 void InitADC (void)
+InitADC:
+//   94 {
+//   95 ADMUX = ((2<<REFS0)|(InADC<< MUX0));
+        REQUIRE ?Subroutine2
+        REQUIRE _A_ADCSR
+        REQUIRE _A_ADMUX
+        ;               // Fall through to label ?Subroutine2
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine2:
+        CFI Block cfiCond3 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_4
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiBlock4 Using cfiCommon0
+        CFI (cfiBlock4) NoFunction
+        CFI Block cfiPicker5 Using cfiCommon1
+        CFI (cfiPicker5) NoFunction
+        CFI (cfiPicker5) Picker
+        LDI     R16, 135
+        OUT     0x07, R16
+        LDI     R16, 133
+        OUT     0x06, R16
+        RET
+        CFI EndBlock cfiCond3
+        CFI EndBlock cfiBlock4
+        CFI EndBlock cfiPicker5
+//   96 ADCSR = ((1 << ADEN)|(5 << ADPS0)|(0<<ADFR)|(0<<ADSC)|(0<<ADIE)); 
+//   97 }
+//   98 
+
+        RSEG CODE:CODE:NOROOT(1)
+//   99 void InitTimers (void)
+InitTimers:
+        CFI Block cfiBlock6 Using cfiCommon0
+        CFI Function InitTimers
+//  100 {
+//  101 TCCR1B |= (4<<CS10);//4-ck/8
+        IN      R16, 0x2F
+        ORI     R16, 0x04
+        OUT     0x2F, R16
+//  102 TIMSK |= (1<<TOIE1);
+        IN      R16, 0x39
+        ORI     R16, 0x04
+        OUT     0x39, R16
+//  103 }
+        RET
+        CFI EndBlock cfiBlock6
+        REQUIRE _A_TCCR1B
+        REQUIRE _A_TIMSK
+//  104 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  105 void SaveSettings (void)
+SaveSettings:
+        CFI Block cfiBlock7 Using cfiCommon0
+        CFI Function SaveSettings
+//  106 {
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_57:
+        LDI     R20, UpTresholdEEPROM
+        RCALL   __eeput16_8
+//  107 UpTresholdEEPROM = UpTreshold;
+//  108 DownTresholdEEPROM = DownTreshold;
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_5:
+        LDI     R20, LOW((UpTresholdEEPROM + 2))
+        RCALL   __eeput16_8
+//  109 ProtectTimerOnMaxValueEEPROM = ProtectTimerOnMaxValue;
+        RCALL   ??Subroutine15_0
+??CrossCallReturnLabel_45:
+        LDI     R20, LOW((UpTresholdEEPROM + 6))
+        RCALL   __eeput16_8
+//  110 K1EEPROM = K1;
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_11:
+        LDI     R20, LOW((UpTresholdEEPROM + 4))
+        RJMP    __eeput16_8
+        CFI EndBlock cfiBlock7
+//  111 }
+//  112 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  113 void CheckAllSettings (void)
+CheckAllSettings:
+        CFI Block cfiBlock8 Using cfiCommon0
+        CFI Function CheckAllSettings
+//  114 {
+//  115 if (UpTreshold > UP_TRESHOLD_MAX) UpTreshold = UP_TRESHOLD_MAX;
+        RCALL   ?Subroutine1
+??CrossCallReturnLabel_58:
+        CPI     R16, 35
+        LDI     R18, 1
+        SBCI    R17, 1
+        BRCS    ??CheckAllSettings_0
+        LDI     R16, 34
+        STD     Z+24, R16
+        STD     Z+25, R18
+//  116 if (UpTreshold < UP_TRESHOLD_MIN) UpTreshold = UP_TRESHOLD_MIN;
+??CheckAllSettings_0:
+        RCALL   ??Subroutine16_0
+??CrossCallReturnLabel_53:
+        CPI     R16, 210
+        LDI     R18, 0
+        SBCI    R17, 0
+        BRCC    ??CheckAllSettings_1
+        LDI     R16, 210
+        STD     Z+24, R16
+        STD     Z+25, R18
+//  117 
+//  118 if (DownTreshold > DOWN_TRESHOLD_MAX) DownTreshold = DOWN_TRESHOLD_MAX;
+??CheckAllSettings_1:
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_6:
+        CPI     R16, 201
+        SBCI    R17, 0
+        BRCS    ??CheckAllSettings_2
+        LDI     R16, 200
+        STD     Z+26, R16
+        STD     Z+27, R18
+//  119 if (DownTreshold < DOWN_TRESHOLD_MIN) DownTreshold = DOWN_TRESHOLD_MIN;
+??CheckAllSettings_2:
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_7:
+        CPI     R16, 140
+        SBCI    R17, 0
+        BRCC    ??CheckAllSettings_3
+        LDI     R16, 140
+        STD     Z+26, R16
+        STD     Z+27, R18
+//  120 
+//  121 if (ProtectTimerOnMaxValue > PROTECT_TIMER_ON_MAX) ProtectTimerOnMaxValue = PROTECT_TIMER_ON_MAX;
+??CheckAllSettings_3:
+        RCALL   ??Subroutine15_0
+??CrossCallReturnLabel_46:
+        CPI     R16, 228
+        LDI     R18, 3
+        CPC     R17, R18
+        BRCS    ??CheckAllSettings_4
+        LDI     R16, 227
+        RJMP    ??CheckAllSettings_5
+//  122 if (ProtectTimerOnMaxValue < PROTECT_TIMER_ON_MIN) ProtectTimerOnMaxValue = PROTECT_TIMER_ON_MIN;
+??CheckAllSettings_4:
+        CPI     R16, 5
+        LDI     R18, 0
+        SBCI    R17, 0
+        BRCC    ??CheckAllSettings_6
+        LDI     R16, 5
+??CheckAllSettings_5:
+        STD     Z+20, R16
+        STD     Z+21, R18
+//  123 
+//  124 if (K1 > K1_MAX) K1 = K1_MAX;
+??CheckAllSettings_6:
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_12:
+        CPI     R16, 232
+        LDI     R18, 3
+        CPC     R17, R18
+        BRCS    ??CheckAllSettings_7
+        LDI     R16, 231
+        STD     Z+28, R16
+        STD     Z+29, R18
+        RET
+//  125 if (K1 < K1_MIN) K1 = K1_MIN;
+??CheckAllSettings_7:
+        OR      R16, R17
+        BRNE    ??CheckAllSettings_8
+        LDI     R16, 1
+        LDI     R17, 0
+        STD     Z+28, R16
+        STD     Z+29, R17
+//  126 }
+??CheckAllSettings_8:
+        RET
+        CFI EndBlock cfiBlock8
+//  127 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  128 void LoadSettings (void)
+LoadSettings:
+        CFI Block cfiBlock9 Using cfiCommon0
+        CFI Function LoadSettings
+//  129 {
+//  130 UpTreshold = UpTresholdEEPROM;
+        FUNCALL LoadSettings, CheckAllSettings
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R30, SummUUResult
+        LDI     R20, UpTresholdEEPROM
+        RCALL   __eeget16_8
+        STD     Z+24, R16
+        STD     Z+25, R17
+//  131 DownTreshold = DownTresholdEEPROM;
+        LDI     R20, LOW((UpTresholdEEPROM + 2))
+        RCALL   __eeget16_8
+        STD     Z+26, R16
+        STD     Z+27, R17
+//  132 ProtectTimerOnMaxValue = ProtectTimerOnMaxValueEEPROM;
+        LDI     R20, LOW((UpTresholdEEPROM + 6))
+        RCALL   __eeget16_8
+        STD     Z+20, R16
+        STD     Z+21, R17
+//  133 K1 = K1EEPROM; 
+        LDI     R20, LOW((UpTresholdEEPROM + 4))
+        RCALL   __eeget16_8
+        CFI EndBlock cfiBlock9
+        REQUIRE ?Subroutine14
+        ;               // Fall through to label ?Subroutine14
+//  134 CheckAllSettings ();
+//  135 }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine14:
+        CFI Block cfiBlock10 Using cfiCommon0
+        CFI NoFunction
+        STD     Z+28, R16
+        STD     Z+29, R17
+        RJMP    CheckAllSettings
+        CFI EndBlock cfiBlock10
+//  136 
+
+        RSEG CODE:CODE:NOROOT(1)
+//  137 void UpdateLedScreen (void)
+UpdateLedScreen:
+        CFI Block cfiBlock11 Using cfiCommon0
+        CFI Function UpdateLedScreen
+//  138 {
+//  139 switch (DisplayMode)
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL UpdateLedScreen, CharToStringDec
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_0:
+        BREQ    ??UpdateLedScreen_0
+        DEC     R16
+        BREQ    ??UpdateLedScreen_1
+        DEC     R16
+        BREQ    ??UpdateLedScreen_2
+        DEC     R16
+        BREQ    ??UpdateLedScreen_3
+        SUBI    R16, 46
+        BREQ    ??UpdateLedScreen_1
+        DEC     R16
+        BREQ    ??UpdateLedScreen_2
+        DEC     R16
+        BREQ    ??UpdateLedScreen_4
+        DEC     R16
+        BREQ    ??UpdateLedScreen_5
+        RJMP    ??UpdateLedScreen_6
+//  140   {
+//  141   case RealtimeVoltage:     CharToStringDec(DisplayedVoltage);      break;
+??UpdateLedScreen_0:
+        LDD     R16, Z+30
+        LDD     R17, Z+31
+        RJMP    ??UpdateLedScreen_7
+//  142   case UpTresholdVoltage:   CharToStringDec(UpTreshold);            break;
+??UpdateLedScreen_1:
+        RCALL   ??Subroutine16_0
+??CrossCallReturnLabel_54:
+        RJMP    ??UpdateLedScreen_7
+//  143   case DownTresholdVoltage: CharToStringDec(DownTreshold);          break;
+??UpdateLedScreen_2:
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_8:
+        RJMP    ??UpdateLedScreen_7
+//  144   case UpTresholdTune:      CharToStringDec(UpTreshold);            break;
+//  145   case DownTresholdTune:    CharToStringDec(DownTreshold);          break;
+//  146   case ProtectTimerTune:    CharToStringDec(ProtectTimerOnMaxValue);  break;
+??UpdateLedScreen_4:
+        RCALL   ??Subroutine15_0
+??CrossCallReturnLabel_47:
+        RJMP    ??UpdateLedScreen_7
+//  147   case K1Tune:              CharToStringDec(K1);                    break;
+??UpdateLedScreen_5:
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_13:
+        RJMP    ??UpdateLedScreen_7
+//  148   case ProtectTimer:        CharToStringDec(ProtectTimerOnValue);     break;
+??UpdateLedScreen_3:
+        LDD     R16, Z+18
+        LDD     R17, Z+19
+??UpdateLedScreen_7:
+        RCALL   CharToStringDec
+//  149   }
+//  150 
+//  151 if (EnableDisplay)
+??UpdateLedScreen_6:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+57
+        TST     R16
+        BREQ    ??UpdateLedScreen_8
+//  152   {
+//  153   for (unsigned char i=0; i<3; i++) {VideoBuffer[i] = led_digits[String[i]];}
+        LDI     R17, 0
+??UpdateLedScreen_9:
+        LDI     R16, SummUUResult
+        ADD     R16, R17
+        MOV     R30, R16
+        LDD     R30, Z+8
+        LDI     R31, 0
+        SUBI    R30, LOW((-(led_digits) & 0xFFFF))
+        SBCI    R31, (-(led_digits) & 0xFFFF) >> 8
+        LPM
+        MOV     R30, R16
+        STD     Z+11, R0
+        INC     R17
+        CPI     R17, 3
+        BRCS    ??UpdateLedScreen_9
+//  154   if (DisplayMode >= UpTresholdTune)    {    VideoBuffer[2] |= led_digits[0x10];    }
+        RCALL   ?Subroutine13
+??CrossCallReturnLabel_41:
+        CPI     R16, 50
+        BRCS    ??UpdateLedScreen_10
+        LDI     R30, LOW((led_digits + 16))
+        LDI     R31, HIGH((led_digits + 16))
+        LPM
+        LDI     R30, SummUUResult
+        LDD     R17, Z+13
+        OR      R17, R0
+        STD     Z+13, R17
+        RET
+//  155   }
+//  156   else
+//  157     {
+//  158     VideoBuffer[0] = 0;
+??UpdateLedScreen_8:
+        LDI     R16, 0
+        STD     Z+11, R16
+//  159     VideoBuffer[1] = 0;
+        STD     Z+12, R16
+//  160     VideoBuffer[2] = 0;
+        STD     Z+13, R16
+//  161     }
+//  162 }
+??UpdateLedScreen_10:
+        RET
+        CFI EndBlock cfiBlock11
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine5:
+        CFI Block cfiCond12 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_11
+        CFI CFA_SP SP+4
+        CFI Block cfiCond13 Using cfiCommon0
+        CFI (cfiCond13) NoFunction
+        CFI (cfiCond13) Conditional ??CrossCallReturnLabel_12
+        CFI (cfiCond13) CFA_SP SP+4
+        CFI Block cfiCond14 Using cfiCommon0
+        CFI (cfiCond14) NoFunction
+        CFI (cfiCond14) Conditional ??CrossCallReturnLabel_13
+        CFI (cfiCond14) CFA_SP SP+4
+        CFI Block cfiCond15 Using cfiCommon0
+        CFI (cfiCond15) NoFunction
+        CFI (cfiCond15) Conditional ??CrossCallReturnLabel_14
+        CFI (cfiCond15) CFA_SP SP+4
+        CFI Block cfiCond16 Using cfiCommon0
+        CFI (cfiCond16) NoFunction
+        CFI (cfiCond16) Conditional ??CrossCallReturnLabel_15
+        CFI (cfiCond16) CFA_SP SP+4
+        CFI Block cfiCond17 Using cfiCommon0
+        CFI (cfiCond17) NoFunction
+        CFI (cfiCond17) Conditional ??CrossCallReturnLabel_16
+        CFI (cfiCond17) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond17) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond17) CFA_R28 R28+2
+        CFI (cfiCond17) CFA_SP SP+4
+        CFI Block cfiPicker18 Using cfiCommon1
+        CFI (cfiPicker18) NoFunction
+        CFI (cfiPicker18) Picker
+        LDD     R16, Z+28
+        LDD     R17, Z+29
+        RET
+        CFI EndBlock cfiCond12
+        CFI EndBlock cfiCond13
+        CFI EndBlock cfiCond14
+        CFI EndBlock cfiCond15
+        CFI EndBlock cfiCond16
+        CFI EndBlock cfiCond17
+        CFI EndBlock cfiPicker18
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine4:
+        CFI Block cfiCond19 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_5
+        CFI CFA_SP SP+4
+        CFI Block cfiCond20 Using cfiCommon0
+        CFI (cfiCond20) NoFunction
+        CFI (cfiCond20) Conditional ??CrossCallReturnLabel_6
+        CFI (cfiCond20) CFA_SP SP+4
+        CFI Block cfiCond21 Using cfiCommon0
+        CFI (cfiCond21) NoFunction
+        CFI (cfiCond21) Conditional ??CrossCallReturnLabel_7
+        CFI (cfiCond21) CFA_SP SP+4
+        CFI Block cfiCond22 Using cfiCommon0
+        CFI (cfiCond22) NoFunction
+        CFI (cfiCond22) Conditional ??CrossCallReturnLabel_8
+        CFI (cfiCond22) CFA_SP SP+4
+        CFI Block cfiCond23 Using cfiCommon0
+        CFI (cfiCond23) NoFunction
+        CFI (cfiCond23) Conditional ??CrossCallReturnLabel_9
+        CFI (cfiCond23) CFA_SP SP+4
+        CFI Block cfiCond24 Using cfiCommon0
+        CFI (cfiCond24) NoFunction
+        CFI (cfiCond24) Conditional ??CrossCallReturnLabel_10
+        CFI (cfiCond24) CFA_SP SP+4
+        CFI Block cfiPicker25 Using cfiCommon1
+        CFI (cfiPicker25) NoFunction
+        CFI (cfiPicker25) Picker
+        LDD     R16, Z+26
+        LDD     R17, Z+27
+        RET
+        CFI EndBlock cfiCond19
+        CFI EndBlock cfiCond20
+        CFI EndBlock cfiCond21
+        CFI EndBlock cfiCond22
+        CFI EndBlock cfiCond23
+        CFI EndBlock cfiCond24
+        CFI EndBlock cfiPicker25
+//  163 
+//  164 inline void ResetSampler (void) // экономим время на вызов функции
+//  165 {
+//  166 SummUU = 0;
+//  167 PlusSamplesCounter = 0;
+//  168 ZeroSamplesCounter = 0;
+//  169 ResultSummReady = 1;
+//  170 }
+//  171 
+//  172 #pragma vector = TIMER1_OVF1_vect 
+//  173 __interrupt void ADCSampleReady (void)
+//  174 {
+//  175 TCNT1 = T1_RELOAD; // перезагрузить таймер
+//  176 unsigned long temp = ADC;
+//  177 ADCSR |= (1<<ADSC);
+//  178 
+//  179 if (temp > DACNoiseTreshold) 
+//  180   {
+//  181 #ifdef METHOD_AR
+//  182   if (PlusSamplesCounter < RMSMeasureLength) SummUU += temp;
+//  183 #endif
+//  184 #ifdef METHOD_RMS
+//  185   if (PlusSamplesCounter < RMSMeasureLength) SummUU += temp*temp;
+//  186 #endif  
+//  187 #ifdef METHOD_DIRECT_SHOW
+//  188   MaxSampleNum ++; // считаем количество положительных семплов
+//  189 #endif
+//  190 #ifdef METHOD_PEAK  
+//  191   if (PlusSamplesCounter == 64) Peak = temp; // узнаем значение по конкретному семплу
+//  192 #endif
+//  193   
+//  194   PlusSamplesCounter++;
+//  195   ZeroSamplesCounter = 0;
+//  196 
+//  197   if (PlusSamplesCounter > (HalfWaveMeasureLength*1.9))// рапортуем об обрыве или повреждении
+//  198     {
+//  199     SummUUResult = 0;
+//  200     SummUU = 0;
+//  201 
+//  202 #ifdef METHOD_PEAK
+//  203     Peak = 0;
+//  204     PeakResult = 0;           
+//  205 #endif          
+//  206    
+//  207 #ifdef METHOD_DIRECT_SHOW          
+//  208     MaxSampleNum = 0;
+//  209 #endif          
+//  210     ResetSampler ();
+//  211     }
+//  212   }
+//  213 
+//  214   else 
+//  215     { // считаем сколько нулевых семплов попалось
+//  216     ZeroSamplesCounter++;
+//  217     
+//  218     if ((ZeroSamplesCounter > (HalfWaveMeasureLength/5))&&(PlusSamplesCounter > (HalfWaveMeasureLength/20))) // полуволна закончилась
+//  219       {
+//  220 #ifdef METHOD_DIRECT_SHOW       
+//  221       PeakResult = MaxSampleNum; 
+//  222       MaxSampleNum = 0;
+//  223 #endif      
+//  224 #ifdef METHOD_PEAK
+//  225       PeakResult = Peak;           
+//  226       Peak = 0;
+//  227 #endif
+//  228       SummUUResult = SummUU;
+//  229       SummUU = 0;
+//  230       ResetSampler ();
+//  231       }
+//  232   
+//  233     if (ZeroSamplesCounter > HalfWaveMeasureLength*1.9) // рапортуем, что напряжение пропало совсем
+//  234       {
+//  235       SummUU = 0;
+//  236       SummUUResult = 0;
+//  237 #ifdef METHOD_PEAK
+//  238       Peak = 0;
+//  239       PeakResult = 0;           
+//  240 #endif
+//  241 #ifdef METHOD_DIRECT_SHOW       
+//  242       MaxSampleNum = 0;
+//  243 #endif      
+//  244       ResetSampler ();
+//  245       }
+//  246     }
+//  247 
+//  248 if (++SlowTimerPrescaler >= RMSMeasureLength)
+//  249   {
+//  250   SlowTimerPrescaler = 0;
+//  251   SlowTimerFlag = 1;
+//  252   }
+//  253 }
+//  254 
+//  255 void PressProcessing (unsigned char code_state)
+//  256 {
+//  257 switch (code_state)
+//  258   {
+//  259   case DN_SHORT:
+//  260     switch (DisplayMode)
+//  261     {
+//  262     case RealtimeVoltage:       DisplayMode = DownTresholdVoltage;                break;
+//  263     case UpTresholdVoltage:     DisplayMode = DownTresholdVoltage;                break;
+//  264     case DownTresholdTune:      DownTreshold --;                                  break;
+//  265     case UpTresholdTune:        UpTreshold --;                                    break;
+//  266     case ProtectTimerTune:      ProtectTimerOnMaxValue -=PROTECT_TIMER_STEP;      break;
+//  267     case ProtectTimer:          DisplayMode = DownTresholdVoltage;                break;
+//  268     case K1Tune:                K1 --;                                            break;
+//  269     }
+//  270   break;
+//  271   
+//  272   case UP_SHORT:
+//  273     switch (DisplayMode)
+//  274     {
+//  275     case RealtimeVoltage:       DisplayMode = UpTresholdVoltage;                  break;
+//  276     case DownTresholdVoltage:   DisplayMode = UpTresholdVoltage;                  break;
+//  277     case DownTresholdTune:      DownTreshold ++;                                  break;
+//  278     case UpTresholdTune:        UpTreshold ++;                                    break;
+//  279     case ProtectTimerTune:      ProtectTimerOnMaxValue +=PROTECT_TIMER_STEP;      break;
+//  280     case ProtectTimer:          DisplayMode = UpTresholdVoltage;                  break;  
+//  281     case K1Tune:                K1 ++;                                            break;  
+//  282     }
+//  283   break;
+//  284   
+//  285   case DN_MID:
+//  286   if (DisplayMode == DownTresholdVoltage) DisplayMode = DownTresholdTune;
+//  287   break;
+//  288   
+//  289   case UP_MID:
+//  290   if (DisplayMode == UpTresholdVoltage) DisplayMode = UpTresholdTune;
+//  291   break;
+//  292   
+//  293   case DN_UP_MID:
+//  294     switch (DisplayMode)
+//  295     {
+//  296     case RealtimeVoltage:      DisplayMode = ProtectTimerTune;                    break;
+//  297     case ProtectTimerTune:     DisplayMode = K1Tune;                              break;
+//  298     }
+//  299   break;
+//  300   }
+//  301 CheckAllSettings ();
+//  302 }
+//  303 
+//  304 //#pragma vector = TIMER0_OVF0_vect 
+//  305 //__interrupt void DynInd (void)
+//  306 
+//  307 void DynIndStep (void)
+//  308 {
+//  309 //TCNT0 = T0_RELOAD; // перезагрузить таймер
+//  310 if (cycle_count < NUMBER_DIGITS)
+//  311   {
+//  312   PortKathode |= ((1<<Kathode_1) | (1<<Kathode_2) | (1<<Kathode_3)); //потушили все разряды
+//  313   PortAnode &= ~((1<<SEG_A)|(1<<SEG_B)|(1<<SEG_C)|(1<<SEG_D)|(1<<SEG_E)|(1<<SEG_F)|(1<<SEG_G)|(1<<SEG_DP));
+//  314 
+//  315   PortAnode = VideoBuffer[cycle_count]; // выдать новые значения для анодов
+//  316   PortKathode &= ~ArrayKathodes[cycle_count];// включить катод
+//  317   }
+//  318 
+//  319 if (++cycle_count >= NUMBER_DIGITS) cycle_count=0;
+//  320 }
+//  321 
+//  322 void CheckButton (unsigned char button, unsigned char counter, unsigned char event)
+//  323 {
+//  324   if (!(PinButton & (1<<button))) {counter++; KeyTimer = KeyTimerMax;}
+//  325   else 
+//  326     {
+//  327     if ((counter <  midpress)&&(counter >  shortpress)) PressProcessing(event);
+//  328     counter=0;
+//  329     }
+//  330 }
+//  331 
+//  332 void KeyboardThread (void)
+//  333 {
+//  334 if (cycle_count == 2) // проверяем левую кнопку
+//  335   {
+//  336   if (!(PinButton & (1<<Button_DN))) {keypress[0]++; KeyTimer = KeyTimerMax;}
+//  337   else 
+//  338     {
+//  339     if ((keypress[0] <  midpress)&&(keypress[0] >  shortpress)) PressProcessing(DN_SHORT);
+//  340     keypress[0]=0;
+//  341     }
+//  342   }
+//  343 
+//  344 if (cycle_count == 0) // проверяем правую кнопку
+//  345   {
+//  346   if (!(PinButton & (1<<Button_UP))) {keypress[1]++; KeyTimer = KeyTimerMax;}
+//  347   else 
+//  348     {
+//  349     if ((keypress[1] <  midpress)&&(keypress[1] >  shortpress)) PressProcessing(UP_SHORT);
+//  350     keypress[1]=0;
+//  351     }
+//  352   }
+//  353 
+//  354 if (keypress[1] == 0) // была нажата кнопка ВНИЗ
+//  355 {
+//  356   if (keypress[0] == midpress) {  keypress[0] = midpress+5;  PressProcessing(DN_MID);  }
+//  357   if (keypress[0] > longpress) {  keypress[0] = longpress+5; } 
+//  358 
+//  359   if ((keypress[0] == 0)&&(KeyTimer)) KeyTimer--; // или не нажаты обе кнопки
+//  360 }
+//  361 
+//  362 if (keypress[0] == 0) // была нажата кнопка ВВЕРХ
+//  363 {
+//  364   if (keypress[1] == midpress) {  keypress[1] = midpress+5;  PressProcessing(UP_MID);  }  
+//  365   if (keypress[1] > longpress) {  keypress[1] = longpress+5; }
+//  366 }
+//  367 
+//  368 if ((keypress[0] == midpress)&&(keypress[1] > shortpress))  {  keypress[0] = midpress+5; keypress[1] = midpress+5; PressProcessing(DN_UP_MID);  }
+//  369 if ((keypress[0] > longpress)&&(keypress[1] > longpress))  {  keypress[0] = longpress+5; keypress[1] = longpress+5; }
+//  370 
+//  371 if (KeyTimer == 1)   
+//  372   {
+//  373   if (DisplayMode >= UpTresholdTune) SaveSettings ();
+//  374   DisplayMode = RealtimeVoltage;  
+//  375   }
+//  376 }
+//  377 
+//  378 #ifdef METHOD_RMS  
+//  379 unsigned long isqrt (unsigned long v)
+//  380 {
+//  381 unsigned long temp, nHat=0, b=0x8000, bshft=15;
+//  382 do{
+//  383   if (v >= (temp = (((nHat<<1)+b)<<bshft--)))    {    nHat += b;    v -= temp;    }
+//  384   }while (b>>=1);
+//  385 return nHat;
+//  386 }
+//  387 #endif
+//  388 
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine3:
+        CFI Block cfiCond26 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_51
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiCond27 Using cfiCommon0
+        CFI (cfiCond27) NoFunction
+        CFI (cfiCond27) Conditional ??CrossCallReturnLabel_52
+        CFI (cfiCond27) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond27) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond27) CFA_R28 R28+2
+        CFI (cfiCond27) CFA_SP SP+4
+        CFI Block cfiPicker28 Using cfiCommon1
+        CFI (cfiPicker28) NoFunction
+        CFI (cfiPicker28) Picker
+        LDI     R30, SummUUResult
+        CFI EndBlock cfiCond26
+        CFI EndBlock cfiCond27
+        CFI EndBlock cfiPicker28
+        REQUIRE ??Subroutine15_0
+        ;               // Fall through to label ??Subroutine15_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine15_0:
+        CFI Block cfiCond29 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_45
+        CFI CFA_SP SP+4
+        CFI Block cfiCond30 Using cfiCommon0
+        CFI (cfiCond30) NoFunction
+        CFI (cfiCond30) Conditional ??CrossCallReturnLabel_46
+        CFI (cfiCond30) CFA_SP SP+4
+        CFI Block cfiCond31 Using cfiCommon0
+        CFI (cfiCond31) NoFunction
+        CFI (cfiCond31) Conditional ??CrossCallReturnLabel_47
+        CFI (cfiCond31) CFA_SP SP+4
+        CFI Block cfiCond32 Using cfiCommon0
+        CFI (cfiCond32) NoFunction
+        CFI (cfiCond32) Conditional ??CrossCallReturnLabel_48
+        CFI (cfiCond32) CFA_SP SP+4
+        CFI Block cfiCond33 Using cfiCommon0
+        CFI (cfiCond33) NoFunction
+        CFI (cfiCond33) Conditional ??CrossCallReturnLabel_49
+        CFI (cfiCond33) CFA_SP SP+4
+        CFI Block cfiCond34 Using cfiCommon0
+        CFI (cfiCond34) NoFunction
+        CFI (cfiCond34) Conditional ??CrossCallReturnLabel_50
+        CFI (cfiCond34) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond34) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond34) CFA_R28 R28+2
+        CFI (cfiCond34) CFA_SP SP+4
+        CFI Block cfiCond35 Using cfiCommon0
+        CFI (cfiCond35) NoFunction
+        CFI (cfiCond35) Conditional ??CrossCallReturnLabel_51
+        CFI (cfiCond35) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond35) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond35) CFA_R28 R28+2
+        CFI (cfiCond35) CFA_SP SP+4
+        CFI Block cfiCond36 Using cfiCommon0
+        CFI (cfiCond36) NoFunction
+        CFI (cfiCond36) Conditional ??CrossCallReturnLabel_52
+        CFI (cfiCond36) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond36) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond36) CFA_R28 R28+2
+        CFI (cfiCond36) CFA_SP SP+4
+        CFI Block cfiPicker37 Using cfiCommon1
+        CFI (cfiPicker37) NoFunction
+        CFI (cfiPicker37) Picker
+        LDD     R16, Z+20
+        LDD     R17, Z+21
+        RET
+        CFI EndBlock cfiCond29
+        CFI EndBlock cfiCond30
+        CFI EndBlock cfiCond31
+        CFI EndBlock cfiCond32
+        CFI EndBlock cfiCond33
+        CFI EndBlock cfiCond34
+        CFI EndBlock cfiCond35
+        CFI EndBlock cfiCond36
+        CFI EndBlock cfiPicker37
+
+        RSEG CODE:CODE:NOROOT(1)
+ADCSampleReady:
+        CFI Block cfiBlock38 Using cfiCommon2
+        CFI Function ADCSampleReady
+        FUNCALL ADCSampleReady, ResetSampler
+        LOCFRAME CSTACK, 16, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ADCSampleReady, ResetSampler
+        LOCFRAME CSTACK, 16, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL ADCSampleReady, ResetSampler
+        LOCFRAME CSTACK, 16, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        ST      -Y, R24
+        CFI R24 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+1
+        ST      -Y, R31
+        CFI R31 Frame(CFA_R28, -2)
+        CFI CFA_R28 R28+2
+        ST      -Y, R30
+        CFI R30 Frame(CFA_R28, -3)
+        CFI CFA_R28 R28+3
+        ST      -Y, R3
+        CFI R3 Frame(CFA_R28, -4)
+        CFI CFA_R28 R28+4
+        ST      -Y, R2
+        CFI R2 Frame(CFA_R28, -5)
+        CFI CFA_R28 R28+5
+        ST      -Y, R1
+        CFI R1 Frame(CFA_R28, -6)
+        CFI CFA_R28 R28+6
+        ST      -Y, R0
+        CFI R0 Frame(CFA_R28, -7)
+        CFI CFA_R28 R28+7
+        ST      -Y, R23
+        CFI R23 Frame(CFA_R28, -8)
+        CFI CFA_R28 R28+8
+        ST      -Y, R22
+        CFI R22 Frame(CFA_R28, -9)
+        CFI CFA_R28 R28+9
+        ST      -Y, R21
+        CFI R21 Frame(CFA_R28, -10)
+        CFI CFA_R28 R28+10
+        ST      -Y, R20
+        CFI R20 Frame(CFA_R28, -11)
+        CFI CFA_R28 R28+11
+        ST      -Y, R19
+        CFI R19 Frame(CFA_R28, -12)
+        CFI CFA_R28 R28+12
+        ST      -Y, R18
+        CFI R18 Frame(CFA_R28, -13)
+        CFI CFA_R28 R28+13
+        ST      -Y, R17
+        CFI R17 Frame(CFA_R28, -14)
+        CFI CFA_R28 R28+14
+        ST      -Y, R16
+        CFI R16 Frame(CFA_R28, -15)
+        CFI CFA_R28 R28+15
+        IN      R24, 0x3F
+        LDI     R16, 181
+        OUT     0x2E, R16
+        IN      R16, 0x04
+        IN      R17, 0x05
+        LDI     R18, 0
+        SBI     0x06, 0x06
+        MOV     R20, R16
+        OR      R20, R17
+        LDI     R30, SummUUResult
+        BREQ    ??ADCSampleReady_0
+        LDD     R20, Z+58
+        CPI     R20, 64
+        BRCC    ??ADCSampleReady_1
+        LDD     R20, Z+4
+        LDD     R21, Z+5
+        LDD     R22, Z+6
+        LDD     R23, Z+7
+        ADD     R20, R16
+        ADC     R21, R17
+        ADC     R22, R18
+        ADC     R23, R18
+        STD     Z+4, R20
+        STD     Z+5, R21
+        STD     Z+6, R22
+        STD     Z+7, R23
+??ADCSampleReady_1:
+        LDD     R16, Z+58
+        INC     R16
+        STD     Z+58, R16
+        STD     Z+59, R18
+        LDD     R16, Z+58
+        CPI     R16, 244
+        BRCS    ??ADCSampleReady_2
+        ST      Z, R18
+        STD     Z+1, R18
+        STD     Z+2, R18
+        STD     Z+3, R18
+        STD     Z+4, R18
+        STD     Z+5, R18
+        STD     Z+6, R18
+        STD     Z+7, R18
+        RJMP    ??ADCSampleReady_3
+??ADCSampleReady_0:
+        LDD     R16, Z+59
+        INC     R16
+        STD     Z+59, R16
+        LDD     R16, Z+59
+        CPI     R16, 26
+        BRCS    ??ADCSampleReady_4
+        LDD     R16, Z+58
+        CPI     R16, 7
+        BRCS    ??ADCSampleReady_4
+        LDD     R16, Z+4
+        LDD     R17, Z+5
+        LDD     R18, Z+6
+        LDD     R19, Z+7
+        ST      Z, R16
+        STD     Z+1, R17
+        STD     Z+2, R18
+        STD     Z+3, R19
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_20:
+        RCALL   ResetSampler
+??ADCSampleReady_4:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+59
+        CPI     R16, 244
+        BRCS    ??ADCSampleReady_2
+        RCALL   ?Subroutine7
+??CrossCallReturnLabel_21:
+        ST      Z, R16
+        STD     Z+1, R16
+        STD     Z+2, R16
+        STD     Z+3, R16
+??ADCSampleReady_3:
+        RCALL   ResetSampler
+??ADCSampleReady_2:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+53
+        INC     R16
+        STD     Z+53, R16
+        CPI     R16, 64
+        BRCS    ??ADCSampleReady_5
+        LDI     R16, 0
+        STD     Z+53, R16
+        LDI     R16, 1
+        STD     Z+52, R16
+??ADCSampleReady_5:
+        OUT     0x3F, R24
+        LD      R16, Y+
+        CFI R16 SameValue
+        CFI CFA_R28 R28+14
+        LD      R17, Y+
+        CFI R17 SameValue
+        CFI CFA_R28 R28+13
+        LD      R18, Y+
+        CFI R18 SameValue
+        CFI CFA_R28 R28+12
+        LD      R19, Y+
+        CFI R19 SameValue
+        CFI CFA_R28 R28+11
+        LD      R20, Y+
+        CFI R20 SameValue
+        CFI CFA_R28 R28+10
+        LD      R21, Y+
+        CFI R21 SameValue
+        CFI CFA_R28 R28+9
+        LD      R22, Y+
+        CFI R22 SameValue
+        CFI CFA_R28 R28+8
+        LD      R23, Y+
+        CFI R23 SameValue
+        CFI CFA_R28 R28+7
+        LD      R0, Y+
+        CFI R0 SameValue
+        CFI CFA_R28 R28+6
+        LD      R1, Y+
+        CFI R1 SameValue
+        CFI CFA_R28 R28+5
+        LD      R2, Y+
+        CFI R2 SameValue
+        CFI CFA_R28 R28+4
+        LD      R3, Y+
+        CFI R3 SameValue
+        CFI CFA_R28 R28+3
+        LD      R30, Y+
+        CFI R30 SameValue
+        CFI CFA_R28 R28+2
+        LD      R31, Y+
+        CFI R31 SameValue
+        CFI CFA_R28 R28+1
+        LD      R24, Y+
+        CFI R24 SameValue
+        CFI CFA_R28 R28+0
+        RETI
+        CFI EndBlock cfiBlock38
+        REQUIRE _A_ADC
+        REQUIRE _A_ADCSR
+        REQUIRE _A_TCNT1
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine7:
+        CFI Block cfiCond39 Using cfiCommon2
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_20
+        CFI R16 Frame(CFA_R28, -15)
+        CFI R17 Frame(CFA_R28, -14)
+        CFI R18 Frame(CFA_R28, -13)
+        CFI R19 Frame(CFA_R28, -12)
+        CFI R20 Frame(CFA_R28, -11)
+        CFI R21 Frame(CFA_R28, -10)
+        CFI R22 Frame(CFA_R28, -9)
+        CFI R23 Frame(CFA_R28, -8)
+        CFI R0 Frame(CFA_R28, -7)
+        CFI R1 Frame(CFA_R28, -6)
+        CFI R2 Frame(CFA_R28, -5)
+        CFI R3 Frame(CFA_R28, -4)
+        CFI R30 Frame(CFA_R28, -3)
+        CFI R31 Frame(CFA_R28, -2)
+        CFI R24 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+15
+        CFI CFA_SP SP+4
+        CFI Block cfiCond40 Using cfiCommon2
+        CFI (cfiCond40) NoFunction
+        CFI (cfiCond40) Conditional ??CrossCallReturnLabel_21
+        CFI (cfiCond40) R16 Frame(CFA_R28, -15)
+        CFI (cfiCond40) R17 Frame(CFA_R28, -14)
+        CFI (cfiCond40) R18 Frame(CFA_R28, -13)
+        CFI (cfiCond40) R19 Frame(CFA_R28, -12)
+        CFI (cfiCond40) R20 Frame(CFA_R28, -11)
+        CFI (cfiCond40) R21 Frame(CFA_R28, -10)
+        CFI (cfiCond40) R22 Frame(CFA_R28, -9)
+        CFI (cfiCond40) R23 Frame(CFA_R28, -8)
+        CFI (cfiCond40) R0 Frame(CFA_R28, -7)
+        CFI (cfiCond40) R1 Frame(CFA_R28, -6)
+        CFI (cfiCond40) R2 Frame(CFA_R28, -5)
+        CFI (cfiCond40) R3 Frame(CFA_R28, -4)
+        CFI (cfiCond40) R30 Frame(CFA_R28, -3)
+        CFI (cfiCond40) R31 Frame(CFA_R28, -2)
+        CFI (cfiCond40) R24 Frame(CFA_R28, -1)
+        CFI (cfiCond40) CFA_R28 R28+15
+        CFI (cfiCond40) CFA_SP SP+4
+        CFI Block cfiPicker41 Using cfiCommon1
+        CFI (cfiPicker41) NoFunction
+        CFI (cfiPicker41) Picker
+        LDI     R16, 0
+        STD     Z+4, R16
+        STD     Z+5, R16
+        STD     Z+6, R16
+        STD     Z+7, R16
+        RET
+        CFI EndBlock cfiCond39
+        CFI EndBlock cfiCond40
+        CFI EndBlock cfiPicker41
+
+        RSEG CODE:CODE:NOROOT(1)
+PressProcessing:
+        CFI Block cfiBlock42 Using cfiCommon0
+        CFI Function PressProcessing
+        FUNCALL PressProcessing, CheckAllSettings
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        DEC     R16
+        BREQ    ??PressProcessing_0
+        DEC     R16
+        BREQ    ??PressProcessing_1
+        DEC     R16
+        BRNE    $+2+2
+        RJMP    ??PressProcessing_2
+        DEC     R16
+        BRNE    $+2+2
+        RJMP    ??PressProcessing_3
+        DEC     R16
+        BRNE    $+2+2
+        RJMP    ??PressProcessing_4
+        RJMP    CheckAllSettings
+??PressProcessing_0:
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_1:
+        BREQ    ??PressProcessing_5
+        DEC     R16
+        BREQ    ??PressProcessing_5
+        SUBI    R16, 2
+        BREQ    ??PressProcessing_5
+        SUBI    R16, 46
+        BREQ    ??PressProcessing_6
+        DEC     R16
+        BREQ    ??PressProcessing_7
+        DEC     R16
+        BREQ    ??PressProcessing_8
+        DEC     R16
+        BREQ    ??PressProcessing_9
+        RJMP    CheckAllSettings
+??PressProcessing_5:
+        LDI     R16, 3
+        RJMP    ??PressProcessing_10
+??PressProcessing_7:
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_9:
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_22:
+        STD     Z+26, R16
+        STD     Z+27, R17
+        RJMP    CheckAllSettings
+??PressProcessing_6:
+        RCALL   ??Subroutine16_0
+??CrossCallReturnLabel_55:
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_23:
+        STD     Z+24, R16
+        STD     Z+25, R17
+        RJMP    CheckAllSettings
+??PressProcessing_8:
+        RCALL   ??Subroutine15_0
+??CrossCallReturnLabel_48:
+        SUBI    R16, 5
+        SBCI    R17, 0
+??PressProcessing_11:
+        STD     Z+20, R16
+        STD     Z+21, R17
+        RJMP    CheckAllSettings
+??PressProcessing_9:
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_14:
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_24:
+        RJMP    ?Subroutine14
+??PressProcessing_1:
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_2:
+        BREQ    ??PressProcessing_12
+        SUBI    R16, 2
+        BREQ    ??PressProcessing_12
+        DEC     R16
+        BREQ    ??PressProcessing_12
+        SUBI    R16, 46
+        BREQ    ??PressProcessing_13
+        DEC     R16
+        BREQ    ??PressProcessing_14
+        DEC     R16
+        BREQ    ??PressProcessing_15
+        DEC     R16
+        BREQ    ??PressProcessing_16
+        RJMP    CheckAllSettings
+??PressProcessing_12:
+        LDI     R16, 2
+        RJMP    ??PressProcessing_10
+??PressProcessing_14:
+        RCALL   ?Subroutine4
+??CrossCallReturnLabel_10:
+        SUBI    R16, 255
+        SBCI    R17, 255
+        RJMP    ??CrossCallReturnLabel_22
+??PressProcessing_13:
+        RCALL   ??Subroutine16_0
+??CrossCallReturnLabel_56:
+        SUBI    R16, 255
+        SBCI    R17, 255
+        RJMP    ??CrossCallReturnLabel_23
+??PressProcessing_15:
+        RCALL   ??Subroutine15_0
+??CrossCallReturnLabel_49:
+        SUBI    R16, 251
+        SBCI    R17, 255
+        RJMP    ??PressProcessing_11
+??PressProcessing_16:
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_15:
+        SUBI    R16, 255
+        SBCI    R17, 255
+        RJMP    ??CrossCallReturnLabel_24
+??PressProcessing_2:
+        RCALL   ?Subroutine13
+??CrossCallReturnLabel_42:
+        CPI     R16, 3
+        BRNE    ??PressProcessing_17
+        LDI     R16, 51
+        RJMP    ??PressProcessing_10
+??PressProcessing_3:
+        RCALL   ?Subroutine13
+??CrossCallReturnLabel_43:
+        CPI     R16, 2
+        BRNE    ??PressProcessing_17
+        LDI     R16, 50
+        RJMP    ??PressProcessing_10
+??PressProcessing_4:
+        RCALL   ?Subroutine0
+??CrossCallReturnLabel_3:
+        BREQ    ??PressProcessing_18
+        SUBI    R16, 51
+        BREQ    ??PressProcessing_19
+        RJMP    CheckAllSettings
+??PressProcessing_18:
+        LDI     R16, 52
+        RJMP    ??PressProcessing_10
+??PressProcessing_19:
+        LDI     R16, 53
+??PressProcessing_10:
+        STD     Z+56, R16
+??PressProcessing_17:
+        RJMP    CheckAllSettings
+        CFI EndBlock cfiBlock42
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine13:
+        CFI Block cfiCond43 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_41
+        CFI CFA_SP SP+4
+        CFI Block cfiCond44 Using cfiCommon0
+        CFI (cfiCond44) NoFunction
+        CFI (cfiCond44) Conditional ??CrossCallReturnLabel_42
+        CFI (cfiCond44) CFA_SP SP+4
+        CFI Block cfiCond45 Using cfiCommon0
+        CFI (cfiCond45) NoFunction
+        CFI (cfiCond45) Conditional ??CrossCallReturnLabel_43
+        CFI (cfiCond45) CFA_SP SP+4
+        CFI Block cfiCond46 Using cfiCommon0
+        CFI (cfiCond46) NoFunction
+        CFI (cfiCond46) Conditional ??CrossCallReturnLabel_44, ??CrossCallReturnLabel_0
+        CFI (cfiCond46) CFA_SP SP+6
+        CFI Block cfiCond47 Using cfiCommon0
+        CFI (cfiCond47) NoFunction
+        CFI (cfiCond47) Conditional ??CrossCallReturnLabel_44, ??CrossCallReturnLabel_1
+        CFI (cfiCond47) CFA_SP SP+6
+        CFI Block cfiCond48 Using cfiCommon0
+        CFI (cfiCond48) NoFunction
+        CFI (cfiCond48) Conditional ??CrossCallReturnLabel_44, ??CrossCallReturnLabel_2
+        CFI (cfiCond48) CFA_SP SP+6
+        CFI Block cfiCond49 Using cfiCommon0
+        CFI (cfiCond49) NoFunction
+        CFI (cfiCond49) Conditional ??CrossCallReturnLabel_44, ??CrossCallReturnLabel_3
+        CFI (cfiCond49) CFA_SP SP+6
+        CFI Block cfiPicker50 Using cfiCommon1
+        CFI (cfiPicker50) NoFunction
+        CFI (cfiPicker50) Picker
+        LDI     R30, SummUUResult
+        LDD     R16, Z+56
+        RET
+        CFI EndBlock cfiCond43
+        CFI EndBlock cfiCond44
+        CFI EndBlock cfiCond45
+        CFI EndBlock cfiCond46
+        CFI EndBlock cfiCond47
+        CFI EndBlock cfiCond48
+        CFI EndBlock cfiCond49
+        CFI EndBlock cfiPicker50
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine1:
+        CFI Block cfiCond51 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_57
+        CFI CFA_SP SP+4
+        CFI Block cfiCond52 Using cfiCommon0
+        CFI (cfiCond52) NoFunction
+        CFI (cfiCond52) Conditional ??CrossCallReturnLabel_58
+        CFI (cfiCond52) CFA_SP SP+4
+        CFI Block cfiPicker53 Using cfiCommon1
+        CFI (cfiPicker53) NoFunction
+        CFI (cfiPicker53) Picker
+        LDI     R30, SummUUResult
+        CFI EndBlock cfiCond51
+        CFI EndBlock cfiCond52
+        CFI EndBlock cfiPicker53
+        REQUIRE ??Subroutine16_0
+        ;               // Fall through to label ??Subroutine16_0
+
+        RSEG CODE:CODE:NOROOT(1)
+??Subroutine16_0:
+        CFI Block cfiCond54 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_53
+        CFI CFA_SP SP+4
+        CFI Block cfiCond55 Using cfiCommon0
+        CFI (cfiCond55) NoFunction
+        CFI (cfiCond55) Conditional ??CrossCallReturnLabel_54
+        CFI (cfiCond55) CFA_SP SP+4
+        CFI Block cfiCond56 Using cfiCommon0
+        CFI (cfiCond56) NoFunction
+        CFI (cfiCond56) Conditional ??CrossCallReturnLabel_55
+        CFI (cfiCond56) CFA_SP SP+4
+        CFI Block cfiCond57 Using cfiCommon0
+        CFI (cfiCond57) NoFunction
+        CFI (cfiCond57) Conditional ??CrossCallReturnLabel_56
+        CFI (cfiCond57) CFA_SP SP+4
+        CFI Block cfiCond58 Using cfiCommon0
+        CFI (cfiCond58) NoFunction
+        CFI (cfiCond58) Conditional ??CrossCallReturnLabel_57
+        CFI (cfiCond58) CFA_SP SP+4
+        CFI Block cfiCond59 Using cfiCommon0
+        CFI (cfiCond59) NoFunction
+        CFI (cfiCond59) Conditional ??CrossCallReturnLabel_58
+        CFI (cfiCond59) CFA_SP SP+4
+        CFI Block cfiPicker60 Using cfiCommon1
+        CFI (cfiPicker60) NoFunction
+        CFI (cfiPicker60) Picker
+        LDD     R16, Z+24
+        LDD     R17, Z+25
+        RET
+        CFI EndBlock cfiCond54
+        CFI EndBlock cfiCond55
+        CFI EndBlock cfiCond56
+        CFI EndBlock cfiCond57
+        CFI EndBlock cfiCond58
+        CFI EndBlock cfiCond59
+        CFI EndBlock cfiPicker60
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine0:
+        CFI Block cfiCond61 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_0
+        CFI CFA_SP SP+4
+        CFI Block cfiCond62 Using cfiCommon0
+        CFI (cfiCond62) NoFunction
+        CFI (cfiCond62) Conditional ??CrossCallReturnLabel_1
+        CFI (cfiCond62) CFA_SP SP+4
+        CFI Block cfiCond63 Using cfiCommon0
+        CFI (cfiCond63) NoFunction
+        CFI (cfiCond63) Conditional ??CrossCallReturnLabel_2
+        CFI (cfiCond63) CFA_SP SP+4
+        CFI Block cfiCond64 Using cfiCommon0
+        CFI (cfiCond64) NoFunction
+        CFI (cfiCond64) Conditional ??CrossCallReturnLabel_3
+        CFI (cfiCond64) CFA_SP SP+4
+        CFI Block cfiPicker65 Using cfiCommon1
+        CFI (cfiPicker65) NoFunction
+        CFI (cfiPicker65) Picker
+        RCALL   ?Subroutine13
+??CrossCallReturnLabel_44:
+        DEC     R16
+        RET
+        CFI EndBlock cfiCond61
+        CFI EndBlock cfiCond62
+        CFI EndBlock cfiCond63
+        CFI EndBlock cfiCond64
+        CFI EndBlock cfiPicker65
+
+        RSEG CODE:CODE:NOROOT(1)
+DynIndStep:
+        CFI Block cfiBlock66 Using cfiCommon0
+        CFI Function DynIndStep
+        LDI     R30, SummUUResult
+        LDD     R16, Z+54
+        CPI     R16, 3
+        BRCC    ??DynIndStep_0
+        IN      R16, 0x18
+        ORI     R16, 0x43
+        OUT     0x18, R16
+        IN      R16, 0x1B
+        LDI     R16, 0
+        OUT     0x1B, R16
+        LDD     R16, Z+54
+        ADD     R30, R16
+        LDD     R16, Z+11
+        OUT     0x1B, R16
+        LDD     R16, Z+48
+        COM     R16
+        IN      R17, 0x18
+        AND     R17, R16
+        OUT     0x18, R17
+??DynIndStep_0:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+54
+        INC     R16
+        STD     Z+54, R16
+        CPI     R16, 3
+        BRCS    ??DynIndStep_1
+        LDI     R16, 0
+        STD     Z+54, R16
+??DynIndStep_1:
+        RET
+        CFI EndBlock cfiBlock66
+        REQUIRE _A_PORTB
+        REQUIRE _A_PORTA
+
+        RSEG CODE:CODE:NOROOT(1)
+CheckButton:
+        CFI Block cfiBlock67 Using cfiCommon0
+        CFI Function CheckButton
+        FUNCALL CheckButton, PressProcessing
+        LOCFRAME CSTACK, 0, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        MOV     R19, R17
+        IN      R21, 0x16
+        MOV     R20, R16
+        LDI     R16, 1
+        LDI     R17, 0
+        RCALL   ?S_SHL_L02
+        AND     R21, R16
+        BRNE    ??CheckButton_0
+        LDI     R16, 244
+        LDI     R17, 1
+        LDI     R30, SummUUResult
+        STD     Z+16, R16
+        STD     Z+17, R17
+        RET
+??CheckButton_0:
+        CPI     R19, 120
+        BRCC    ??CheckButton_1
+        CPI     R19, 2
+        BRCS    ??CheckButton_1
+        MOV     R16, R18
+        RCALL   PressProcessing
+??CheckButton_1:
+        RET
+        CFI EndBlock cfiBlock67
+        REQUIRE _A_PINB
+
+        RSEG CODE:CODE:NOROOT(1)
+KeyboardThread:
+        CFI Block cfiBlock68 Using cfiCommon0
+        CFI Function KeyboardThread
+        FUNCALL KeyboardThread, PressProcessing
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL KeyboardThread, PressProcessing
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL KeyboardThread, PressProcessing
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL KeyboardThread, PressProcessing
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL KeyboardThread, PressProcessing
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL KeyboardThread, SaveSettings
+        LOCFRAME CSTACK, 1, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        LDI     R30, SummUUResult
+        LDD     R16, Z+54
+        CPI     R16, 2
+        BRNE    ??KeyboardThread_0
+        LDD     R16, Z+14
+        SBIC    0x16, 0x02
+        RJMP    ??KeyboardThread_1
+        INC     R16
+        STD     Z+14, R16
+??KeyboardThread_2:
+        LDI     R16, 244
+        LDI     R17, 1
+        STD     Z+16, R16
+        STD     Z+17, R17
+??KeyboardThread_3:
+        LDD     R16, Z+15
+        TST     R16
+        BRNE    ??KeyboardThread_4
+??KeyboardThread_5:
+        LDD     R16, Z+14
+        CPI     R16, 120
+        BRNE    ??KeyboardThread_6
+        LDI     R16, 125
+        STD     Z+14, R16
+        LDI     R16, 3
+??KeyboardThread_7:
+        RCALL   PressProcessing
+        RJMP    ??KeyboardThread_8
+??KeyboardThread_1:
+        CPI     R16, 120
+        BRCC    ??KeyboardThread_9
+        CPI     R16, 2
+        BRCS    ??KeyboardThread_9
+        LDI     R16, 1
+        RCALL   PressProcessing
+??KeyboardThread_9:
+        LDI     R16, 0
+        LDI     R30, SummUUResult
+        STD     Z+14, R16
+        RJMP    ??KeyboardThread_3
+??KeyboardThread_0:
+        TST     R16
+        BRNE    ??KeyboardThread_3
+        LDD     R16, Z+15
+        SBIC    0x16, 0x05
+        RJMP    ??KeyboardThread_10
+        INC     R16
+        STD     Z+15, R16
+        RJMP    ??KeyboardThread_2
+??KeyboardThread_10:
+        CPI     R16, 120
+        BRCC    ??KeyboardThread_11
+        CPI     R16, 2
+        BRCS    ??KeyboardThread_11
+        LDI     R16, 2
+        RCALL   PressProcessing
+??KeyboardThread_11:
+        LDI     R16, 0
+        LDI     R30, SummUUResult
+        STD     Z+15, R16
+        RJMP    ??KeyboardThread_5
+??KeyboardThread_6:
+        CPI     R16, 251
+        BRCS    ??KeyboardThread_12
+        LDI     R16, 255
+        STD     Z+14, R16
+        RJMP    ??KeyboardThread_13
+??KeyboardThread_12:
+        TST     R16
+        BRNE    ??KeyboardThread_4
+        LDD     R16, Z+16
+        LDD     R17, Z+17
+        OR      R16, R17
+        BREQ    ??KeyboardThread_14
+        LDD     R16, Z+16
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_25:
+        STD     Z+16, R16
+        STD     Z+17, R17
+        RJMP    ??KeyboardThread_14
+??KeyboardThread_4:
+        LDD     R16, Z+14
+        TST     R16
+        BRNE    ??KeyboardThread_15
+??KeyboardThread_14:
+        LDD     R16, Z+15
+        CPI     R16, 120
+        BRNE    ??KeyboardThread_16
+        LDI     R16, 125
+        STD     Z+15, R16
+        LDI     R16, 4
+        RCALL   PressProcessing
+??KeyboardThread_15:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+14
+        CPI     R16, 120
+        BRNE    ??KeyboardThread_17
+        LDD     R16, Z+15
+        CPI     R16, 2
+        BRCS    ??KeyboardThread_8
+        LDI     R16, 125
+        STD     Z+14, R16
+        STD     Z+15, R16
+        LDI     R16, 5
+        RJMP    ??KeyboardThread_7
+??KeyboardThread_16:
+        CPI     R16, 251
+        BRCS    ??KeyboardThread_17
+        LDI     R16, 255
+        STD     Z+15, R16
+??KeyboardThread_17:
+        LDD     R16, Z+14
+        CPI     R16, 251
+        BRCS    ??KeyboardThread_8
+??KeyboardThread_13:
+        LDD     R16, Z+15
+        CPI     R16, 251
+        BRCS    ??KeyboardThread_8
+        LDI     R16, 255
+        STD     Z+14, R16
+        STD     Z+15, R16
+??KeyboardThread_8:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+16
+        LDD     R17, Z+17
+        CPI     R16, 1
+        SBCI    R17, 0
+        BRNE    ??KeyboardThread_18
+        LDD     R16, Z+56
+        CPI     R16, 50
+        BRCS    ??KeyboardThread_19
+        RCALL   SaveSettings
+??KeyboardThread_19:
+        LDI     R16, 1
+        LDI     R30, SummUUResult
+        STD     Z+56, R16
+??KeyboardThread_18:
+        RET
+        CFI EndBlock cfiBlock68
+        REQUIRE _A_PINB
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine8:
+        CFI Block cfiCond69 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_22
+        CFI CFA_SP SP+4
+        CFI Block cfiCond70 Using cfiCommon0
+        CFI (cfiCond70) NoFunction
+        CFI (cfiCond70) Conditional ??CrossCallReturnLabel_23
+        CFI (cfiCond70) CFA_SP SP+4
+        CFI Block cfiCond71 Using cfiCommon0
+        CFI (cfiCond71) NoFunction
+        CFI (cfiCond71) Conditional ??CrossCallReturnLabel_24
+        CFI (cfiCond71) CFA_SP SP+4
+        CFI Block cfiCond72 Using cfiCommon0
+        CFI (cfiCond72) NoFunction
+        CFI (cfiCond72) Conditional ??CrossCallReturnLabel_25
+        CFI (cfiCond72) CFA_SP SP+4
+        CFI Block cfiCond73 Using cfiCommon0
+        CFI (cfiCond73) NoFunction
+        CFI (cfiCond73) Conditional ??CrossCallReturnLabel_26
+        CFI (cfiCond73) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond73) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond73) CFA_R28 R28+2
+        CFI (cfiCond73) CFA_SP SP+4
+        CFI Block cfiCond74 Using cfiCommon0
+        CFI (cfiCond74) NoFunction
+        CFI (cfiCond74) Conditional ??CrossCallReturnLabel_27
+        CFI (cfiCond74) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond74) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond74) CFA_R28 R28+2
+        CFI (cfiCond74) CFA_SP SP+4
+        CFI Block cfiPicker75 Using cfiCommon1
+        CFI (cfiPicker75) NoFunction
+        CFI (cfiPicker75) Picker
+        SUBI    R16, 1
+        SBCI    R17, 0
+        RET
+        CFI EndBlock cfiCond69
+        CFI EndBlock cfiCond70
+        CFI EndBlock cfiCond71
+        CFI EndBlock cfiCond72
+        CFI EndBlock cfiCond73
+        CFI EndBlock cfiCond74
+        CFI EndBlock cfiPicker75
+
+        RSEG CODE:CODE:NOROOT(1)
+//  389 int main( void )
+main:
+        CFI Block cfiBlock76 Using cfiCommon0
+        CFI Function main
+//  390 {
+        FUNCALL main, InitPorts
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, InitTimers
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, LoadSettings
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, __watchdog_init
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, UpdateLedScreen
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, DynIndStep
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        FUNCALL main, KeyboardThread
+        LOCFRAME CSTACK, 3, STACK
+        LOCFRAME RSTACK, 2, STACK
+        ARGFRAME RSTACK, 0, STACK
+        RCALL   ?PROLOGUE2_L09
+        CFI R25 Frame(CFA_R28, -1)
+        CFI R24 Frame(CFA_R28, -2)
+        CFI CFA_R28 R28+2
+//  391 InitPorts ();
+        RCALL   InitPorts
+//  392 InitTimers ();
+        RCALL   InitTimers
+//  393 InitADC ();
+        RCALL   ?Subroutine2
+//  394 LoadSettings ();
+??CrossCallReturnLabel_4:
+        RCALL   LoadSettings
+//  395 
+//  396 #ifdef OVERRIDE_SETTINGS
+//  397   UpTreshold = OVERRIDE_UP_TRESHOLD_VALUE;
+//  398   DownTreshold = OVERRIDE_DOWN_TRESHOLD_VALUE;
+//  399   ProtectTimerOnMaxValue = OVERRIDE_PROTECT_TIMER_MAX_VALUE;
+//  400   K1 = OVERRIDE_K1_VALUE;
+//  401   SaveSettings ();
+//  402 #endif
+//  403 
+//  404 ProtectTimerOnValue = ProtectTimerOnMaxValue;	//таймер включения после провалов взведен
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_51:
+        RCALL   ?Subroutine10
+//  405 __watchdog_init ();
+??CrossCallReturnLabel_31:
+        RCALL   __watchdog_init
+//  406 __enable_interrupt();
+        SEI
+        RJMP    ??CrossCallReturnLabel_32
+//  407 
+//  408   while (1)
+//  409   {
+//  410   //__delay_cycles((CtrlClockRate/1000)*5);
+//  411   if (SlowTimerFlag)
+//  412   {
+//  413   SlowTimerFlag = 0;
+//  414   if (ResultSummReady)
+//  415     {
+//  416     __watchdog_reset ();
+//  417     ResultSummReady = 0;
+//  418 #ifdef METHOD_PEAK    
+//  419     Voltage = (unsigned int)(((unsigned long)PeakResult*500)>>10);
+//  420 #endif    
+//  421 #ifdef METHOD_DIRECT_SHOW    
+//  422     Voltage = PeakResult;
+//  423 #endif    
+//  424 #ifdef METHOD_AR
+//  425     Voltage = (unsigned int)(((SummUUResult>>6)*K1)>>10);
+//  426 #endif
+//  427 #ifdef METHOD_RMS  
+//  428     Voltage = (unsigned int)((isqrt(SummUUResult>>6)*K1)>>10);
+//  429 #endif    
+//  430     }
+//  431     
+//  432     //быстрая защита
+//  433     if ( (Voltage > UpTreshold) || ((Voltage < DownTreshold)&& (Voltage < DOWN_TRESHOLD_FAST_MIN)) ) ProtectTimerOnValue = ProtectTimerOnMaxValue; //
+//  434     
+//  435     //медленная защита  
+//  436     if  ((Voltage < DownTreshold) && (Voltage >= DOWN_TRESHOLD_FAST_MIN)) 
+//  437       {
+//  438       if (ProtectTimerOnValue) ProtectTimerOffValue=0; // если уже и так выключено - сразу сгоняем таймер выключения в 0
+//  439       if (ProtectTimerOffValue) ProtectTimerOffValue--; // тикает таймер выключения
+//  440       }
+//  441       else ProtectTimerOffValue = ProtectTimerOffMaxValue;
+//  442     if (ProtectTimerOffValue == 0) ProtectTimerOnValue = ProtectTimerOnMaxValue;
+//  443     
+//  444 #ifndef RELAY_TEST    
+//  445     if (ProtectTimerOnValue) PortRelay &= ~(1<<Relay);
+//  446       else   PortRelay |= (1<<Relay);     
+//  447 #endif         
+//  448       
+//  449 #ifndef KEYBOARD_DISABLE      
+//  450     KeyboardThread ();
+//  451 #endif 
+//  452    
+//  453     if ((DisplayMode == ProtectTimer)&&((ProtectTimerOnValue == ProtectTimerOnMaxValue) || (ProtectTimerOnValue == 0))) DisplayMode = RealtimeVoltage;
+//  454     if ((DisplayMode == RealtimeVoltage)&&(ProtectTimerOnValue == (ProtectTimerOnMaxValue - 1))) DisplayMode = ProtectTimer;
+//  455 
+//  456     if (++QuarterSecPrescaler >= (ProtectTimer1S/8))  //раз в 1/8 секунды сюда заходим
+//  457       {
+//  458       QuarterSecPrescaler = 0;
+//  459   
+//  460 #ifdef SMOOTH_MEASURE
+//  461       SmoothVoltage [SmoothVoltageCurrentPosition] = Voltage; 
+//  462       if (++SmoothVoltageCurrentPosition >= SmoothBufferSize) SmoothVoltageCurrentPosition = 0;
+//  463       DisplayedVoltage = 0;
+//  464       for (unsigned char v=0; v<SmoothBufferSize; v++) DisplayedVoltage += SmoothVoltage [v];
+//  465       DisplayedVoltage >>= SmoothShift;
+//  466 #else
+//  467       DisplayedVoltage = Voltage;
+//  468 #endif
+//  469       
+//  470       if ((ProtectTimerOnValue)&&(DisplayMode == RealtimeVoltage)) EnableDisplay += HALF_BYTE_CONST; // мигаем экраном
+//  471         else EnableDisplay = HALF_BYTE_CONST; // не мигаем
+??main_0:
+        LDI     R16, 128
+??main_1:
+        STD     Z+57, R16
+//  472       }
+//  473     
+//  474     UpdateLedScreen ();    
+??main_2:
+        RCALL   UpdateLedScreen
+//  475     DynIndStep ();
+        RCALL   DynIndStep
+//  476 
+//  477 #ifdef RELAY_TEST     
+//  478     RelayTestCounter++;
+//  479     if (RelayTestCounter == 0) PortRelay &= ~(1<<Relay);
+//  480     if (RelayTestCounter == HALF_BYTE_CONST) PortRelay |= (1<<Relay);
+//  481 #endif
+//  482     
+//  483     if (++SecPrescaler >= ProtectTimer1S)
+        LDI     R30, (SummUUResult + 62) & 0xFF
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_28:
+        CPI     R16, 200
+        BRCS    ??CrossCallReturnLabel_32
+//  484       {
+//  485       SecPrescaler = 0;
+        LDI     R16, 0
+        ST      Z, R16
+//  486       if (ProtectTimerOnValue) ProtectTimerOnValue--;
+        LDI     R30, SummUUResult
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_17:
+        BREQ    ??CrossCallReturnLabel_32
+        LDD     R16, Z+18
+        LDD     R17, Z+19
+        RCALL   ?Subroutine8
+//  487       }
+??CrossCallReturnLabel_26:
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_32:
+        LDI     R30, SummUUResult
+        LDD     R16, Z+52
+        TST     R16
+        BREQ    ??CrossCallReturnLabel_32
+        LDI     R16, 0
+        STD     Z+52, R16
+        LDD     R16, Z+51
+        TST     R16
+        BREQ    ??main_3
+        WDR
+        LDI     R16, 0
+        STD     Z+51, R16
+        LDI     R20, 6
+        LD      R16, Z
+        LDD     R17, Z+1
+        LDD     R18, Z+2
+        LDD     R19, Z+3
+        RCALL   ?UL_SHR_L03
+        MOV     R20, R16
+        MOV     R21, R17
+        MOV     R22, R18
+        MOV     R23, R19
+        RCALL   ?Subroutine5
+??CrossCallReturnLabel_16:
+        LDI     R18, 0
+        LDI     R19, 0
+        RCALL   ?L_MUL_L03
+        LDI     R20, 10
+        RCALL   ?UL_SHR_L03
+        LDI     R30, SummUUResult
+        STD     Z+22, R16
+        STD     Z+23, R17
+??main_3:
+        RCALL   ??Subroutine15_0
+??CrossCallReturnLabel_50:
+        LDD     R24, Z+22
+        LDD     R25, Z+23
+        LDD     R18, Z+24
+        LDD     R19, Z+25
+        CP      R18, R24
+        CPC     R19, R25
+        BRCS    ??main_4
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_35:
+        BRCC    ??CrossCallReturnLabel_33
+        CPI     R24, 120
+        LDI     R18, 0
+        CPC     R25, R18
+        BRCC    ??CrossCallReturnLabel_33
+??main_4:
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_33:
+        RCALL   ?Subroutine11
+??CrossCallReturnLabel_36:
+        BRCC    ??main_5
+        CPI     R24, 120
+        LDI     R18, 0
+        CPC     R25, R18
+        BRCS    ??main_5
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_37:
+        OR      R18, R19
+        BREQ    ??main_6
+        LDI     R18, 0
+        STD     Z+55, R18
+??main_6:
+        LDD     R18, Z+55
+        TST     R18
+        BREQ    ??main_7
+        LDD     R18, Z+55
+        DEC     R18
+        RJMP    ??main_8
+??main_5:
+        LDI     R18, 200
+??main_8:
+        STD     Z+55, R18
+??main_7:
+        LDD     R18, Z+55
+        TST     R18
+        BRNE    ??CrossCallReturnLabel_34
+        RCALL   ?Subroutine10
+??CrossCallReturnLabel_34:
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_18:
+        BREQ    ??main_9
+        CBI     0x18, 0x03
+        RJMP    ??main_10
+??main_9:
+        SBI     0x18, 0x03
+??main_10:
+        RCALL   KeyboardThread
+        RCALL   ?Subroutine3
+??CrossCallReturnLabel_52:
+        LDD     R18, Z+56
+        CPI     R18, 4
+        BRNE    ??main_11
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_38:
+        CP      R18, R16
+        CPC     R19, R17
+        BREQ    ??main_12
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_39:
+        OR      R18, R19
+        BRNE    ??main_11
+??main_12:
+        LDI     R18, 1
+        STD     Z+56, R18
+??main_11:
+        LDD     R18, Z+56
+        CPI     R18, 1
+        BRNE    ??main_13
+        RCALL   ?Subroutine12
+??CrossCallReturnLabel_40:
+        RCALL   ?Subroutine8
+??CrossCallReturnLabel_27:
+        CP      R18, R16
+        CPC     R19, R17
+        BRNE    ??main_13
+        LDI     R16, 4
+        STD     Z+56, R16
+??main_13:
+        LDI     R30, (SummUUResult + 61) & 0xFF
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_29:
+        CPI     R16, 25
+        BRCC    $+2+2
+        RJMP    ??main_2
+        LDI     R16, 0
+        ST      Z, R16
+        LDI     R30, LOW((SummUUResult + 60))
+        LD      R16, Z
+        LSL     R16
+        LDI     R30, SummUUResult
+        ADD     R30, R16
+        STD     Z+32, R24
+        STD     Z+33, R25
+        LDI     R30, (SummUUResult + 60) & 0xFF
+        RCALL   ?Subroutine9
+??CrossCallReturnLabel_30:
+        CPI     R16, 8
+        BRCS    ??main_14
+        LDI     R16, 0
+        ST      Z, R16
+??main_14:
+        LDI     R16, 0
+        LDI     R30, SummUUResult
+        STD     Z+30, R16
+        STD     Z+31, R16
+??main_15:
+        MOV     R17, R16
+        LSL     R17
+        ADD     R30, R17
+        LDD     R18, Z+32
+        LDD     R19, Z+33
+        LDI     R30, SummUUResult
+        LDD     R20, Z+30
+        LDD     R21, Z+31
+        ADD     R20, R18
+        ADC     R21, R19
+        STD     Z+30, R20
+        STD     Z+31, R21
+        INC     R16
+        CPI     R16, 8
+        BRCS    ??main_15
+        MOV     R16, R20
+        MOV     R17, R21
+        LDI     R20, 3
+        RCALL   ?US_SHR_L02
+        STD     Z+30, R16
+        STD     Z+31, R17
+        RCALL   ?Subroutine6
+??CrossCallReturnLabel_19:
+        BRNE    $+2+2
+        RJMP    ??main_0
+        LDD     R16, Z+56
+        CPI     R16, 1
+        BREQ    $+2+2
+        RJMP    ??main_0
+        LDD     R16, Z+57
+        SUBI    R16, 128
+        RJMP    ??main_1
+        CFI EndBlock cfiBlock76
+        REQUIRE _A_PORTB
+        REQUIRE _A_ADCSR
+        REQUIRE _A_ADMUX
+//  488   }
+//  489   }
+//  490 }
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine12:
+        CFI Block cfiCond77 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_37
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiCond78 Using cfiCommon0
+        CFI (cfiCond78) NoFunction
+        CFI (cfiCond78) Conditional ??CrossCallReturnLabel_38
+        CFI (cfiCond78) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond78) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond78) CFA_R28 R28+2
+        CFI (cfiCond78) CFA_SP SP+4
+        CFI Block cfiCond79 Using cfiCommon0
+        CFI (cfiCond79) NoFunction
+        CFI (cfiCond79) Conditional ??CrossCallReturnLabel_39
+        CFI (cfiCond79) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond79) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond79) CFA_R28 R28+2
+        CFI (cfiCond79) CFA_SP SP+4
+        CFI Block cfiCond80 Using cfiCommon0
+        CFI (cfiCond80) NoFunction
+        CFI (cfiCond80) Conditional ??CrossCallReturnLabel_40
+        CFI (cfiCond80) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond80) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond80) CFA_R28 R28+2
+        CFI (cfiCond80) CFA_SP SP+4
+        CFI Block cfiPicker81 Using cfiCommon1
+        CFI (cfiPicker81) NoFunction
+        CFI (cfiPicker81) Picker
+        LDD     R18, Z+18
+        LDD     R19, Z+19
+        RET
+        CFI EndBlock cfiCond77
+        CFI EndBlock cfiCond78
+        CFI EndBlock cfiCond79
+        CFI EndBlock cfiCond80
+        CFI EndBlock cfiPicker81
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine11:
+        CFI Block cfiCond82 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_35
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiCond83 Using cfiCommon0
+        CFI (cfiCond83) NoFunction
+        CFI (cfiCond83) Conditional ??CrossCallReturnLabel_36
+        CFI (cfiCond83) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond83) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond83) CFA_R28 R28+2
+        CFI (cfiCond83) CFA_SP SP+4
+        CFI Block cfiPicker84 Using cfiCommon1
+        CFI (cfiPicker84) NoFunction
+        CFI (cfiPicker84) Picker
+        LDD     R18, Z+26
+        LDD     R19, Z+27
+        CP      R24, R18
+        CPC     R25, R19
+        RET
+        CFI EndBlock cfiCond82
+        CFI EndBlock cfiCond83
+        CFI EndBlock cfiPicker84
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine10:
+        CFI Block cfiCond85 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_31
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiCond86 Using cfiCommon0
+        CFI (cfiCond86) NoFunction
+        CFI (cfiCond86) Conditional ??CrossCallReturnLabel_32
+        CFI (cfiCond86) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond86) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond86) CFA_R28 R28+2
+        CFI (cfiCond86) CFA_SP SP+4
+        CFI Block cfiCond87 Using cfiCommon0
+        CFI (cfiCond87) NoFunction
+        CFI (cfiCond87) Conditional ??CrossCallReturnLabel_33
+        CFI (cfiCond87) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond87) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond87) CFA_R28 R28+2
+        CFI (cfiCond87) CFA_SP SP+4
+        CFI Block cfiCond88 Using cfiCommon0
+        CFI (cfiCond88) NoFunction
+        CFI (cfiCond88) Conditional ??CrossCallReturnLabel_34
+        CFI (cfiCond88) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond88) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond88) CFA_R28 R28+2
+        CFI (cfiCond88) CFA_SP SP+4
+        CFI Block cfiPicker89 Using cfiCommon1
+        CFI (cfiPicker89) NoFunction
+        CFI (cfiPicker89) Picker
+        STD     Z+18, R16
+        STD     Z+19, R17
+        RET
+        CFI EndBlock cfiCond85
+        CFI EndBlock cfiCond86
+        CFI EndBlock cfiCond87
+        CFI EndBlock cfiCond88
+        CFI EndBlock cfiPicker89
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine9:
+        CFI Block cfiCond90 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_28
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiCond91 Using cfiCommon0
+        CFI (cfiCond91) NoFunction
+        CFI (cfiCond91) Conditional ??CrossCallReturnLabel_29
+        CFI (cfiCond91) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond91) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond91) CFA_R28 R28+2
+        CFI (cfiCond91) CFA_SP SP+4
+        CFI Block cfiCond92 Using cfiCommon0
+        CFI (cfiCond92) NoFunction
+        CFI (cfiCond92) Conditional ??CrossCallReturnLabel_30
+        CFI (cfiCond92) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond92) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond92) CFA_R28 R28+2
+        CFI (cfiCond92) CFA_SP SP+4
+        CFI Block cfiPicker93 Using cfiCommon1
+        CFI (cfiPicker93) NoFunction
+        CFI (cfiPicker93) Picker
+        LD      R16, Z
+        INC     R16
+        ST      Z, R16
+        RET
+        CFI EndBlock cfiCond90
+        CFI EndBlock cfiCond91
+        CFI EndBlock cfiCond92
+        CFI EndBlock cfiPicker93
+
+        RSEG CODE:CODE:NOROOT(1)
+?Subroutine6:
+        CFI Block cfiCond94 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_17
+        CFI R24 Frame(CFA_R28, -2)
+        CFI R25 Frame(CFA_R28, -1)
+        CFI CFA_R28 R28+2
+        CFI CFA_SP SP+4
+        CFI Block cfiCond95 Using cfiCommon0
+        CFI (cfiCond95) NoFunction
+        CFI (cfiCond95) Conditional ??CrossCallReturnLabel_18
+        CFI (cfiCond95) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond95) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond95) CFA_R28 R28+2
+        CFI (cfiCond95) CFA_SP SP+4
+        CFI Block cfiCond96 Using cfiCommon0
+        CFI (cfiCond96) NoFunction
+        CFI (cfiCond96) Conditional ??CrossCallReturnLabel_19
+        CFI (cfiCond96) R24 Frame(CFA_R28, -2)
+        CFI (cfiCond96) R25 Frame(CFA_R28, -1)
+        CFI (cfiCond96) CFA_R28 R28+2
+        CFI (cfiCond96) CFA_SP SP+4
+        CFI Block cfiPicker97 Using cfiCommon1
+        CFI (cfiPicker97) NoFunction
+        CFI (cfiPicker97) Picker
+        LDD     R16, Z+18
+        LDD     R17, Z+19
+        OR      R16, R17
+        RET
+        CFI EndBlock cfiCond94
+        CFI EndBlock cfiCond95
+        CFI EndBlock cfiCond96
+        CFI EndBlock cfiPicker97
+
+        RSEG CODE:CODE:NOROOT(1)
+ResetSampler:
+        CFI Block cfiBlock98 Using cfiCommon0
+        CFI Function ResetSampler
+        LDI     R30, SummUUResult
+        LDI     R16, 0
+        STD     Z+4, R16
+        STD     Z+5, R16
+        STD     Z+6, R16
+        STD     Z+7, R16
+        STD     Z+58, R16
+        STD     Z+59, R16
+        LDI     R16, 1
+        STD     Z+51, R16
+        RET
+        CFI EndBlock cfiBlock98
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01cH
+__?EECR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01dH
+__?EEDR:
+
+        ASEGN ABSOLUTE:DATA:NOROOT,01eH
+__?EEARL:
+
+        COMMON INTVEC:CODE:ROOT(1)
+        ORG 10
+`??ADCSampleReady??INTVEC 10`:
+        RJMP    ADCSampleReady
+
+        RSEG TINY_ID:CODE:NOROOT(0)
+`?<Initializer for SummUUResult>`:
+        DC8 0, 0, 0, 0
+`?<Initializer for SummUU>`:
+        DC8 0, 0, 0, 0
+`?<Initializer for String>`:
+        DC8 0, 0, 0
+`?<Initializer for VideoBuffer>`:
+        DC8 0, 0, 0
+`?<Initializer for keypress>`:
+        DC8 0, 0
+`?<Initializer for KeyTimer>`:
+        DC8 0, 0
+`?<Initializer for ProtectTimerOnValue>`:
+        DC8 0, 0
+`?<Initializer for ProtectTimerOnMaxValue>`:
+        DC8 0, 0
+`?<Initializer for Voltage>`:
+        DC8 0, 0
+`?<Initializer for UpTreshold>`:
+        DC8 0, 0
+`?<Initializer for DownTreshold>`:
+        DC8 0, 0
+`?<Initializer for K1>`:
+        DC8 0, 0
+`?<Initializer for DisplayedVoltage>`:
+        DC8 0, 0
+`?<Initializer for SmoothVoltage>`:
+        DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+`?<Initializer for ArrayKathodes>`:
+        DC8 2, 1, 64
+`?<Initializer for ResultSummReady>`:
+        DC8 0
+`?<Initializer for SlowTimerFlag>`:
+        DC8 0
+`?<Initializer for SlowTimerPrescaler>`:
+        DC8 0
+`?<Initializer for cycle_count>`:
+        DC8 0
+`?<Initializer for ProtectTimerOffValue>`:
+        DC8 0
+`?<Initializer for DisplayMode>`:
+        DC8 1
+`?<Initializer for EnableDisplay>`:
+        DC8 128
+`?<Initializer for PlusSamplesCounter>`:
+        DC8 0
+`?<Initializer for ZeroSamplesCounter>`:
+        DC8 0
+`?<Initializer for SmoothVoltageCurrentPosition`:
+        DC8 0
+`?<Initializer for QuarterSecPrescaler>`:
+        DC8 0
+`?<Initializer for SecPrescaler>`:
+        DC8 0
+
+        RSEG INITTAB:CODE:NOROOT(0)
+`?<Segment init: TINY_I>`:
+        DC8     SFE(TINY_I) - SFB(TINY_I)
+        DC8     SFB(TINY_I)
+        DC16    SFB(TINY_ID)
+        REQUIRE ?need_segment_init
+
+        RSEG TINY_ID:CODE:NOROOT(0)
+`?<Initializer for segmentsDec>`:
+        DC8 100, 10, 1
+
+        END
+// 
+//    13 bytes in segment ABSOLUTE
+// 1 682 bytes in segment CODE
+//     8 bytes in segment EEPROM_I
+//     4 bytes in segment INITTAB
+//     2 bytes in segment INTVEC
+//    21 bytes in segment NEAR_F
+//    66 bytes in segment TINY_I
+//    66 bytes in segment TINY_ID
+// 
+// 1 747 bytes of CODE  memory (+ 28 bytes shared)
+//    66 bytes of DATA  memory (+ 13 bytes shared)
+//     8 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

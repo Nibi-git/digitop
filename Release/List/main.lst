@@ -1,0 +1,2013 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V5.30.0.50166/W32 for Atmel AVR    19/Dec/2014  23:07:04 #
+# Copyright 1996-2009 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\main.c                 #
+#    Command line =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\main.c --cpu=tiny26    #
+#                    -mt -o d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Obj\    #
+#                    -D NDEBUG -lC d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\ #
+#                    List\ -lA d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\List #
+#                    \ --initializers_in_flash -z9 --cross_call_passes=2      #
+#                    -DENABLE_BIT_DEFINITIONS -e -I "C:\Program Files\IAR     #
+#                    Systems\Embedded Workbench 5.3\avr\INC\" -I "C:\Program  #
+#                    Files\IAR Systems\Embedded Workbench 5.3\avr\INC\CLIB\"  #
+#                    --eeprom_size 128                                        #
+#    List file    =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\List\main.lst  #
+#    Object file  =  d:\WORK\AVR_C_IAR\DigiTOP\.stable\Release\Obj\main.r90   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+d:\WORK\AVR_C_IAR\DigiTOP\.stable\main.c
+      1          //программа для устройства защиты бытовой техники от превышения напряжения в сети
+      2          //на основе Tiny26
+      3          
+      4          #include <ioavr.h>
+
+   \                                 In  segment ABSOLUTE, at 0x24
+   \   <__C4> volatile __io _A_ADC
+   \                     _A_ADC:
+   \   00000000                      DS8 2
+
+   \                                 In  segment ABSOLUTE, at 0x26
+   \   <__C6> volatile __io _A_ADCSR
+   \                     _A_ADCSR:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x27
+   \   <__C8> volatile __io _A_ADMUX
+   \                     _A_ADMUX:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x36
+   \   <__C18> volatile __io _A_PINB
+   \                     _A_PINB:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x37
+   \   <__C20> volatile __io _A_DDRB
+   \                     _A_DDRB:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x38
+   \   <__C22> volatile __io _A_PORTB
+   \                     _A_PORTB:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x3a
+   \   <__C26> volatile __io _A_DDRA
+   \                     _A_DDRA:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x3b
+   \   <__C28> volatile __io _A_PORTA
+   \                     _A_PORTA:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x41
+   \   <__C36> volatile __io _A_WDTCR
+   \                     _A_WDTCR:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x4e
+   \   <__C46> volatile __io _A_TCNT1
+   \                     _A_TCNT1:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x4f
+   \   <__C48> volatile __io _A_TCCR1B
+   \                     _A_TCCR1B:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x59
+   \   <__C64> volatile __io _A_TIMSK
+   \                     _A_TIMSK:
+   \   00000000                      DS8 1
+      5          #include <intrinsics.h>
+      6          #include "hardware.h"
+      7          #include "segments.h"
+
+   \                                 In  segment NEAR_F, align 1, keep-with-next
+   \   unsigned char __flash led_digits[21]
+   \                     led_digits:
+   \   00000000   A0AFB99D3BB2       DC8 175, 160, 157, 185, 178, 59, 63, 161, 191, 187, 183, 62, 31, 188
+   \              A13FBBBF3EB7
+   \              BC1F        
+   \   0000000E   171F01401008       DC8 31, 23, 64, 1, 8, 16, 54
+   \              36          
+      8          
+
+   \                                 In  segment EEPROM_I, align 1, keep-with-next
+      9          __eeprom unsigned int UpTresholdEEPROM, DownTresholdEEPROM, K1EEPROM, ProtectTimerOnMaxValueEEPROM;
+   \                     UpTresholdEEPROM:
+   \   00000000   0000               DC8 0, 0
+   \                     DownTresholdEEPROM:
+   \   00000002   0000               DC8 0, 0
+   \                     K1EEPROM:
+   \   00000004   0000               DC8 0, 0
+   \                     ProtectTimerOnMaxValueEEPROM:
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In  segment TINY_I, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: TINY_I>`
+     10          
+     11          unsigned char segmentsDec[3]={100,10,1}; 
+     12          volatile unsigned char ResultSummReady;
+     13          volatile unsigned char SlowTimerFlag;
+     14          unsigned char SlowTimerPrescaler;
+     15          unsigned char String[3];
+     16          unsigned char cycle_count;
+     17          volatile unsigned char VideoBuffer[3];
+     18          unsigned char keypress[2];
+     19          unsigned int KeyTimer;
+     20          volatile unsigned int ProtectTimerOnValue;
+     21          unsigned int ProtectTimerOnMaxValue;
+     22          
+     23          volatile unsigned char ProtectTimerOffValue;
+     24          
+     25          unsigned int Voltage;
+     26          volatile unsigned int UpTreshold, DownTreshold; //volatile 
+     27          unsigned int K1; //volatile 
+     28          unsigned int DisplayedVoltage;
+     29          volatile unsigned char DisplayMode = RealtimeVoltage, EnableDisplay = HALF_BYTE_CONST; // небольшая экономия кода
+     30          
+     31          #ifdef METHOD_PEAK 
+     32          volatile unsigned int PeakResult;
+     33          unsigned int Peak; // внутреннее значение
+     34          #endif
+     35          
+     36          #ifdef METHOD_DIRECT_SHOW 
+     37          volatile unsigned int PeakResult;
+     38          #endif
+     39          
+     40          volatile unsigned char PlusSamplesCounter, ZeroSamplesCounter;
+     41          volatile unsigned long SummUUResult;
+   \                     SummUUResult:
+   \   00000000                      DS8 4
+   \   00000004                      REQUIRE `?<Initializer for SummUUResult>`
+     42          unsigned long SummUU; // внутреннее значение
+   \                     SummUU:
+   \   00000004                      DS8 4
+   \   00000008                      REQUIRE `?<Initializer for SummUU>`
+   \                     String:
+   \   00000008                      DS8 3
+   \   0000000B                      REQUIRE `?<Initializer for String>`
+   \                     VideoBuffer:
+   \   0000000B                      DS8 3
+   \   0000000E                      REQUIRE `?<Initializer for VideoBuffer>`
+   \                     keypress:
+   \   0000000E                      DS8 2
+   \   00000010                      REQUIRE `?<Initializer for keypress>`
+   \                     KeyTimer:
+   \   00000010                      DS8 2
+   \   00000012                      REQUIRE `?<Initializer for KeyTimer>`
+   \                     ProtectTimerOnValue:
+   \   00000012                      DS8 2
+   \   00000014                      REQUIRE `?<Initializer for ProtectTimerOnValue>`
+   \                     ProtectTimerOnMaxValue:
+   \   00000014                      DS8 2
+   \   00000016                      REQUIRE `?<Initializer for ProtectTimerOnMaxValue>`
+   \                     Voltage:
+   \   00000016                      DS8 2
+   \   00000018                      REQUIRE `?<Initializer for Voltage>`
+   \                     UpTreshold:
+   \   00000018                      DS8 2
+   \   0000001A                      REQUIRE `?<Initializer for UpTreshold>`
+   \                     DownTreshold:
+   \   0000001A                      DS8 2
+   \   0000001C                      REQUIRE `?<Initializer for DownTreshold>`
+   \                     K1:
+   \   0000001C                      DS8 2
+   \   0000001E                      REQUIRE `?<Initializer for K1>`
+   \                     DisplayedVoltage:
+   \   0000001E                      DS8 2
+   \   00000020                      REQUIRE `?<Initializer for DisplayedVoltage>`
+     43          
+     44          #ifdef SMOOTH_MEASURE
+     45          unsigned int SmoothVoltage[SmoothBufferSize]; // буфер для сглаживания индикации
+   \                     SmoothVoltage:
+   \   00000020                      DS8 16
+   \   00000030                      REQUIRE `?<Initializer for SmoothVoltage>`
+   \   unsigned char __tiny ArrayKathodes[3]
+   \                     ArrayKathodes:
+   \   00000030                      DS8 3
+   \   00000033                      REQUIRE `?<Initializer for ArrayKathodes>`
+   \                     ResultSummReady:
+   \   00000033                      DS8 1
+   \   00000034                      REQUIRE `?<Initializer for ResultSummReady>`
+   \                     SlowTimerFlag:
+   \   00000034                      DS8 1
+   \   00000035                      REQUIRE `?<Initializer for SlowTimerFlag>`
+   \                     SlowTimerPrescaler:
+   \   00000035                      DS8 1
+   \   00000036                      REQUIRE `?<Initializer for SlowTimerPrescaler>`
+   \                     cycle_count:
+   \   00000036                      DS8 1
+   \   00000037                      REQUIRE `?<Initializer for cycle_count>`
+   \                     ProtectTimerOffValue:
+   \   00000037                      DS8 1
+   \   00000038                      REQUIRE `?<Initializer for ProtectTimerOffValue>`
+   \                     DisplayMode:
+   \   00000038                      DS8 1
+   \   00000039                      REQUIRE `?<Initializer for DisplayMode>`
+   \                     EnableDisplay:
+   \   00000039                      DS8 1
+   \   0000003A                      REQUIRE `?<Initializer for EnableDisplay>`
+   \                     PlusSamplesCounter:
+   \   0000003A                      DS8 1
+   \   0000003B                      REQUIRE `?<Initializer for PlusSamplesCounter>`
+   \                     ZeroSamplesCounter:
+   \   0000003B                      DS8 1
+   \   0000003C                      REQUIRE `?<Initializer for ZeroSamplesCounter>`
+     46          unsigned char SmoothVoltageCurrentPosition; // указатель - куда сейчас пишем
+   \                     SmoothVoltageCurrentPosition:
+   \   0000003C                      DS8 1
+   \   0000003D                      REQUIRE `?<Initializer for SmoothVoltageCurrentPosition`
+     47          #endif
+     48          
+     49          unsigned char QuarterSecPrescaler, SecPrescaler;
+   \                     QuarterSecPrescaler:
+   \   0000003D                      DS8 1
+   \   0000003E                      REQUIRE `?<Initializer for QuarterSecPrescaler>`
+   \                     SecPrescaler:
+   \   0000003E                      DS8 1
+   \   0000003F                      REQUIRE `?<Initializer for SecPrescaler>`
+
+   \                                 In  segment TINY_I, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: TINY_I>`
+   \                     segmentsDec:
+   \   00000000                      DS8 3
+   \   00000003                      REQUIRE `?<Initializer for segmentsDec>`
+     50          
+     51          #ifdef METHOD_DIRECT_SHOW
+     52          volatile unsigned char MaxSampleNum;
+     53          #endif
+     54          
+     55          #ifdef RELAY_TEST  
+     56          unsigned char RelayTestCounter;  
+     57          #endif
+     58            
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     59          void __watchdog_init (void)
+   \                     __watchdog_init:
+     60          {
+     61          //запускаю сторожевой таймер на 2 секунды
+     62          __watchdog_reset ();
+   \   00000000   95A8               WDR
+     63          WDTCR |= ((1<<WDCE)|(1<<WDE));
+   \   00000002   B501               IN      R16, 0x21
+   \   00000004   6108               ORI     R16, 0x18
+   \   00000006   BD01               OUT     0x21, R16
+     64          WDTCR = (1<<WDE)|(7<<WDP0);
+   \   00000008   E00F               LDI     R16, 15
+   \   0000000A   BD01               OUT     0x21, R16
+     65          __watchdog_reset ();
+   \   0000000C   95A8               WDR
+     66          }
+   \   0000000E   9508               RET
+   \   00000010                      REQUIRE _A_WDTCR
+     67          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     68          void CharToStringDec(signed int inp) // обрезанная до сотен
+   \                     CharToStringDec:
+     69          {
+   \   00000000   2E0A               MOV     R0, R26
+     70          unsigned char i;
+     71          if (inp > 999) inp = 999;
+   \   00000002   3E08               CPI     R16, 232
+   \   00000004   E023               LDI     R18, 3
+   \   00000006   0712               CPC     R17, R18
+   \   00000008   F014               BRLT    ??CharToStringDec_0
+   \   0000000A   EE07               LDI     R16, 231
+   \   0000000C   E013               LDI     R17, 3
+     72          String[0]=String[1]=String[2]=0;
+   \                     ??CharToStringDec_0:
+   \   0000000E   ....               LDI     R30, SummUUResult
+   \   00000010   E020               LDI     R18, 0
+   \   00000012   8722               STD     Z+10, R18
+   \   00000014   8721               STD     Z+9, R18
+   \   00000016   8720               STD     Z+8, R18
+     73          // перевод
+     74          for(i=0;i<3;)
+   \   00000018   E040               LDI     R20, 0
+   \   0000001A   C008               RJMP    ??CharToStringDec_1
+     75            {
+     76            if((inp-segmentsDec[i])>=0)
+     77              {
+     78              inp-=segmentsDec[i];
+   \                     ??CharToStringDec_2:
+   \   0000001C   1B06               SUB     R16, R22
+   \   0000001E   4010               SBCI    R17, 0
+     79              String[i]++;
+   \   00000020   ....               LDI     R26, SummUUResult
+   \   00000022   0FA4               ADD     R26, R20
+   \   00000024   5FA8               SUBI    R26, 248
+   \   00000026   912C               LD      R18, X
+   \   00000028   9523               INC     R18
+   \   0000002A   932C               ST      X, R18
+     80              }
+   \                     ??CharToStringDec_1:
+   \   0000002C   2FA4               MOV     R26, R20
+   \   0000002E   ....               SUBI    R26, (-(segmentsDec) & 0xFF)
+   \   00000030   916C               LD      R22, X
+   \   00000032   2F20               MOV     R18, R16
+   \   00000034   2F31               MOV     R19, R17
+   \   00000036   1B26               SUB     R18, R22
+   \   00000038   4030               SBCI    R19, 0
+   \   0000003A   F782               BRPL    ??CharToStringDec_2
+     81              else i++;
+   \   0000003C   9543               INC     R20
+     82            }
+   \   0000003E   3043               CPI     R20, 3
+   \   00000040   F3A8               BRCS    ??CharToStringDec_1
+     83          }
+   \   00000042   2DA0               MOV     R26, R0
+   \   00000044   9508               RET
+     84          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     85          void InitPorts (void)
+   \                     InitPorts:
+     86          {
+     87          PortButton |= (1<<Button_DN)|(1<<Button_UP); // подтягивающие резисторы
+   \   00000000   B308               IN      R16, 0x18
+   \   00000002   6204               ORI     R16, 0x24
+   \   00000004   BB08               OUT     0x18, R16
+     88          
+     89          PortAnodeDir |= ((1<<SEG_A)|(1<<SEG_B)|(1<<SEG_C)|(1<<SEG_D)|(1<<SEG_E)|(1<<SEG_F)|(1<<SEG_G)|(1<<SEG_DP));
+   \   00000006   B30A               IN      R16, 0x1A
+   \   00000008   EF0F               LDI     R16, 255
+   \   0000000A   BB0A               OUT     0x1A, R16
+     90          PortKathodeAndRelayDir |= ((1<<Kathode_1) | (1<<Kathode_2) | (1<<Kathode_3)|(1<<Relay));
+   \   0000000C   B307               IN      R16, 0x17
+   \   0000000E   640B               ORI     R16, 0x4B
+   \   00000010   BB07               OUT     0x17, R16
+     91          }
+   \   00000012   9508               RET
+   \   00000014                      REQUIRE _A_DDRB
+   \   00000014                      REQUIRE _A_PORTB
+   \   00000014                      REQUIRE _A_DDRA
+     92          
+     93          void InitADC (void)
+   \                     InitADC:
+     94          {
+     95          ADMUX = ((2<<REFS0)|(InADC<< MUX0));
+   \   00000000                      REQUIRE ?Subroutine2
+   \   00000000                      REQUIRE _A_ADCSR
+   \   00000000                      REQUIRE _A_ADMUX
+   \   00000000                      ;               // Fall through to label ?Subroutine2
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine2:
+   \   00000000   E807               LDI     R16, 135
+   \   00000002   B907               OUT     0x07, R16
+   \   00000004   E805               LDI     R16, 133
+   \   00000006   B906               OUT     0x06, R16
+   \   00000008   9508               RET
+     96          ADCSR = ((1 << ADEN)|(5 << ADPS0)|(0<<ADFR)|(0<<ADSC)|(0<<ADIE)); 
+     97          }
+     98          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     99          void InitTimers (void)
+   \                     InitTimers:
+    100          {
+    101          TCCR1B |= (4<<CS10);//4-ck/8
+   \   00000000   B50F               IN      R16, 0x2F
+   \   00000002   6004               ORI     R16, 0x04
+   \   00000004   BD0F               OUT     0x2F, R16
+    102          TIMSK |= (1<<TOIE1);
+   \   00000006   B709               IN      R16, 0x39
+   \   00000008   6004               ORI     R16, 0x04
+   \   0000000A   BF09               OUT     0x39, R16
+    103          }
+   \   0000000C   9508               RET
+   \   0000000E                      REQUIRE _A_TCCR1B
+   \   0000000E                      REQUIRE _A_TIMSK
+    104          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    105          void SaveSettings (void)
+   \                     SaveSettings:
+    106          {
+   \   00000000   ....               RCALL   ?Subroutine1
+   \                     ??CrossCallReturnLabel_57:
+   \   00000002   ....               LDI     R20, UpTresholdEEPROM
+   \   00000004   ....               RCALL   __eeput16_8
+    107          UpTresholdEEPROM = UpTreshold;
+    108          DownTresholdEEPROM = DownTreshold;
+   \   00000006   ....               RCALL   ?Subroutine4
+   \                     ??CrossCallReturnLabel_5:
+   \   00000008   ....               LDI     R20, LOW((UpTresholdEEPROM + 2))
+   \   0000000A   ....               RCALL   __eeput16_8
+    109          ProtectTimerOnMaxValueEEPROM = ProtectTimerOnMaxValue;
+   \   0000000C   ....               RCALL   ??Subroutine15_0
+   \                     ??CrossCallReturnLabel_45:
+   \   0000000E   ....               LDI     R20, LOW((UpTresholdEEPROM + 6))
+   \   00000010   ....               RCALL   __eeput16_8
+    110          K1EEPROM = K1;
+   \   00000012   ....               RCALL   ?Subroutine5
+   \                     ??CrossCallReturnLabel_11:
+   \   00000014   ....               LDI     R20, LOW((UpTresholdEEPROM + 4))
+   \   00000016   ....               RJMP    __eeput16_8
+    111          }
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine5:
+   \   00000000   8D04               LDD     R16, Z+28
+   \   00000002   8D15               LDD     R17, Z+29
+   \   00000004   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine4:
+   \   00000000   8D02               LDD     R16, Z+26
+   \   00000002   8D13               LDD     R17, Z+27
+   \   00000004   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ??Subroutine15_0:
+   \   00000000   8904               LDD     R16, Z+20
+   \   00000002   8915               LDD     R17, Z+21
+   \   00000004   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine1:
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002                      REQUIRE ??Subroutine16_0
+   \   00000002                      ;               // Fall through to label ??Subroutine16_0
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ??Subroutine16_0:
+   \   00000000   8D00               LDD     R16, Z+24
+   \   00000002   8D11               LDD     R17, Z+25
+   \   00000004   9508               RET
+    112          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    113          void CheckAllSettings (void)
+   \                     CheckAllSettings:
+    114          {
+    115          if (UpTreshold > UP_TRESHOLD_MAX) UpTreshold = UP_TRESHOLD_MAX;
+   \   00000000   ....               RCALL   ?Subroutine1
+   \                     ??CrossCallReturnLabel_58:
+   \   00000002   3203               CPI     R16, 35
+   \   00000004   E021               LDI     R18, 1
+   \   00000006   4011               SBCI    R17, 1
+   \   00000008   F018               BRCS    ??CheckAllSettings_0
+   \   0000000A   E202               LDI     R16, 34
+   \   0000000C   8F00               STD     Z+24, R16
+   \   0000000E   8F21               STD     Z+25, R18
+    116          if (UpTreshold < UP_TRESHOLD_MIN) UpTreshold = UP_TRESHOLD_MIN;
+   \                     ??CheckAllSettings_0:
+   \   00000010   ....               RCALL   ??Subroutine16_0
+   \                     ??CrossCallReturnLabel_53:
+   \   00000012   3D02               CPI     R16, 210
+   \   00000014   E020               LDI     R18, 0
+   \   00000016   4010               SBCI    R17, 0
+   \   00000018   F418               BRCC    ??CheckAllSettings_1
+   \   0000001A   ED02               LDI     R16, 210
+   \   0000001C   8F00               STD     Z+24, R16
+   \   0000001E   8F21               STD     Z+25, R18
+    117          
+    118          if (DownTreshold > DOWN_TRESHOLD_MAX) DownTreshold = DOWN_TRESHOLD_MAX;
+   \                     ??CheckAllSettings_1:
+   \   00000020   ....               RCALL   ?Subroutine4
+   \                     ??CrossCallReturnLabel_6:
+   \   00000022   3C09               CPI     R16, 201
+   \   00000024   4010               SBCI    R17, 0
+   \   00000026   F018               BRCS    ??CheckAllSettings_2
+   \   00000028   EC08               LDI     R16, 200
+   \   0000002A   8F02               STD     Z+26, R16
+   \   0000002C   8F23               STD     Z+27, R18
+    119          if (DownTreshold < DOWN_TRESHOLD_MIN) DownTreshold = DOWN_TRESHOLD_MIN;
+   \                     ??CheckAllSettings_2:
+   \   0000002E   ....               RCALL   ?Subroutine4
+   \                     ??CrossCallReturnLabel_7:
+   \   00000030   380C               CPI     R16, 140
+   \   00000032   4010               SBCI    R17, 0
+   \   00000034   F418               BRCC    ??CheckAllSettings_3
+   \   00000036   E80C               LDI     R16, 140
+   \   00000038   8F02               STD     Z+26, R16
+   \   0000003A   8F23               STD     Z+27, R18
+    120          
+    121          if (ProtectTimerOnMaxValue > PROTECT_TIMER_ON_MAX) ProtectTimerOnMaxValue = PROTECT_TIMER_ON_MAX;
+   \                     ??CheckAllSettings_3:
+   \   0000003C   ....               RCALL   ??Subroutine15_0
+   \                     ??CrossCallReturnLabel_46:
+   \   0000003E   3E04               CPI     R16, 228
+   \   00000040   E023               LDI     R18, 3
+   \   00000042   0712               CPC     R17, R18
+   \   00000044   F010               BRCS    ??CheckAllSettings_4
+   \   00000046   EE03               LDI     R16, 227
+   \   00000048   C005               RJMP    ??CheckAllSettings_5
+    122          if (ProtectTimerOnMaxValue < PROTECT_TIMER_ON_MIN) ProtectTimerOnMaxValue = PROTECT_TIMER_ON_MIN;
+   \                     ??CheckAllSettings_4:
+   \   0000004A   3005               CPI     R16, 5
+   \   0000004C   E020               LDI     R18, 0
+   \   0000004E   4010               SBCI    R17, 0
+   \   00000050   F418               BRCC    ??CheckAllSettings_6
+   \   00000052   E005               LDI     R16, 5
+   \                     ??CheckAllSettings_5:
+   \   00000054   8B04               STD     Z+20, R16
+   \   00000056   8B25               STD     Z+21, R18
+    123          
+    124          if (K1 > K1_MAX) K1 = K1_MAX;
+   \                     ??CheckAllSettings_6:
+   \   00000058   ....               RCALL   ?Subroutine5
+   \                     ??CrossCallReturnLabel_12:
+   \   0000005A   3E08               CPI     R16, 232
+   \   0000005C   E023               LDI     R18, 3
+   \   0000005E   0712               CPC     R17, R18
+   \   00000060   F020               BRCS    ??CheckAllSettings_7
+   \   00000062   EE07               LDI     R16, 231
+   \   00000064   8F04               STD     Z+28, R16
+   \   00000066   8F25               STD     Z+29, R18
+   \   00000068   9508               RET
+    125          if (K1 < K1_MIN) K1 = K1_MIN;
+   \                     ??CheckAllSettings_7:
+   \   0000006A   2B01               OR      R16, R17
+   \   0000006C   F421               BRNE    ??CheckAllSettings_8
+   \   0000006E   E001               LDI     R16, 1
+   \   00000070   E010               LDI     R17, 0
+   \   00000072   8F04               STD     Z+28, R16
+   \   00000074   8F15               STD     Z+29, R17
+    126          }
+   \                     ??CheckAllSettings_8:
+   \   00000076   9508               RET
+    127          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    128          void LoadSettings (void)
+   \                     LoadSettings:
+    129          {
+    130          UpTreshold = UpTresholdEEPROM;
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002   ....               LDI     R20, UpTresholdEEPROM
+   \   00000004   ....               RCALL   __eeget16_8
+   \   00000006   8F00               STD     Z+24, R16
+   \   00000008   8F11               STD     Z+25, R17
+    131          DownTreshold = DownTresholdEEPROM;
+   \   0000000A   ....               LDI     R20, LOW((UpTresholdEEPROM + 2))
+   \   0000000C   ....               RCALL   __eeget16_8
+   \   0000000E   8F02               STD     Z+26, R16
+   \   00000010   8F13               STD     Z+27, R17
+    132          ProtectTimerOnMaxValue = ProtectTimerOnMaxValueEEPROM;
+   \   00000012   ....               LDI     R20, LOW((UpTresholdEEPROM + 6))
+   \   00000014   ....               RCALL   __eeget16_8
+   \   00000016   8B04               STD     Z+20, R16
+   \   00000018   8B15               STD     Z+21, R17
+    133          K1 = K1EEPROM; 
+   \   0000001A   ....               LDI     R20, LOW((UpTresholdEEPROM + 4))
+   \   0000001C   ....               RCALL   __eeget16_8
+   \   0000001E                      REQUIRE ?Subroutine14
+   \   0000001E                      ;               // Fall through to label ?Subroutine14
+    134          CheckAllSettings ();
+    135          }
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine14:
+   \   00000000   8F04               STD     Z+28, R16
+   \   00000002   8F15               STD     Z+29, R17
+   \   00000004   ....               RJMP    CheckAllSettings
+    136          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    137          void UpdateLedScreen (void)
+   \                     UpdateLedScreen:
+    138          {
+    139          switch (DisplayMode)
+   \   00000000   ....               RCALL   ?Subroutine0
+   \                     ??CrossCallReturnLabel_0:
+   \   00000002   F079               BREQ    ??UpdateLedScreen_0
+   \   00000004   950A               DEC     R16
+   \   00000006   F081               BREQ    ??UpdateLedScreen_1
+   \   00000008   950A               DEC     R16
+   \   0000000A   F081               BREQ    ??UpdateLedScreen_2
+   \   0000000C   950A               DEC     R16
+   \   0000000E   F0A1               BREQ    ??UpdateLedScreen_3
+   \   00000010   520E               SUBI    R16, 46
+   \   00000012   F051               BREQ    ??UpdateLedScreen_1
+   \   00000014   950A               DEC     R16
+   \   00000016   F051               BREQ    ??UpdateLedScreen_2
+   \   00000018   950A               DEC     R16
+   \   0000001A   F051               BREQ    ??UpdateLedScreen_4
+   \   0000001C   950A               DEC     R16
+   \   0000001E   F051               BREQ    ??UpdateLedScreen_5
+   \   00000020   C00E               RJMP    ??UpdateLedScreen_6
+    140            {
+    141            case RealtimeVoltage:     CharToStringDec(DisplayedVoltage);      break;
+   \                     ??UpdateLedScreen_0:
+   \   00000022   8D06               LDD     R16, Z+30
+   \   00000024   8D17               LDD     R17, Z+31
+   \   00000026   C00A               RJMP    ??UpdateLedScreen_7
+    142            case UpTresholdVoltage:   CharToStringDec(UpTreshold);            break;
+   \                     ??UpdateLedScreen_1:
+   \   00000028   ....               RCALL   ??Subroutine16_0
+   \                     ??CrossCallReturnLabel_54:
+   \   0000002A   C008               RJMP    ??UpdateLedScreen_7
+    143            case DownTresholdVoltage: CharToStringDec(DownTreshold);          break;
+   \                     ??UpdateLedScreen_2:
+   \   0000002C   ....               RCALL   ?Subroutine4
+   \                     ??CrossCallReturnLabel_8:
+   \   0000002E   C006               RJMP    ??UpdateLedScreen_7
+    144            case UpTresholdTune:      CharToStringDec(UpTreshold);            break;
+    145            case DownTresholdTune:    CharToStringDec(DownTreshold);          break;
+    146            case ProtectTimerTune:    CharToStringDec(ProtectTimerOnMaxValue);  break;
+   \                     ??UpdateLedScreen_4:
+   \   00000030   ....               RCALL   ??Subroutine15_0
+   \                     ??CrossCallReturnLabel_47:
+   \   00000032   C004               RJMP    ??UpdateLedScreen_7
+    147            case K1Tune:              CharToStringDec(K1);                    break;
+   \                     ??UpdateLedScreen_5:
+   \   00000034   ....               RCALL   ?Subroutine5
+   \                     ??CrossCallReturnLabel_13:
+   \   00000036   C002               RJMP    ??UpdateLedScreen_7
+    148            case ProtectTimer:        CharToStringDec(ProtectTimerOnValue);     break;
+   \                     ??UpdateLedScreen_3:
+   \   00000038   8902               LDD     R16, Z+18
+   \   0000003A   8913               LDD     R17, Z+19
+   \                     ??UpdateLedScreen_7:
+   \   0000003C   ....               RCALL   CharToStringDec
+    149            }
+    150          
+    151          if (EnableDisplay)
+   \                     ??UpdateLedScreen_6:
+   \   0000003E   ....               LDI     R30, SummUUResult
+   \   00000040   AD01               LDD     R16, Z+57
+   \   00000042   2300               TST     R16
+   \   00000044   F0C9               BREQ    ??UpdateLedScreen_8
+    152            {
+    153            for (unsigned char i=0; i<3; i++) {VideoBuffer[i] = led_digits[String[i]];}
+   \   00000046   E010               LDI     R17, 0
+   \                     ??UpdateLedScreen_9:
+   \   00000048   ....               LDI     R16, SummUUResult
+   \   0000004A   0F01               ADD     R16, R17
+   \   0000004C   2FE0               MOV     R30, R16
+   \   0000004E   85E0               LDD     R30, Z+8
+   \   00000050   E0F0               LDI     R31, 0
+   \   00000052   ....               SUBI    R30, LOW((-(led_digits) & 0xFFFF))
+   \   00000054   ....               SBCI    R31, (-(led_digits) & 0xFFFF) >> 8
+   \   00000056   95C8               LPM
+   \   00000058   2FE0               MOV     R30, R16
+   \   0000005A   8603               STD     Z+11, R0
+   \   0000005C   9513               INC     R17
+   \   0000005E   3013               CPI     R17, 3
+   \   00000060   F398               BRCS    ??UpdateLedScreen_9
+    154            if (DisplayMode >= UpTresholdTune)    {    VideoBuffer[2] |= led_digits[0x10];    }
+   \   00000062   ....               RCALL   ?Subroutine13
+   \                     ??CrossCallReturnLabel_41:
+   \   00000064   3302               CPI     R16, 50
+   \   00000066   F060               BRCS    ??UpdateLedScreen_10
+   \   00000068   ....               LDI     R30, LOW((led_digits + 16))
+   \   0000006A   ....               LDI     R31, HIGH((led_digits + 16))
+   \   0000006C   95C8               LPM
+   \   0000006E   ....               LDI     R30, SummUUResult
+   \   00000070   8515               LDD     R17, Z+13
+   \   00000072   2910               OR      R17, R0
+   \   00000074   8715               STD     Z+13, R17
+   \   00000076   9508               RET
+    155            }
+    156            else
+    157              {
+    158              VideoBuffer[0] = 0;
+   \                     ??UpdateLedScreen_8:
+   \   00000078   E000               LDI     R16, 0
+   \   0000007A   8703               STD     Z+11, R16
+    159              VideoBuffer[1] = 0;
+   \   0000007C   8704               STD     Z+12, R16
+    160              VideoBuffer[2] = 0;
+   \   0000007E   8705               STD     Z+13, R16
+    161              }
+    162          }
+   \                     ??UpdateLedScreen_10:
+   \   00000080   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine13:
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002   AD00               LDD     R16, Z+56
+   \   00000004   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine0:
+   \   00000000   ....               RCALL   ?Subroutine13
+   \                     ??CrossCallReturnLabel_44:
+   \   00000002   950A               DEC     R16
+   \   00000004   9508               RET
+    163          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    164          inline void ResetSampler (void) // экономим время на вызов функции
+   \                     ResetSampler:
+    165          {
+    166          SummUU = 0;
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002   E000               LDI     R16, 0
+   \   00000004   8304               STD     Z+4, R16
+   \   00000006   8305               STD     Z+5, R16
+   \   00000008   8306               STD     Z+6, R16
+   \   0000000A   8307               STD     Z+7, R16
+    167          PlusSamplesCounter = 0;
+   \   0000000C   AF02               STD     Z+58, R16
+    168          ZeroSamplesCounter = 0;
+   \   0000000E   AF03               STD     Z+59, R16
+    169          ResultSummReady = 1;
+   \   00000010   E001               LDI     R16, 1
+   \   00000012   AB03               STD     Z+51, R16
+    170          }
+   \   00000014   9508               RET
+    171          
+    172          #pragma vector = TIMER1_OVF1_vect 
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    173          __interrupt void ADCSampleReady (void)
+   \                     ADCSampleReady:
+    174          {
+   \   00000000   938A               ST      -Y, R24
+   \   00000002   93FA               ST      -Y, R31
+   \   00000004   93EA               ST      -Y, R30
+   \   00000006   923A               ST      -Y, R3
+   \   00000008   922A               ST      -Y, R2
+   \   0000000A   921A               ST      -Y, R1
+   \   0000000C   920A               ST      -Y, R0
+   \   0000000E   937A               ST      -Y, R23
+   \   00000010   936A               ST      -Y, R22
+   \   00000012   935A               ST      -Y, R21
+   \   00000014   934A               ST      -Y, R20
+   \   00000016   933A               ST      -Y, R19
+   \   00000018   932A               ST      -Y, R18
+   \   0000001A   931A               ST      -Y, R17
+   \   0000001C   930A               ST      -Y, R16
+   \   0000001E   B78F               IN      R24, 0x3F
+    175          TCNT1 = T1_RELOAD; // перезагрузить таймер
+   \   00000020   EB05               LDI     R16, 181
+   \   00000022   BD0E               OUT     0x2E, R16
+    176          unsigned long temp = ADC;
+   \   00000024   B104               IN      R16, 0x04
+   \   00000026   B115               IN      R17, 0x05
+   \   00000028   E020               LDI     R18, 0
+    177          ADCSR |= (1<<ADSC);
+   \   0000002A   9A36               SBI     0x06, 0x06
+    178          
+    179          if (temp > DACNoiseTreshold) 
+   \   0000002C   2F40               MOV     R20, R16
+   \   0000002E   2B41               OR      R20, R17
+   \   00000030   ....               LDI     R30, SummUUResult
+   \   00000032   F0F9               BREQ    ??ADCSampleReady_0
+    180            {
+    181          #ifdef METHOD_AR
+    182            if (PlusSamplesCounter < RMSMeasureLength) SummUU += temp;
+   \   00000034   AD42               LDD     R20, Z+58
+   \   00000036   3440               CPI     R20, 64
+   \   00000038   F460               BRCC    ??ADCSampleReady_1
+   \   0000003A   8144               LDD     R20, Z+4
+   \   0000003C   8155               LDD     R21, Z+5
+   \   0000003E   8166               LDD     R22, Z+6
+   \   00000040   8177               LDD     R23, Z+7
+   \   00000042   0F40               ADD     R20, R16
+   \   00000044   1F51               ADC     R21, R17
+   \   00000046   1F62               ADC     R22, R18
+   \   00000048   1F72               ADC     R23, R18
+   \   0000004A   8344               STD     Z+4, R20
+   \   0000004C   8355               STD     Z+5, R21
+   \   0000004E   8366               STD     Z+6, R22
+   \   00000050   8377               STD     Z+7, R23
+    183          #endif
+    184          #ifdef METHOD_RMS
+    185            if (PlusSamplesCounter < RMSMeasureLength) SummUU += temp*temp;
+    186          #endif  
+    187          #ifdef METHOD_DIRECT_SHOW
+    188            MaxSampleNum ++; // считаем количество положительных семплов
+    189          #endif
+    190          #ifdef METHOD_PEAK  
+    191            if (PlusSamplesCounter == 64) Peak = temp; // узнаем значение по конкретному семплу
+    192          #endif
+    193            
+    194            PlusSamplesCounter++;
+   \                     ??ADCSampleReady_1:
+   \   00000052   AD02               LDD     R16, Z+58
+   \   00000054   9503               INC     R16
+   \   00000056   AF02               STD     Z+58, R16
+    195            ZeroSamplesCounter = 0;
+   \   00000058   AF23               STD     Z+59, R18
+    196          
+    197            if (PlusSamplesCounter > (HalfWaveMeasureLength*1.9))// рапортуем об обрыве или повреждении
+   \   0000005A   AD02               LDD     R16, Z+58
+   \   0000005C   3F04               CPI     R16, 244
+   \   0000005E   F130               BRCS    ??ADCSampleReady_2
+    198              {
+    199              SummUUResult = 0;
+   \   00000060   8320               ST      Z, R18
+   \   00000062   8321               STD     Z+1, R18
+   \   00000064   8322               STD     Z+2, R18
+   \   00000066   8323               STD     Z+3, R18
+    200              SummUU = 0;
+   \   00000068   8324               STD     Z+4, R18
+   \   0000006A   8325               STD     Z+5, R18
+   \   0000006C   8326               STD     Z+6, R18
+   \   0000006E   8327               STD     Z+7, R18
+    201          
+    202          #ifdef METHOD_PEAK
+    203              Peak = 0;
+    204              PeakResult = 0;           
+    205          #endif          
+    206             
+    207          #ifdef METHOD_DIRECT_SHOW          
+    208              MaxSampleNum = 0;
+    209          #endif          
+    210              ResetSampler ();
+   \   00000070   C01C               RJMP    ??ADCSampleReady_3
+    211              }
+    212            }
+    213          
+    214            else 
+    215              { // считаем сколько нулевых семплов попалось
+    216              ZeroSamplesCounter++;
+   \                     ??ADCSampleReady_0:
+   \   00000072   AD03               LDD     R16, Z+59
+   \   00000074   9503               INC     R16
+   \   00000076   AF03               STD     Z+59, R16
+    217              
+    218              if ((ZeroSamplesCounter > (HalfWaveMeasureLength/5))&&(PlusSamplesCounter > (HalfWaveMeasureLength/20))) // полуволна закончилась
+   \   00000078   AD03               LDD     R16, Z+59
+   \   0000007A   310A               CPI     R16, 26
+   \   0000007C   F068               BRCS    ??ADCSampleReady_4
+   \   0000007E   AD02               LDD     R16, Z+58
+   \   00000080   3007               CPI     R16, 7
+   \   00000082   F050               BRCS    ??ADCSampleReady_4
+    219                {
+    220          #ifdef METHOD_DIRECT_SHOW       
+    221                PeakResult = MaxSampleNum; 
+    222                MaxSampleNum = 0;
+    223          #endif      
+    224          #ifdef METHOD_PEAK
+    225                PeakResult = Peak;           
+    226                Peak = 0;
+    227          #endif
+    228                SummUUResult = SummUU;
+   \   00000084   8104               LDD     R16, Z+4
+   \   00000086   8115               LDD     R17, Z+5
+   \   00000088   8126               LDD     R18, Z+6
+   \   0000008A   8137               LDD     R19, Z+7
+   \   0000008C   8300               ST      Z, R16
+   \   0000008E   8311               STD     Z+1, R17
+   \   00000090   8322               STD     Z+2, R18
+   \   00000092   8333               STD     Z+3, R19
+    229                SummUU = 0;
+   \   00000094   ....               RCALL   ?Subroutine7
+    230                ResetSampler ();
+   \                     ??CrossCallReturnLabel_20:
+   \   00000096   ....               RCALL   ResetSampler
+    231                }
+    232            
+    233              if (ZeroSamplesCounter > HalfWaveMeasureLength*1.9) // рапортуем, что напряжение пропало совсем
+   \                     ??ADCSampleReady_4:
+   \   00000098   ....               LDI     R30, SummUUResult
+   \   0000009A   AD03               LDD     R16, Z+59
+   \   0000009C   3F04               CPI     R16, 244
+   \   0000009E   F030               BRCS    ??ADCSampleReady_2
+    234                {
+    235                SummUU = 0;
+   \   000000A0   ....               RCALL   ?Subroutine7
+    236                SummUUResult = 0;
+   \                     ??CrossCallReturnLabel_21:
+   \   000000A2   8300               ST      Z, R16
+   \   000000A4   8301               STD     Z+1, R16
+   \   000000A6   8302               STD     Z+2, R16
+   \   000000A8   8303               STD     Z+3, R16
+    237          #ifdef METHOD_PEAK
+    238                Peak = 0;
+    239                PeakResult = 0;           
+    240          #endif
+    241          #ifdef METHOD_DIRECT_SHOW       
+    242                MaxSampleNum = 0;
+    243          #endif      
+    244                ResetSampler ();
+   \                     ??ADCSampleReady_3:
+   \   000000AA   ....               RCALL   ResetSampler
+    245                }
+    246              }
+    247          
+    248          if (++SlowTimerPrescaler >= RMSMeasureLength)
+   \                     ??ADCSampleReady_2:
+   \   000000AC   ....               LDI     R30, SummUUResult
+   \   000000AE   A905               LDD     R16, Z+53
+   \   000000B0   9503               INC     R16
+   \   000000B2   AB05               STD     Z+53, R16
+   \   000000B4   3400               CPI     R16, 64
+   \   000000B6   F020               BRCS    ??ADCSampleReady_5
+    249            {
+    250            SlowTimerPrescaler = 0;
+   \   000000B8   E000               LDI     R16, 0
+   \   000000BA   AB05               STD     Z+53, R16
+    251            SlowTimerFlag = 1;
+   \   000000BC   E001               LDI     R16, 1
+   \   000000BE   AB04               STD     Z+52, R16
+    252            }
+    253          }
+   \                     ??ADCSampleReady_5:
+   \   000000C0   BF8F               OUT     0x3F, R24
+   \   000000C2   9109               LD      R16, Y+
+   \   000000C4   9119               LD      R17, Y+
+   \   000000C6   9129               LD      R18, Y+
+   \   000000C8   9139               LD      R19, Y+
+   \   000000CA   9149               LD      R20, Y+
+   \   000000CC   9159               LD      R21, Y+
+   \   000000CE   9169               LD      R22, Y+
+   \   000000D0   9179               LD      R23, Y+
+   \   000000D2   9009               LD      R0, Y+
+   \   000000D4   9019               LD      R1, Y+
+   \   000000D6   9029               LD      R2, Y+
+   \   000000D8   9039               LD      R3, Y+
+   \   000000DA   91E9               LD      R30, Y+
+   \   000000DC   91F9               LD      R31, Y+
+   \   000000DE   9189               LD      R24, Y+
+   \   000000E0   9518               RETI
+   \   000000E2                      REQUIRE _A_ADC
+   \   000000E2                      REQUIRE _A_ADCSR
+   \   000000E2                      REQUIRE _A_TCNT1
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine7:
+   \   00000000   E000               LDI     R16, 0
+   \   00000002   8304               STD     Z+4, R16
+   \   00000004   8305               STD     Z+5, R16
+   \   00000006   8306               STD     Z+6, R16
+   \   00000008   8307               STD     Z+7, R16
+   \   0000000A   9508               RET
+    254          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    255          void PressProcessing (unsigned char code_state)
+   \                     PressProcessing:
+    256          {
+    257          switch (code_state)
+   \   00000000   950A               DEC     R16
+   \   00000002   F061               BREQ    ??PressProcessing_0
+   \   00000004   950A               DEC     R16
+   \   00000006   F171               BREQ    ??PressProcessing_1
+   \   00000008   950A               DEC     R16
+   \   0000000A   F409               BRNE    $+2+2
+   \   0000000C   C04C               RJMP    ??PressProcessing_2
+   \   0000000E   950A               DEC     R16
+   \   00000010   F409               BRNE    $+2+2
+   \   00000012   C04E               RJMP    ??PressProcessing_3
+   \   00000014   950A               DEC     R16
+   \   00000016   F409               BRNE    $+2+2
+   \   00000018   C050               RJMP    ??PressProcessing_4
+   \   0000001A   ....               RJMP    CheckAllSettings
+    258            {
+    259            case DN_SHORT:
+    260              switch (DisplayMode)
+   \                     ??PressProcessing_0:
+   \   0000001C   ....               RCALL   ?Subroutine0
+   \                     ??CrossCallReturnLabel_1:
+   \   0000001E   F069               BREQ    ??PressProcessing_5
+   \   00000020   950A               DEC     R16
+   \   00000022   F059               BREQ    ??PressProcessing_5
+   \   00000024   5002               SUBI    R16, 2
+   \   00000026   F049               BREQ    ??PressProcessing_5
+   \   00000028   520E               SUBI    R16, 46
+   \   0000002A   F071               BREQ    ??PressProcessing_6
+   \   0000002C   950A               DEC     R16
+   \   0000002E   F039               BREQ    ??PressProcessing_7
+   \   00000030   950A               DEC     R16
+   \   00000032   F079               BREQ    ??PressProcessing_8
+   \   00000034   950A               DEC     R16
+   \   00000036   F099               BREQ    ??PressProcessing_9
+   \   00000038   ....               RJMP    CheckAllSettings
+    261              {
+    262              case RealtimeVoltage:       DisplayMode = DownTresholdVoltage;                break;
+   \                     ??PressProcessing_5:
+   \   0000003A   E003               LDI     R16, 3
+   \   0000003C   C046               RJMP    ??PressProcessing_10
+    263              case UpTresholdVoltage:     DisplayMode = DownTresholdVoltage;                break;
+    264              case DownTresholdTune:      DownTreshold --;                                  break;
+   \                     ??PressProcessing_7:
+   \   0000003E   ....               RCALL   ?Subroutine4
+   \                     ??CrossCallReturnLabel_9:
+   \   00000040   ....               RCALL   ?Subroutine8
+   \                     ??CrossCallReturnLabel_22:
+   \   00000042   8F02               STD     Z+26, R16
+   \   00000044   8F13               STD     Z+27, R17
+   \   00000046   ....               RJMP    CheckAllSettings
+    265              case UpTresholdTune:        UpTreshold --;                                    break;
+   \                     ??PressProcessing_6:
+   \   00000048   ....               RCALL   ??Subroutine16_0
+   \                     ??CrossCallReturnLabel_55:
+   \   0000004A   ....               RCALL   ?Subroutine8
+   \                     ??CrossCallReturnLabel_23:
+   \   0000004C   8F00               STD     Z+24, R16
+   \   0000004E   8F11               STD     Z+25, R17
+   \   00000050   ....               RJMP    CheckAllSettings
+    266              case ProtectTimerTune:      ProtectTimerOnMaxValue -=PROTECT_TIMER_STEP;      break;
+   \                     ??PressProcessing_8:
+   \   00000052   ....               RCALL   ??Subroutine15_0
+   \                     ??CrossCallReturnLabel_48:
+   \   00000054   5005               SUBI    R16, 5
+   \   00000056   4010               SBCI    R17, 0
+   \                     ??PressProcessing_11:
+   \   00000058   8B04               STD     Z+20, R16
+   \   0000005A   8B15               STD     Z+21, R17
+   \   0000005C   ....               RJMP    CheckAllSettings
+    267              case ProtectTimer:          DisplayMode = DownTresholdVoltage;                break;
+    268              case K1Tune:                K1 --;                                            break;
+   \                     ??PressProcessing_9:
+   \   0000005E   ....               RCALL   ?Subroutine5
+    269              }
+   \                     ??CrossCallReturnLabel_14:
+   \   00000060   ....               RCALL   ?Subroutine8
+   \                     ??CrossCallReturnLabel_24:
+   \   00000062   ....               RJMP    ?Subroutine14
+    270            break;
+    271            
+    272            case UP_SHORT:
+    273              switch (DisplayMode)
+   \                     ??PressProcessing_1:
+   \   00000064   ....               RCALL   ?Subroutine0
+   \                     ??CrossCallReturnLabel_2:
+   \   00000066   F069               BREQ    ??PressProcessing_12
+   \   00000068   5002               SUBI    R16, 2
+   \   0000006A   F059               BREQ    ??PressProcessing_12
+   \   0000006C   950A               DEC     R16
+   \   0000006E   F049               BREQ    ??PressProcessing_12
+   \   00000070   520E               SUBI    R16, 46
+   \   00000072   F069               BREQ    ??PressProcessing_13
+   \   00000074   950A               DEC     R16
+   \   00000076   F039               BREQ    ??PressProcessing_14
+   \   00000078   950A               DEC     R16
+   \   0000007A   F069               BREQ    ??PressProcessing_15
+   \   0000007C   950A               DEC     R16
+   \   0000007E   F079               BREQ    ??PressProcessing_16
+   \   00000080   ....               RJMP    CheckAllSettings
+    274              {
+    275              case RealtimeVoltage:       DisplayMode = UpTresholdVoltage;                  break;
+   \                     ??PressProcessing_12:
+   \   00000082   E002               LDI     R16, 2
+   \   00000084   C022               RJMP    ??PressProcessing_10
+    276              case DownTresholdVoltage:   DisplayMode = UpTresholdVoltage;                  break;
+    277              case DownTresholdTune:      DownTreshold ++;                                  break;
+   \                     ??PressProcessing_14:
+   \   00000086   ....               RCALL   ?Subroutine4
+   \                     ??CrossCallReturnLabel_10:
+   \   00000088   5F0F               SUBI    R16, 255
+   \   0000008A   4F1F               SBCI    R17, 255
+   \   0000008C   CFDA               RJMP    ??CrossCallReturnLabel_22
+    278              case UpTresholdTune:        UpTreshold ++;                                    break;
+   \                     ??PressProcessing_13:
+   \   0000008E   ....               RCALL   ??Subroutine16_0
+   \                     ??CrossCallReturnLabel_56:
+   \   00000090   5F0F               SUBI    R16, 255
+   \   00000092   4F1F               SBCI    R17, 255
+   \   00000094   CFDB               RJMP    ??CrossCallReturnLabel_23
+    279              case ProtectTimerTune:      ProtectTimerOnMaxValue +=PROTECT_TIMER_STEP;      break;
+   \                     ??PressProcessing_15:
+   \   00000096   ....               RCALL   ??Subroutine15_0
+   \                     ??CrossCallReturnLabel_49:
+   \   00000098   5F0B               SUBI    R16, 251
+   \   0000009A   4F1F               SBCI    R17, 255
+   \   0000009C   CFDD               RJMP    ??PressProcessing_11
+    280              case ProtectTimer:          DisplayMode = UpTresholdVoltage;                  break;  
+    281              case K1Tune:                K1 ++;                                            break;  
+   \                     ??PressProcessing_16:
+   \   0000009E   ....               RCALL   ?Subroutine5
+    282              }
+   \                     ??CrossCallReturnLabel_15:
+   \   000000A0   5F0F               SUBI    R16, 255
+   \   000000A2   4F1F               SBCI    R17, 255
+   \   000000A4   CFDE               RJMP    ??CrossCallReturnLabel_24
+    283            break;
+    284            
+    285            case DN_MID:
+    286            if (DisplayMode == DownTresholdVoltage) DisplayMode = DownTresholdTune;
+   \                     ??PressProcessing_2:
+   \   000000A6   ....               RCALL   ?Subroutine13
+   \                     ??CrossCallReturnLabel_42:
+   \   000000A8   3003               CPI     R16, 3
+   \   000000AA   F481               BRNE    ??PressProcessing_17
+   \   000000AC   E303               LDI     R16, 51
+   \   000000AE   C00D               RJMP    ??PressProcessing_10
+    287            break;
+    288            
+    289            case UP_MID:
+    290            if (DisplayMode == UpTresholdVoltage) DisplayMode = UpTresholdTune;
+   \                     ??PressProcessing_3:
+   \   000000B0   ....               RCALL   ?Subroutine13
+   \                     ??CrossCallReturnLabel_43:
+   \   000000B2   3002               CPI     R16, 2
+   \   000000B4   F459               BRNE    ??PressProcessing_17
+   \   000000B6   E302               LDI     R16, 50
+   \   000000B8   C008               RJMP    ??PressProcessing_10
+    291            break;
+    292            
+    293            case DN_UP_MID:
+    294              switch (DisplayMode)
+   \                     ??PressProcessing_4:
+   \   000000BA   ....               RCALL   ?Subroutine0
+   \                     ??CrossCallReturnLabel_3:
+   \   000000BC   F019               BREQ    ??PressProcessing_18
+   \   000000BE   5303               SUBI    R16, 51
+   \   000000C0   F019               BREQ    ??PressProcessing_19
+   \   000000C2   ....               RJMP    CheckAllSettings
+    295              {
+    296              case RealtimeVoltage:      DisplayMode = ProtectTimerTune;                    break;
+   \                     ??PressProcessing_18:
+   \   000000C4   E304               LDI     R16, 52
+   \   000000C6   C001               RJMP    ??PressProcessing_10
+    297              case ProtectTimerTune:     DisplayMode = K1Tune;                              break;
+   \                     ??PressProcessing_19:
+   \   000000C8   E305               LDI     R16, 53
+   \                     ??PressProcessing_10:
+   \   000000CA   AF00               STD     Z+56, R16
+    298              }
+    299            break;
+    300            }
+    301          CheckAllSettings ();
+   \                     ??PressProcessing_17:
+   \   000000CC   ....               RJMP    CheckAllSettings
+    302          }
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine8:
+   \   00000000   5001               SUBI    R16, 1
+   \   00000002   4010               SBCI    R17, 0
+   \   00000004   9508               RET
+    303          
+    304          //#pragma vector = TIMER0_OVF0_vect 
+    305          //__interrupt void DynInd (void)
+    306          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    307          void DynIndStep (void)
+   \                     DynIndStep:
+    308          {
+    309          //TCNT0 = T0_RELOAD; // перезагрузить таймер
+    310          if (cycle_count < NUMBER_DIGITS)
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002   A906               LDD     R16, Z+54
+   \   00000004   3003               CPI     R16, 3
+   \   00000006   F478               BRCC    ??DynIndStep_0
+    311            {
+    312            PortKathode |= ((1<<Kathode_1) | (1<<Kathode_2) | (1<<Kathode_3)); //потушили все разряды
+   \   00000008   B308               IN      R16, 0x18
+   \   0000000A   6403               ORI     R16, 0x43
+   \   0000000C   BB08               OUT     0x18, R16
+    313            PortAnode &= ~((1<<SEG_A)|(1<<SEG_B)|(1<<SEG_C)|(1<<SEG_D)|(1<<SEG_E)|(1<<SEG_F)|(1<<SEG_G)|(1<<SEG_DP));
+   \   0000000E   B30B               IN      R16, 0x1B
+   \   00000010   E000               LDI     R16, 0
+   \   00000012   BB0B               OUT     0x1B, R16
+    314          
+    315            PortAnode = VideoBuffer[cycle_count]; // выдать новые значения для анодов
+   \   00000014   A906               LDD     R16, Z+54
+   \   00000016   0FE0               ADD     R30, R16
+   \   00000018   8503               LDD     R16, Z+11
+   \   0000001A   BB0B               OUT     0x1B, R16
+    316            PortKathode &= ~ArrayKathodes[cycle_count];// включить катод
+   \   0000001C   A900               LDD     R16, Z+48
+   \   0000001E   9500               COM     R16
+   \   00000020   B318               IN      R17, 0x18
+   \   00000022   2310               AND     R17, R16
+   \   00000024   BB18               OUT     0x18, R17
+    317            }
+    318          
+    319          if (++cycle_count >= NUMBER_DIGITS) cycle_count=0;
+   \                     ??DynIndStep_0:
+   \   00000026   ....               LDI     R30, SummUUResult
+   \   00000028   A906               LDD     R16, Z+54
+   \   0000002A   9503               INC     R16
+   \   0000002C   AB06               STD     Z+54, R16
+   \   0000002E   3003               CPI     R16, 3
+   \   00000030   F010               BRCS    ??DynIndStep_1
+   \   00000032   E000               LDI     R16, 0
+   \   00000034   AB06               STD     Z+54, R16
+    320          }
+   \                     ??DynIndStep_1:
+   \   00000036   9508               RET
+   \   00000038                      REQUIRE _A_PORTB
+   \   00000038                      REQUIRE _A_PORTA
+    321          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    322          void CheckButton (unsigned char button, unsigned char counter, unsigned char event)
+   \                     CheckButton:
+    323          {
+   \   00000000   2F31               MOV     R19, R17
+    324            if (!(PinButton & (1<<button))) {counter++; KeyTimer = KeyTimerMax;}
+   \   00000002   B356               IN      R21, 0x16
+   \   00000004   2F40               MOV     R20, R16
+   \   00000006   E001               LDI     R16, 1
+   \   00000008   E010               LDI     R17, 0
+   \   0000000A   ....               RCALL   ?S_SHL_L02
+   \   0000000C   2350               AND     R21, R16
+   \   0000000E   F431               BRNE    ??CheckButton_0
+   \   00000010   EF04               LDI     R16, 244
+   \   00000012   E011               LDI     R17, 1
+   \   00000014   ....               LDI     R30, SummUUResult
+   \   00000016   8B00               STD     Z+16, R16
+   \   00000018   8B11               STD     Z+17, R17
+   \   0000001A   9508               RET
+    325            else 
+    326              {
+    327              if ((counter <  midpress)&&(counter >  shortpress)) PressProcessing(event);
+   \                     ??CheckButton_0:
+   \   0000001C   3738               CPI     R19, 120
+   \   0000001E   F420               BRCC    ??CheckButton_1
+   \   00000020   3032               CPI     R19, 2
+   \   00000022   F010               BRCS    ??CheckButton_1
+   \   00000024   2F02               MOV     R16, R18
+   \   00000026   ....               RCALL   PressProcessing
+    328              counter=0;
+    329              }
+    330          }
+   \                     ??CheckButton_1:
+   \   00000028   9508               RET
+   \   0000002A                      REQUIRE _A_PINB
+    331          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    332          void KeyboardThread (void)
+   \                     KeyboardThread:
+    333          {
+    334          if (cycle_count == 2) // проверяем левую кнопку
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002   A906               LDD     R16, Z+54
+   \   00000004   3002               CPI     R16, 2
+   \   00000006   F4F1               BRNE    ??KeyboardThread_0
+    335            {
+    336            if (!(PinButton & (1<<Button_DN))) {keypress[0]++; KeyTimer = KeyTimerMax;}
+   \   00000008   8506               LDD     R16, Z+14
+   \   0000000A   99B2               SBIC    0x16, 0x02
+   \   0000000C   C011               RJMP    ??KeyboardThread_1
+   \   0000000E   9503               INC     R16
+   \   00000010   8706               STD     Z+14, R16
+   \                     ??KeyboardThread_2:
+   \   00000012   EF04               LDI     R16, 244
+   \   00000014   E011               LDI     R17, 1
+   \   00000016   8B00               STD     Z+16, R16
+   \   00000018   8B11               STD     Z+17, R17
+    337            else 
+    338              {
+    339              if ((keypress[0] <  midpress)&&(keypress[0] >  shortpress)) PressProcessing(DN_SHORT);
+    340              keypress[0]=0;
+    341              }
+    342            }
+    343          
+    344          if (cycle_count == 0) // проверяем правую кнопку
+    345            {
+    346            if (!(PinButton & (1<<Button_UP))) {keypress[1]++; KeyTimer = KeyTimerMax;}
+    347            else 
+    348              {
+    349              if ((keypress[1] <  midpress)&&(keypress[1] >  shortpress)) PressProcessing(UP_SHORT);
+    350              keypress[1]=0;
+    351              }
+    352            }
+    353          
+    354          if (keypress[1] == 0) // была нажата кнопка ВНИЗ
+   \                     ??KeyboardThread_3:
+   \   0000001A   8507               LDD     R16, Z+15
+   \   0000001C   2300               TST     R16
+   \   0000001E   F5A1               BRNE    ??KeyboardThread_4
+    355          {
+    356            if (keypress[0] == midpress) {  keypress[0] = midpress+5;  PressProcessing(DN_MID);  }
+   \                     ??KeyboardThread_5:
+   \   00000020   8506               LDD     R16, Z+14
+   \   00000022   3708               CPI     R16, 120
+   \   00000024   F509               BRNE    ??KeyboardThread_6
+   \   00000026   E70D               LDI     R16, 125
+   \   00000028   8706               STD     Z+14, R16
+   \   0000002A   E003               LDI     R16, 3
+   \                     ??KeyboardThread_7:
+   \   0000002C   ....               RCALL   PressProcessing
+   \   0000002E   C04F               RJMP    ??KeyboardThread_8
+   \                     ??KeyboardThread_1:
+   \   00000030   3708               CPI     R16, 120
+   \   00000032   F420               BRCC    ??KeyboardThread_9
+   \   00000034   3002               CPI     R16, 2
+   \   00000036   F010               BRCS    ??KeyboardThread_9
+   \   00000038   E001               LDI     R16, 1
+   \   0000003A   ....               RCALL   PressProcessing
+   \                     ??KeyboardThread_9:
+   \   0000003C   E000               LDI     R16, 0
+   \   0000003E   ....               LDI     R30, SummUUResult
+   \   00000040   8706               STD     Z+14, R16
+   \   00000042   CFEB               RJMP    ??KeyboardThread_3
+   \                     ??KeyboardThread_0:
+   \   00000044   2300               TST     R16
+   \   00000046   F749               BRNE    ??KeyboardThread_3
+   \   00000048   8507               LDD     R16, Z+15
+   \   0000004A   99B5               SBIC    0x16, 0x05
+   \   0000004C   C003               RJMP    ??KeyboardThread_10
+   \   0000004E   9503               INC     R16
+   \   00000050   8707               STD     Z+15, R16
+   \   00000052   CFDF               RJMP    ??KeyboardThread_2
+   \                     ??KeyboardThread_10:
+   \   00000054   3708               CPI     R16, 120
+   \   00000056   F420               BRCC    ??KeyboardThread_11
+   \   00000058   3002               CPI     R16, 2
+   \   0000005A   F010               BRCS    ??KeyboardThread_11
+   \   0000005C   E002               LDI     R16, 2
+   \   0000005E   ....               RCALL   PressProcessing
+   \                     ??KeyboardThread_11:
+   \   00000060   E000               LDI     R16, 0
+   \   00000062   ....               LDI     R30, SummUUResult
+   \   00000064   8707               STD     Z+15, R16
+   \   00000066   CFDC               RJMP    ??KeyboardThread_5
+    357            if (keypress[0] > longpress) {  keypress[0] = longpress+5; } 
+   \                     ??KeyboardThread_6:
+   \   00000068   3F0B               CPI     R16, 251
+   \   0000006A   F018               BRCS    ??KeyboardThread_12
+   \   0000006C   EF0F               LDI     R16, 255
+   \   0000006E   8706               STD     Z+14, R16
+   \   00000070   C028               RJMP    ??KeyboardThread_13
+    358          
+    359            if ((keypress[0] == 0)&&(KeyTimer)) KeyTimer--; // или не нажаты обе кнопки
+   \                     ??KeyboardThread_12:
+   \   00000072   2300               TST     R16
+   \   00000074   F449               BRNE    ??KeyboardThread_4
+   \   00000076   8900               LDD     R16, Z+16
+   \   00000078   8911               LDD     R17, Z+17
+   \   0000007A   2B01               OR      R16, R17
+   \   0000007C   F041               BREQ    ??KeyboardThread_14
+   \   0000007E   8900               LDD     R16, Z+16
+   \   00000080   ....               RCALL   ?Subroutine8
+    360          }
+   \                     ??CrossCallReturnLabel_25:
+   \   00000082   8B00               STD     Z+16, R16
+   \   00000084   8B11               STD     Z+17, R17
+   \   00000086   C003               RJMP    ??KeyboardThread_14
+    361          
+    362          if (keypress[0] == 0) // была нажата кнопка ВВЕРХ
+   \                     ??KeyboardThread_4:
+   \   00000088   8506               LDD     R16, Z+14
+   \   0000008A   2300               TST     R16
+   \   0000008C   F439               BRNE    ??KeyboardThread_15
+    363          {
+    364            if (keypress[1] == midpress) {  keypress[1] = midpress+5;  PressProcessing(UP_MID);  }  
+   \                     ??KeyboardThread_14:
+   \   0000008E   8507               LDD     R16, Z+15
+   \   00000090   3708               CPI     R16, 120
+   \   00000092   F481               BRNE    ??KeyboardThread_16
+   \   00000094   E70D               LDI     R16, 125
+   \   00000096   8707               STD     Z+15, R16
+   \   00000098   E004               LDI     R16, 4
+   \   0000009A   ....               RCALL   PressProcessing
+    365            if (keypress[1] > longpress) {  keypress[1] = longpress+5; }
+    366          }
+    367          
+    368          if ((keypress[0] == midpress)&&(keypress[1] > shortpress))  {  keypress[0] = midpress+5; keypress[1] = midpress+5; PressProcessing(DN_UP_MID);  }
+   \                     ??KeyboardThread_15:
+   \   0000009C   ....               LDI     R30, SummUUResult
+   \   0000009E   8506               LDD     R16, Z+14
+   \   000000A0   3708               CPI     R16, 120
+   \   000000A2   F461               BRNE    ??KeyboardThread_17
+   \   000000A4   8507               LDD     R16, Z+15
+   \   000000A6   3002               CPI     R16, 2
+   \   000000A8   F090               BRCS    ??KeyboardThread_8
+   \   000000AA   E70D               LDI     R16, 125
+   \   000000AC   8706               STD     Z+14, R16
+   \   000000AE   8707               STD     Z+15, R16
+   \   000000B0   E005               LDI     R16, 5
+   \   000000B2   CFBC               RJMP    ??KeyboardThread_7
+   \                     ??KeyboardThread_16:
+   \   000000B4   3F0B               CPI     R16, 251
+   \   000000B6   F010               BRCS    ??KeyboardThread_17
+   \   000000B8   EF0F               LDI     R16, 255
+   \   000000BA   8707               STD     Z+15, R16
+    369          if ((keypress[0] > longpress)&&(keypress[1] > longpress))  {  keypress[0] = longpress+5; keypress[1] = longpress+5; }
+   \                     ??KeyboardThread_17:
+   \   000000BC   8506               LDD     R16, Z+14
+   \   000000BE   3F0B               CPI     R16, 251
+   \   000000C0   F030               BRCS    ??KeyboardThread_8
+   \                     ??KeyboardThread_13:
+   \   000000C2   8507               LDD     R16, Z+15
+   \   000000C4   3F0B               CPI     R16, 251
+   \   000000C6   F018               BRCS    ??KeyboardThread_8
+   \   000000C8   EF0F               LDI     R16, 255
+   \   000000CA   8706               STD     Z+14, R16
+   \   000000CC   8707               STD     Z+15, R16
+    370          
+    371          if (KeyTimer == 1)   
+   \                     ??KeyboardThread_8:
+   \   000000CE   ....               LDI     R30, SummUUResult
+   \   000000D0   8900               LDD     R16, Z+16
+   \   000000D2   8911               LDD     R17, Z+17
+   \   000000D4   3001               CPI     R16, 1
+   \   000000D6   4010               SBCI    R17, 0
+   \   000000D8   F439               BRNE    ??KeyboardThread_18
+    372            {
+    373            if (DisplayMode >= UpTresholdTune) SaveSettings ();
+   \   000000DA   AD00               LDD     R16, Z+56
+   \   000000DC   3302               CPI     R16, 50
+   \   000000DE   F008               BRCS    ??KeyboardThread_19
+   \   000000E0   ....               RCALL   SaveSettings
+    374            DisplayMode = RealtimeVoltage;  
+   \                     ??KeyboardThread_19:
+   \   000000E2   E001               LDI     R16, 1
+   \   000000E4   ....               LDI     R30, SummUUResult
+   \   000000E6   AF00               STD     Z+56, R16
+    375            }
+    376          }
+   \                     ??KeyboardThread_18:
+   \   000000E8   9508               RET
+   \   000000EA                      REQUIRE _A_PINB
+    377          
+    378          #ifdef METHOD_RMS  
+    379          unsigned long isqrt (unsigned long v)
+    380          {
+    381          unsigned long temp, nHat=0, b=0x8000, bshft=15;
+    382          do{
+    383            if (v >= (temp = (((nHat<<1)+b)<<bshft--)))    {    nHat += b;    v -= temp;    }
+    384            }while (b>>=1);
+    385          return nHat;
+    386          }
+    387          #endif
+    388          
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine3:
+   \   00000000   ....               LDI     R30, SummUUResult
+   \   00000002                      REQUIRE ??Subroutine15_0
+   \   00000002                      ;               // Fall through to label ??Subroutine15_0
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    389          int main( void )
+   \                     main:
+    390          {
+   \   00000000   ....               RCALL   ?PROLOGUE2_L09
+    391          InitPorts ();
+   \   00000002   ....               RCALL   InitPorts
+    392          InitTimers ();
+   \   00000004   ....               RCALL   InitTimers
+    393          InitADC ();
+   \   00000006   ....               RCALL   ?Subroutine2
+    394          LoadSettings ();
+   \                     ??CrossCallReturnLabel_4:
+   \   00000008   ....               RCALL   LoadSettings
+    395          
+    396          #ifdef OVERRIDE_SETTINGS
+    397            UpTreshold = OVERRIDE_UP_TRESHOLD_VALUE;
+    398            DownTreshold = OVERRIDE_DOWN_TRESHOLD_VALUE;
+    399            ProtectTimerOnMaxValue = OVERRIDE_PROTECT_TIMER_MAX_VALUE;
+    400            K1 = OVERRIDE_K1_VALUE;
+    401            SaveSettings ();
+    402          #endif
+    403          
+    404          ProtectTimerOnValue = ProtectTimerOnMaxValue;	//таймер включения после провалов взведен
+   \   0000000A   ....               RCALL   ?Subroutine3
+   \                     ??CrossCallReturnLabel_51:
+   \   0000000C   ....               RCALL   ?Subroutine10
+    405          __watchdog_init ();
+   \                     ??CrossCallReturnLabel_31:
+   \   0000000E   ....               RCALL   __watchdog_init
+    406          __enable_interrupt();
+   \   00000010   9478               SEI
+   \   00000012   C011               RJMP    ??CrossCallReturnLabel_32
+    407          
+    408            while (1)
+    409            {
+    410            //__delay_cycles((CtrlClockRate/1000)*5);
+    411            if (SlowTimerFlag)
+    412            {
+    413            SlowTimerFlag = 0;
+    414            if (ResultSummReady)
+    415              {
+    416              __watchdog_reset ();
+    417              ResultSummReady = 0;
+    418          #ifdef METHOD_PEAK    
+    419              Voltage = (unsigned int)(((unsigned long)PeakResult*500)>>10);
+    420          #endif    
+    421          #ifdef METHOD_DIRECT_SHOW    
+    422              Voltage = PeakResult;
+    423          #endif    
+    424          #ifdef METHOD_AR
+    425              Voltage = (unsigned int)(((SummUUResult>>6)*K1)>>10);
+    426          #endif
+    427          #ifdef METHOD_RMS  
+    428              Voltage = (unsigned int)((isqrt(SummUUResult>>6)*K1)>>10);
+    429          #endif    
+    430              }
+    431              
+    432              //быстрая защита
+    433              if ( (Voltage > UpTreshold) || ((Voltage < DownTreshold)&& (Voltage < DOWN_TRESHOLD_FAST_MIN)) ) ProtectTimerOnValue = ProtectTimerOnMaxValue; //
+    434              
+    435              //медленная защита  
+    436              if  ((Voltage < DownTreshold) && (Voltage >= DOWN_TRESHOLD_FAST_MIN)) 
+    437                {
+    438                if (ProtectTimerOnValue) ProtectTimerOffValue=0; // если уже и так выключено - сразу сгоняем таймер выключения в 0
+    439                if (ProtectTimerOffValue) ProtectTimerOffValue--; // тикает таймер выключения
+    440                }
+    441                else ProtectTimerOffValue = ProtectTimerOffMaxValue;
+    442              if (ProtectTimerOffValue == 0) ProtectTimerOnValue = ProtectTimerOnMaxValue;
+    443              
+    444          #ifndef RELAY_TEST    
+    445              if (ProtectTimerOnValue) PortRelay &= ~(1<<Relay);
+    446                else   PortRelay |= (1<<Relay);     
+    447          #endif         
+    448                
+    449          #ifndef KEYBOARD_DISABLE      
+    450              KeyboardThread ();
+    451          #endif 
+    452             
+    453              if ((DisplayMode == ProtectTimer)&&((ProtectTimerOnValue == ProtectTimerOnMaxValue) || (ProtectTimerOnValue == 0))) DisplayMode = RealtimeVoltage;
+    454              if ((DisplayMode == RealtimeVoltage)&&(ProtectTimerOnValue == (ProtectTimerOnMaxValue - 1))) DisplayMode = ProtectTimer;
+    455          
+    456              if (++QuarterSecPrescaler >= (ProtectTimer1S/8))  //раз в 1/8 секунды сюда заходим
+    457                {
+    458                QuarterSecPrescaler = 0;
+    459            
+    460          #ifdef SMOOTH_MEASURE
+    461                SmoothVoltage [SmoothVoltageCurrentPosition] = Voltage; 
+    462                if (++SmoothVoltageCurrentPosition >= SmoothBufferSize) SmoothVoltageCurrentPosition = 0;
+    463                DisplayedVoltage = 0;
+    464                for (unsigned char v=0; v<SmoothBufferSize; v++) DisplayedVoltage += SmoothVoltage [v];
+    465                DisplayedVoltage >>= SmoothShift;
+    466          #else
+    467                DisplayedVoltage = Voltage;
+    468          #endif
+    469                
+    470                if ((ProtectTimerOnValue)&&(DisplayMode == RealtimeVoltage)) EnableDisplay += HALF_BYTE_CONST; // мигаем экраном
+    471                  else EnableDisplay = HALF_BYTE_CONST; // не мигаем
+   \                     ??main_0:
+   \   00000014   E800               LDI     R16, 128
+   \                     ??main_1:
+   \   00000016   AF01               STD     Z+57, R16
+    472                }
+    473              
+    474              UpdateLedScreen ();    
+   \                     ??main_2:
+   \   00000018   ....               RCALL   UpdateLedScreen
+    475              DynIndStep ();
+   \   0000001A   ....               RCALL   DynIndStep
+    476          
+    477          #ifdef RELAY_TEST     
+    478              RelayTestCounter++;
+    479              if (RelayTestCounter == 0) PortRelay &= ~(1<<Relay);
+    480              if (RelayTestCounter == HALF_BYTE_CONST) PortRelay |= (1<<Relay);
+    481          #endif
+    482              
+    483              if (++SecPrescaler >= ProtectTimer1S)
+   \   0000001C   ....               LDI     R30, (SummUUResult + 62) & 0xFF
+   \   0000001E   ....               RCALL   ?Subroutine9
+   \                     ??CrossCallReturnLabel_28:
+   \   00000020   3C08               CPI     R16, 200
+   \   00000022   F048               BRCS    ??CrossCallReturnLabel_32
+    484                {
+    485                SecPrescaler = 0;
+   \   00000024   E000               LDI     R16, 0
+   \   00000026   8300               ST      Z, R16
+    486                if (ProtectTimerOnValue) ProtectTimerOnValue--;
+   \   00000028   ....               LDI     R30, SummUUResult
+   \   0000002A   ....               RCALL   ?Subroutine6
+   \                     ??CrossCallReturnLabel_17:
+   \   0000002C   F021               BREQ    ??CrossCallReturnLabel_32
+   \   0000002E   8902               LDD     R16, Z+18
+   \   00000030   8913               LDD     R17, Z+19
+   \   00000032   ....               RCALL   ?Subroutine8
+    487                }
+   \                     ??CrossCallReturnLabel_26:
+   \   00000034   ....               RCALL   ?Subroutine10
+   \                     ??CrossCallReturnLabel_32:
+   \   00000036   ....               LDI     R30, SummUUResult
+   \   00000038   A904               LDD     R16, Z+52
+   \   0000003A   2300               TST     R16
+   \   0000003C   F3E1               BREQ    ??CrossCallReturnLabel_32
+   \   0000003E   E000               LDI     R16, 0
+   \   00000040   AB04               STD     Z+52, R16
+   \   00000042   A903               LDD     R16, Z+51
+   \   00000044   2300               TST     R16
+   \   00000046   F0B1               BREQ    ??main_3
+   \   00000048   95A8               WDR
+   \   0000004A   E000               LDI     R16, 0
+   \   0000004C   AB03               STD     Z+51, R16
+   \   0000004E   E046               LDI     R20, 6
+   \   00000050   8100               LD      R16, Z
+   \   00000052   8111               LDD     R17, Z+1
+   \   00000054   8122               LDD     R18, Z+2
+   \   00000056   8133               LDD     R19, Z+3
+   \   00000058   ....               RCALL   ?UL_SHR_L03
+   \   0000005A   2F40               MOV     R20, R16
+   \   0000005C   2F51               MOV     R21, R17
+   \   0000005E   2F62               MOV     R22, R18
+   \   00000060   2F73               MOV     R23, R19
+   \   00000062   ....               RCALL   ?Subroutine5
+   \                     ??CrossCallReturnLabel_16:
+   \   00000064   E020               LDI     R18, 0
+   \   00000066   E030               LDI     R19, 0
+   \   00000068   ....               RCALL   ?L_MUL_L03
+   \   0000006A   E04A               LDI     R20, 10
+   \   0000006C   ....               RCALL   ?UL_SHR_L03
+   \   0000006E   ....               LDI     R30, SummUUResult
+   \   00000070   8B06               STD     Z+22, R16
+   \   00000072   8B17               STD     Z+23, R17
+   \                     ??main_3:
+   \   00000074   ....               RCALL   ??Subroutine15_0
+   \                     ??CrossCallReturnLabel_50:
+   \   00000076   8986               LDD     R24, Z+22
+   \   00000078   8997               LDD     R25, Z+23
+   \   0000007A   8D20               LDD     R18, Z+24
+   \   0000007C   8D31               LDD     R19, Z+25
+   \   0000007E   1728               CP      R18, R24
+   \   00000080   0739               CPC     R19, R25
+   \   00000082   F030               BRCS    ??main_4
+   \   00000084   ....               RCALL   ?Subroutine11
+   \                     ??CrossCallReturnLabel_35:
+   \   00000086   F428               BRCC    ??CrossCallReturnLabel_33
+   \   00000088   3788               CPI     R24, 120
+   \   0000008A   E020               LDI     R18, 0
+   \   0000008C   0792               CPC     R25, R18
+   \   0000008E   F408               BRCC    ??CrossCallReturnLabel_33
+   \                     ??main_4:
+   \   00000090   ....               RCALL   ?Subroutine10
+   \                     ??CrossCallReturnLabel_33:
+   \   00000092   ....               RCALL   ?Subroutine11
+   \                     ??CrossCallReturnLabel_36:
+   \   00000094   F478               BRCC    ??main_5
+   \   00000096   3788               CPI     R24, 120
+   \   00000098   E020               LDI     R18, 0
+   \   0000009A   0792               CPC     R25, R18
+   \   0000009C   F058               BRCS    ??main_5
+   \   0000009E   ....               RCALL   ?Subroutine12
+   \                     ??CrossCallReturnLabel_37:
+   \   000000A0   2B23               OR      R18, R19
+   \   000000A2   F011               BREQ    ??main_6
+   \   000000A4   E020               LDI     R18, 0
+   \   000000A6   AB27               STD     Z+55, R18
+   \                     ??main_6:
+   \   000000A8   A927               LDD     R18, Z+55
+   \   000000AA   2322               TST     R18
+   \   000000AC   F029               BREQ    ??main_7
+   \   000000AE   A927               LDD     R18, Z+55
+   \   000000B0   952A               DEC     R18
+   \   000000B2   C001               RJMP    ??main_8
+   \                     ??main_5:
+   \   000000B4   EC28               LDI     R18, 200
+   \                     ??main_8:
+   \   000000B6   AB27               STD     Z+55, R18
+   \                     ??main_7:
+   \   000000B8   A927               LDD     R18, Z+55
+   \   000000BA   2322               TST     R18
+   \   000000BC   F409               BRNE    ??CrossCallReturnLabel_34
+   \   000000BE   ....               RCALL   ?Subroutine10
+   \                     ??CrossCallReturnLabel_34:
+   \   000000C0   ....               RCALL   ?Subroutine6
+   \                     ??CrossCallReturnLabel_18:
+   \   000000C2   F011               BREQ    ??main_9
+   \   000000C4   98C3               CBI     0x18, 0x03
+   \   000000C6   C001               RJMP    ??main_10
+   \                     ??main_9:
+   \   000000C8   9AC3               SBI     0x18, 0x03
+   \                     ??main_10:
+   \   000000CA   ....               RCALL   KeyboardThread
+   \   000000CC   ....               RCALL   ?Subroutine3
+   \                     ??CrossCallReturnLabel_52:
+   \   000000CE   AD20               LDD     R18, Z+56
+   \   000000D0   3024               CPI     R18, 4
+   \   000000D2   F449               BRNE    ??main_11
+   \   000000D4   ....               RCALL   ?Subroutine12
+   \                     ??CrossCallReturnLabel_38:
+   \   000000D6   1720               CP      R18, R16
+   \   000000D8   0731               CPC     R19, R17
+   \   000000DA   F019               BREQ    ??main_12
+   \   000000DC   ....               RCALL   ?Subroutine12
+   \                     ??CrossCallReturnLabel_39:
+   \   000000DE   2B23               OR      R18, R19
+   \   000000E0   F411               BRNE    ??main_11
+   \                     ??main_12:
+   \   000000E2   E021               LDI     R18, 1
+   \   000000E4   AF20               STD     Z+56, R18
+   \                     ??main_11:
+   \   000000E6   AD20               LDD     R18, Z+56
+   \   000000E8   3021               CPI     R18, 1
+   \   000000EA   F439               BRNE    ??main_13
+   \   000000EC   ....               RCALL   ?Subroutine12
+   \                     ??CrossCallReturnLabel_40:
+   \   000000EE   ....               RCALL   ?Subroutine8
+   \                     ??CrossCallReturnLabel_27:
+   \   000000F0   1720               CP      R18, R16
+   \   000000F2   0731               CPC     R19, R17
+   \   000000F4   F411               BRNE    ??main_13
+   \   000000F6   E004               LDI     R16, 4
+   \   000000F8   AF00               STD     Z+56, R16
+   \                     ??main_13:
+   \   000000FA   ....               LDI     R30, (SummUUResult + 61) & 0xFF
+   \   000000FC   ....               RCALL   ?Subroutine9
+   \                     ??CrossCallReturnLabel_29:
+   \   000000FE   3109               CPI     R16, 25
+   \   00000100   F408               BRCC    $+2+2
+   \   00000102   CF8A               RJMP    ??main_2
+   \   00000104   E000               LDI     R16, 0
+   \   00000106   8300               ST      Z, R16
+   \   00000108   ....               LDI     R30, LOW((SummUUResult + 60))
+   \   0000010A   8100               LD      R16, Z
+   \   0000010C   0F00               LSL     R16
+   \   0000010E   ....               LDI     R30, SummUUResult
+   \   00000110   0FE0               ADD     R30, R16
+   \   00000112   A380               STD     Z+32, R24
+   \   00000114   A391               STD     Z+33, R25
+   \   00000116   ....               LDI     R30, (SummUUResult + 60) & 0xFF
+   \   00000118   ....               RCALL   ?Subroutine9
+   \                     ??CrossCallReturnLabel_30:
+   \   0000011A   3008               CPI     R16, 8
+   \   0000011C   F010               BRCS    ??main_14
+   \   0000011E   E000               LDI     R16, 0
+   \   00000120   8300               ST      Z, R16
+   \                     ??main_14:
+   \   00000122   E000               LDI     R16, 0
+   \   00000124   ....               LDI     R30, SummUUResult
+   \   00000126   8F06               STD     Z+30, R16
+   \   00000128   8F07               STD     Z+31, R16
+   \                     ??main_15:
+   \   0000012A   2F10               MOV     R17, R16
+   \   0000012C   0F11               LSL     R17
+   \   0000012E   0FE1               ADD     R30, R17
+   \   00000130   A120               LDD     R18, Z+32
+   \   00000132   A131               LDD     R19, Z+33
+   \   00000134   ....               LDI     R30, SummUUResult
+   \   00000136   8D46               LDD     R20, Z+30
+   \   00000138   8D57               LDD     R21, Z+31
+   \   0000013A   0F42               ADD     R20, R18
+   \   0000013C   1F53               ADC     R21, R19
+   \   0000013E   8F46               STD     Z+30, R20
+   \   00000140   8F57               STD     Z+31, R21
+   \   00000142   9503               INC     R16
+   \   00000144   3008               CPI     R16, 8
+   \   00000146   F388               BRCS    ??main_15
+   \   00000148   2F04               MOV     R16, R20
+   \   0000014A   2F15               MOV     R17, R21
+   \   0000014C   E043               LDI     R20, 3
+   \   0000014E   ....               RCALL   ?US_SHR_L02
+   \   00000150   8F06               STD     Z+30, R16
+   \   00000152   8F17               STD     Z+31, R17
+   \   00000154   ....               RCALL   ?Subroutine6
+   \                     ??CrossCallReturnLabel_19:
+   \   00000156   F409               BRNE    $+2+2
+   \   00000158   CF5D               RJMP    ??main_0
+   \   0000015A   AD00               LDD     R16, Z+56
+   \   0000015C   3001               CPI     R16, 1
+   \   0000015E   F009               BREQ    $+2+2
+   \   00000160   CF59               RJMP    ??main_0
+   \   00000162   AD01               LDD     R16, Z+57
+   \   00000164   5800               SUBI    R16, 128
+   \   00000166   CF57               RJMP    ??main_1
+   \   00000168                      REQUIRE _A_PORTB
+   \   00000168                      REQUIRE _A_ADCSR
+   \   00000168                      REQUIRE _A_ADMUX
+    488            }
+    489            }
+    490          }
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine12:
+   \   00000000   8922               LDD     R18, Z+18
+   \   00000002   8933               LDD     R19, Z+19
+   \   00000004   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine11:
+   \   00000000   8D22               LDD     R18, Z+26
+   \   00000002   8D33               LDD     R19, Z+27
+   \   00000004   1782               CP      R24, R18
+   \   00000006   0793               CPC     R25, R19
+   \   00000008   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine10:
+   \   00000000   8B02               STD     Z+18, R16
+   \   00000002   8B13               STD     Z+19, R17
+   \   00000004   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine9:
+   \   00000000   8100               LD      R16, Z
+   \   00000002   9503               INC     R16
+   \   00000004   8300               ST      Z, R16
+   \   00000006   9508               RET
+
+   \                                 In  segment CODE, align 2, keep-with-next
+   \                     ?Subroutine6:
+   \   00000000   8902               LDD     R16, Z+18
+   \   00000002   8913               LDD     R17, Z+19
+   \   00000004   2B01               OR      R16, R17
+   \   00000006   9508               RET
+
+   \                                 In  segment INTVEC, offset 0xa, root
+   \                     `??ADCSampleReady??INTVEC 10`:
+   \   0000000A   ....               RJMP    ADCSampleReady
+
+   \                                 In  segment TINY_ID, align 1, keep-with-next
+   \                     `?<Initializer for SummUUResult>`:
+   \   00000000   00000000           DC8 0, 0, 0, 0
+   \                     `?<Initializer for SummUU>`:
+   \   00000004   00000000           DC8 0, 0, 0, 0
+   \                     `?<Initializer for String>`:
+   \   00000008   000000             DC8 0, 0, 0
+   \                     `?<Initializer for VideoBuffer>`:
+   \   0000000B   000000             DC8 0, 0, 0
+   \                     `?<Initializer for keypress>`:
+   \   0000000E   0000               DC8 0, 0
+   \                     `?<Initializer for KeyTimer>`:
+   \   00000010   0000               DC8 0, 0
+   \                     `?<Initializer for ProtectTimerOnValue>`:
+   \   00000012   0000               DC8 0, 0
+   \                     `?<Initializer for ProtectTimerOnMaxValue>`:
+   \   00000014   0000               DC8 0, 0
+   \                     `?<Initializer for Voltage>`:
+   \   00000016   0000               DC8 0, 0
+   \                     `?<Initializer for UpTreshold>`:
+   \   00000018   0000               DC8 0, 0
+   \                     `?<Initializer for DownTreshold>`:
+   \   0000001A   0000               DC8 0, 0
+   \                     `?<Initializer for K1>`:
+   \   0000001C   0000               DC8 0, 0
+   \                     `?<Initializer for DisplayedVoltage>`:
+   \   0000001E   0000               DC8 0, 0
+   \                     `?<Initializer for SmoothVoltage>`:
+   \   00000020   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \                     `?<Initializer for ArrayKathodes>`:
+   \   00000030   010240             DC8 2, 1, 64
+   \                     `?<Initializer for ResultSummReady>`:
+   \   00000033   00                 DC8 0
+   \                     `?<Initializer for SlowTimerFlag>`:
+   \   00000034   00                 DC8 0
+   \                     `?<Initializer for SlowTimerPrescaler>`:
+   \   00000035   00                 DC8 0
+   \                     `?<Initializer for cycle_count>`:
+   \   00000036   00                 DC8 0
+   \                     `?<Initializer for ProtectTimerOffValue>`:
+   \   00000037   00                 DC8 0
+   \                     `?<Initializer for DisplayMode>`:
+   \   00000038   01                 DC8 1
+   \                     `?<Initializer for EnableDisplay>`:
+   \   00000039   80                 DC8 128
+   \                     `?<Initializer for PlusSamplesCounter>`:
+   \   0000003A   00                 DC8 0
+   \                     `?<Initializer for ZeroSamplesCounter>`:
+   \   0000003B   00                 DC8 0
+   \                     `?<Initializer for SmoothVoltageCurrentPosition`:
+   \   0000003C   00                 DC8 0
+   \                     `?<Initializer for QuarterSecPrescaler>`:
+   \   0000003D   00                 DC8 0
+   \                     `?<Initializer for SecPrescaler>`:
+   \   0000003E   00                 DC8 0
+
+   \                                 In  segment TINY_ID, align 1, keep-with-next
+   \                     `?<Initializer for segmentsDec>`:
+   \   00000000   0A6401             DC8 100, 10, 1
+
+   Maximum stack usage in bytes:
+
+     Function              CSTACK RSTACK
+     --------              ------ ------
+     ADCSampleReady           16      2
+       -> ResetSampler        16      2
+       -> ResetSampler        16      2
+       -> ResetSampler        16      2
+     CharToStringDec           0      2
+     CheckAllSettings          0      2
+     CheckButton               0      4
+       -> PressProcessing      0      2
+     DynIndStep                0      2
+     InitADC                   0      2
+     InitPorts                 0      2
+     InitTimers                0      2
+     KeyboardThread            1      2
+       -> PressProcessing      1      2
+       -> PressProcessing      1      2
+       -> PressProcessing      1      2
+       -> PressProcessing      1      2
+       -> PressProcessing      1      2
+       -> SaveSettings         1      2
+     LoadSettings              0      4
+       -> CheckAllSettings     0      2
+     PressProcessing           0      2
+       -> CheckAllSettings     0      2
+     ResetSampler              0      2
+     SaveSettings              0      4
+     UpdateLedScreen           1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+       -> CharToStringDec      1      2
+     __watchdog_init           0      2
+     main                      3      4
+       -> InitPorts            3      2
+       -> InitTimers           3      2
+       -> LoadSettings         3      2
+       -> __watchdog_init      3      2
+       -> UpdateLedScreen      3      2
+       -> DynIndStep           3      2
+       -> KeyboardThread       3      2
+
+
+   Segment part sizes:
+
+     Function/Label                  Bytes
+     --------------                  -----
+     _A_ADC                             2
+     _A_ADCSR                           1
+     _A_ADMUX                           1
+     _A_PINB                            1
+     _A_DDRB                            1
+     _A_PORTB                           1
+     _A_DDRA                            1
+     _A_PORTA                           1
+     _A_WDTCR                           1
+     _A_TCNT1                           1
+     _A_TCCR1B                          1
+     _A_TIMSK                           1
+     led_digits                        21
+     UpTresholdEEPROM                   8
+     DownTresholdEEPROM
+     K1EEPROM
+     ProtectTimerOnMaxValueEEPROM
+     SummUUResult                      63
+     SummUU
+     String
+     VideoBuffer
+     keypress
+     KeyTimer
+     ProtectTimerOnValue
+     ProtectTimerOnMaxValue
+     Voltage
+     UpTreshold
+     DownTreshold
+     K1
+     DisplayedVoltage
+     SmoothVoltage
+     ArrayKathodes
+     ResultSummReady
+     SlowTimerFlag
+     SlowTimerPrescaler
+     cycle_count
+     ProtectTimerOffValue
+     DisplayMode
+     EnableDisplay
+     PlusSamplesCounter
+     ZeroSamplesCounter
+     SmoothVoltageCurrentPosition
+     QuarterSecPrescaler
+     SecPrescaler
+     segmentsDec                        3
+     __watchdog_init                   16
+     CharToStringDec                   70
+     InitPorts                         20
+     InitADC                            0
+     ?Subroutine2                      10
+     InitTimers                        14
+     SaveSettings                      24
+     ?Subroutine5                       6
+     ?Subroutine4                       6
+     ??Subroutine15_0                   6
+     ?Subroutine1                       2
+     ??Subroutine16_0                   6
+     CheckAllSettings                 120
+     LoadSettings                      30
+     ?Subroutine14                      6
+     UpdateLedScreen                  130
+     ?Subroutine13                      6
+     ?Subroutine0                       6
+     ResetSampler                      22
+     ADCSampleReady                   226
+     ?Subroutine7                      12
+     PressProcessing                  206
+     ?Subroutine8                       6
+     DynIndStep                        56
+     CheckButton                       42
+     KeyboardThread                   234
+     ?Subroutine3                       2
+     main                             360
+     ?Subroutine12                      6
+     ?Subroutine11                     10
+     ?Subroutine10                      6
+     ?Subroutine9                       8
+     ?Subroutine6                       8
+     ??ADCSampleReady??INTVEC 10        2
+     ?<Initializer for SummUUResult>   63
+     ?<Initializer for segmentsDec>     3
+      Others                            4
+
+ 
+    13 bytes in segment ABSOLUTE
+ 1 682 bytes in segment CODE
+     8 bytes in segment EEPROM_I
+     4 bytes in segment INITTAB
+     2 bytes in segment INTVEC
+    21 bytes in segment NEAR_F
+    66 bytes in segment TINY_I
+    66 bytes in segment TINY_ID
+ 
+ 1 747 bytes of CODE  memory (+ 28 bytes shared)
+    66 bytes of DATA  memory (+ 13 bytes shared)
+     8 bytes of XDATA memory
+
+Errors: none
+Warnings: none
